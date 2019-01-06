@@ -8,11 +8,11 @@
   <meta name="description" content="简单上手Hexo概述目前比较流行的Blog框架如下：  Jekyll (https://jekyllrb.com/) hugo (http://www.gohugo.org/) django (https://www.djangoproject.com/) hexo (https://hexo.io/)  这里选择Hexo（别问为什么，反正我是没收广告费的）。当然，如果你是python学习者,请选">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mao Jing">
-<meta property="og:url" content="http://yoursite.com/2019/01/05/Hexo/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/01/06/简单上手Hexo/index.html">
 <meta property="og:site_name" content="Mao Jing">
 <meta property="og:description" content="简单上手Hexo概述目前比较流行的Blog框架如下：  Jekyll (https://jekyllrb.com/) hugo (http://www.gohugo.org/) django (https://www.djangoproject.com/) hexo (https://hexo.io/)  这里选择Hexo（别问为什么，反正我是没收广告费的）。当然，如果你是python学习者,请选">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-05T16:46:26.854Z">
+<meta property="og:updated_time" content="2019-01-06T12:28:29.074Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mao Jing">
 <meta name="twitter:description" content="简单上手Hexo概述目前比较流行的Blog框架如下：  Jekyll (https://jekyllrb.com/) hugo (http://www.gohugo.org/) django (https://www.djangoproject.com/) hexo (https://hexo.io/)  这里选择Hexo（别问为什么，反正我是没收广告费的）。当然，如果你是python学习者,请选">
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Hexo" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-简单上手Hexo" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/05/Hexo/" class="article-date">
-  <time datetime="2019-01-05T07:11:29.969Z" itemprop="datePublished">2019-01-05</time>
+    <a href="/2019/01/06/简单上手Hexo/" class="article-date">
+  <time datetime="2019-01-06T12:28:22.049Z" itemprop="datePublished">2019-01-06</time>
 </a>
     
   </div>
@@ -88,6 +88,7 @@
 <li>hexo (<a href="https://hexo.io/" target="_blank" rel="noopener">https://hexo.io/</a>)</li>
 </ul>
 <p>这里选择Hexo（别问为什么，反正我是没收广告费的）。当然，如果你是python学习者,请选择django,这几乎是每个学习python的小伙伴的必经之路。</p>
+<a id="more"></a>
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h3><h3 id="设置npm镜像"><a href="#设置npm镜像" class="headerlink" title="设置npm镜像"></a>设置npm镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry &quot;https://registry.npm.taobao.org&quot;</span><br></pre></td></tr></table></figure>
 <h3 id="Github账号"><a href="#Github账号" class="headerlink" title="Github账号"></a>Github账号</h3><h3 id="创建博客仓库"><a href="#创建博客仓库" class="headerlink" title="创建博客仓库"></a>创建博客仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注意：比如你的github账号为zhanshang，那么仓库名应为zhangshang.github.io</span><br></pre></td></tr></table></figure>
 <h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><h3 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h3><h3 id="公匙添加到github上"><a href="#公匙添加到github上" class="headerlink" title="公匙添加到github上"></a>公匙添加到github上</h3><h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 安装hexo，我这里是cd进D:\DEV\myhexo路径安装的hexo,可根据自己习惯安装。</span><br><span class="line">npm install hexo-cli g</span><br><span class="line"># 初始化博客文件夹</span><br><span class="line">hexo init blog</span><br><span class="line"># 切换到该路径</span><br><span class="line">cd blog</span><br><span class="line"># 安装hexo的扩展插件</span><br><span class="line">npm install</span><br><span class="line"># 安装其它插件</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install hexo-admin --save</span><br><span class="line">npm install hexo-generator-archive --save</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">npm install hexo-generator-search --save</span><br><span class="line">npm install hexo-generator-tag --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
@@ -107,7 +108,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/05/Hexo/" data-id="cjqkvio8x0002m4psxax4ljfh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/06/简单上手Hexo/" data-id="cjqkvio8s0000m4psj7d2wuu2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -116,15 +117,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/01/06/简单上手Hexo/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
+    <a href="/2019/01/05/Hexo/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
   
 </nav>
 
