@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="Mao Jing">
 <meta property="og:description" content="有时候我们宁可花大把时间google和百度，也不愿看看官方文档！论能看，会看文档的重要性！">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-08T08:48:24.528Z">
+<meta property="og:updated_time" content="2019-01-08T12:42:16.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo-分享">
 <meta name="twitter:description" content="有时候我们宁可花大把时间google和百度，也不愿看看官方文档！论能看，会看文档的重要性！">
@@ -402,7 +402,7 @@
                 
               
 
-              <time title="创建时间：2019-01-08 15:06:38 / 修改时间：16:48:24" itemprop="dateCreated datePublished" datetime="2019-01-08T15:06:38+08:00">2019-01-08</time>
+              <time title="创建时间：2019-01-08 15:06:38 / 修改时间：20:42:16" itemprop="dateCreated datePublished" datetime="2019-01-08T15:06:38+08:00">2019-01-08</time>
             
 
             
@@ -475,7 +475,7 @@
 <p>那就先看看github。果然很靠谱，内容整理如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Step 1</span><br><span class="line">$ cd themes/next</span><br><span class="line"></span><br><span class="line">Step 2</span><br><span class="line">$ git clone https://github.com/theme-next/theme-next-needmoreshare2 source/lib/needsharebutton</span><br><span class="line"></span><br><span class="line">Step 3</span><br><span class="line">打开 NexT 的 _config.yml 文件，更改配置如下:</span><br><span class="line">needmoreshare2:</span><br><span class="line">  enable: true</span><br><span class="line">  postbottom:</span><br><span class="line">    enable: true</span><br><span class="line">  float:</span><br><span class="line">    enable: true</span><br></pre></td></tr></table></figure>
 <p>嗯，就这样完事，5分钟不到哈！</p>
-<h1 id="Baidu-Share"><a href="#Baidu-Share" class="headerlink" title="Baidu Share"></a>Baidu Share</h1><p>Baidu Share在另一个LandScape主题里有配置，但当前使用的是NexT主题配置的是NeedMoreShare2，但还是记录下如何解决如下问题：</p>
+<h1 id="Baidu-Share"><a href="#Baidu-Share" class="headerlink" title="Baidu Share"></a>Baidu Share</h1><p>Baidu Share在另一个LandScape主题里有配置，当前使用的是NexT主题，配置的是NeedMoreShare2，但还是记录下如何解决如下问题：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Warning: Baidu Share does not support https.</span><br></pre></td></tr></table></figure>
 <p>方案比较粗暴：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">step 1</span><br><span class="line">打开http://share.baidu.com/code网站，复制分享代码</span><br><span class="line"></span><br><span class="line">step 2</span><br><span class="line">打开themes\landscape\layout_partial\article.ejs，找到“&lt;footer class=&quot;article-footer&quot;&gt;”标签并将标签对包含代码替换为百度分享代码</span><br><span class="line"></span><br><span class="line">并将上面替换后的百度分享里的src做如下修改：</span><br><span class="line">src=&apos;/static/api/js/share.js?v=89860593.js 其它不动</span><br><span class="line"></span><br><span class="line">step 3</span><br><span class="line">下载static文件：https://github.com/hrwhisper/baiduShare </span><br><span class="line">解压后将static文件放到\themes\landscape\source路径下</span><br></pre></td></tr></table></figure>
