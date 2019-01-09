@@ -2,16 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2019/01/08/Hexo-%E6%9D%82%E8%AE%B0/</loc>
+    <loc>http://yoursite.com/categories/index.html</loc>
     
-    <lastmod>2019-01-09T03:05:49.970Z</lastmod>
+    <lastmod>2019-01-09T13:38:23.555Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/index.html</loc>
+    
+    <lastmod>2019-01-09T13:38:11.562Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2019-01-09T13:34:57.762Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/01/09/Linux-%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6/</loc>
+    
+    <lastmod>2019-01-09T13:12:05.426Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/01/09/Ubuntu-VMware%E4%B8%8A%E8%A3%85/</loc>
+    
+    <lastmod>2019-01-09T12:37:53.171Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/01/08/Docker-%E5%88%9D%E8%AF%86/</loc>
     
-    <lastmod>2019-01-08T15:30:53.037Z</lastmod>
+    <lastmod>2019-01-09T12:35:53.116Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/01/09/Linux-%E7%AE%80%E4%BB%8B/</loc>
+    
+    <lastmod>2019-01-09T07:42:32.591Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/01/08/Hexo-%E6%9D%82%E8%AE%B0/</loc>
+    
+    <lastmod>2019-01-09T03:05:49.970Z</lastmod>
     
   </url>
   
@@ -30,30 +72,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/about/index.html</loc>
-    
-    <lastmod>2019-01-08T09:54:35.602Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/lib/needsharebutton/README.html</loc>
     
     <lastmod>2019-01-08T07:50:45.193Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/categories/index.html</loc>
-    
-    <lastmod>2019-01-08T02:29:04.079Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/tags/index.html</loc>
-    
-    <lastmod>2019-01-08T02:12:04.812Z</lastmod>
     
   </url>
   
