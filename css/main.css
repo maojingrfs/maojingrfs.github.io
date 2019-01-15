@@ -1932,7 +1932,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffb64d;
+  background: #fa8cdb;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3256,5 +3256,8 @@ ul.breadcrumb li+li:last-child {
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
 body {
-  background: url("https://source.unsplash.com/1920x1080/?nature,water");
+  background: url("/images/backimage.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
 }
