@@ -230,29 +230,6 @@
   </entry>
   
   <entry>
-    <title>Linux-实战</title>
-    <link href="http://yoursite.com/2019/01/10/Linux-%E5%AE%9E%E6%88%98/"/>
-    <id>http://yoursite.com/2019/01/10/Linux-实战/</id>
-    <published>2019-01-10T03:08:51.000Z</published>
-    <updated>2019-01-15T09:41:48.098Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本地安装ubuntu,然后又安装JDK,Tomcat,MySql,那么接下来肯定是打包个项目，在本地linux服务器上面跑起来。嗯，想一想，这是非常合乎开发常理的事。就是这么合乎常理的事，当我想要写篇blog来记录时，突然感觉不用写了–因为过程非常符合开发常理。</p><p>是的，你可能已经想到了，打个包，丢到Tomcat里，跑起来，完事！所以这里不做记录，只是强调一点：操作过程要细心哦！</p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;本地安装ubuntu,然后又安装JDK,Tomcat,MySql,那么接下来肯定是打包个项目，在本地linux服务器上面跑起来。嗯，想一想，这是非常合乎开发常理的事。就是这么合乎常理的事，当我想要写篇blog来记录时，突然感觉不用写了–因为过程非常符合开发常理。&lt;/p&gt;
-&lt;p&gt;是的，你可能已经想到了，打个包，丢到Tomcat里，跑起来，完事！所以这里不做记录，只是强调一点：操作过程要细心哦！&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Linux-常规</title>
     <link href="http://yoursite.com/2019/01/10/Linux-%E5%B8%B8%E8%A7%84/"/>
     <id>http://yoursite.com/2019/01/10/Linux-常规/</id>
@@ -265,6 +242,29 @@
     
       &lt;img src=&quot;/2019/01/10/Linux-常规/image1.png&quot;&gt;
 &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;先来个“Hello world !”，哈哈，开玩笑。这里不会有hello world，只是传达一个由浅入深，循序渐进的思想。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux-实战</title>
+    <link href="http://yoursite.com/2019/01/10/Linux-%E5%AE%9E%E6%88%98/"/>
+    <id>http://yoursite.com/2019/01/10/Linux-实战/</id>
+    <published>2019-01-10T03:08:51.000Z</published>
+    <updated>2019-01-15T09:41:48.098Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本地安装ubuntu,然后又安装JDK,Tomcat,MySql,那么接下来肯定是打包个项目，在本地linux服务器上面跑起来。嗯，想一想，这是非常合乎开发常理的事。就是这么合乎常理的事，当我想要写篇blog来记录时，突然感觉不用写了–因为过程非常符合开发常理。</p><p>是的，你可能已经想到了，打个包，丢到Tomcat里，跑起来，完事！所以这里不做记录，只是强调一点：操作过程要细心哦！</p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;本地安装ubuntu,然后又安装JDK,Tomcat,MySql,那么接下来肯定是打包个项目，在本地linux服务器上面跑起来。嗯，想一想，这是非常合乎开发常理的事。就是这么合乎常理的事，当我想要写篇blog来记录时，突然感觉不用写了–因为过程非常符合开发常理。&lt;/p&gt;
+&lt;p&gt;是的，你可能已经想到了，打个包，丢到Tomcat里，跑起来，完事！所以这里不做记录，只是强调一点：操作过程要细心哦！&lt;/p&gt;
     
     </summary>
     
