@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-15T10:25:51.519Z</updated>
+  <updated>2019-01-16T07:20:11.241Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,104 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>阿里云-域名备案</title>
+    <link href="http://yoursite.com/2019/01/16/%E9%98%BF%E9%87%8C%E4%BA%91-%E5%9F%9F%E5%90%8D%E5%A4%87%E6%A1%88/"/>
+    <id>http://yoursite.com/2019/01/16/阿里云-域名备案/</id>
+    <published>2019-01-16T06:24:33.000Z</published>
+    <updated>2019-01-16T07:20:11.241Z</updated>
+    
+    <content type="html"><![CDATA[<p>来来来，大家一起看阿里云官方文档！</p><a id="more"></a><p>详细流程请参考阿里云官方文档：</p><p><a href="https://help.aliyun.com/knowledge_detail/36922.html?spm=a2c4g.11186623.6.558.262422f0zyedbj" target="_blank" rel="noopener">https://help.aliyun.com/knowledge_detail/36922.html?spm=a2c4g.11186623.6.558.262422f0zyedbj</a></p><p>注意：</p><p>1.购买的服务器ECS效期须大于3个月；</p><p>2.初审很快，大概半个小时左右就接到95187电话，简单核实了下身份信息；</p><p>3.在提交材料时，手机上显示的是什么“承诺书”，实质上就是“网站备案系信息真实性核验单”；</p><p>4.网站备案系信息真实性核验单，选择电脑上传资料时，变会看见下载链接，以及填写样例图；</p><p>5.另外教程中有如何获取阿里云幕布的操作（简直贴心）。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;来来来，大家一起看阿里云官方文档！&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="阿里云" scheme="http://yoursite.com/categories/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+    
+      <category term="阿里云" scheme="http://yoursite.com/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+      <category term="域名备案" scheme="http://yoursite.com/tags/%E5%9F%9F%E5%90%8D%E5%A4%87%E6%A1%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阿里云-域名购买</title>
+    <link href="http://yoursite.com/2019/01/16/%E9%98%BF%E9%87%8C%E4%BA%91-%E5%9F%9F%E5%90%8D%E8%B4%AD%E4%B9%B0/"/>
+    <id>http://yoursite.com/2019/01/16/阿里云-域名购买/</id>
+    <published>2019-01-16T06:13:34.000Z</published>
+    <updated>2019-01-16T06:21:05.925Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这里使用阿里云iOS手机端购买域名为例。</p><a id="more"></a><h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><p>直接上图不解释！</p><p>step1 :</p><img src="/2019/01/16/阿里云-域名购买/yuming1.png"><p>step2:</p><img src="/2019/01/16/阿里云-域名购买/yuming2.png"><p>step3:</p><img src="/2019/01/16/阿里云-域名购买/yuming3.png"><p>step4:</p><img src="/2019/01/16/阿里云-域名购买/yuming4.png"><p>step5:</p><img src="/2019/01/16/阿里云-域名购买/yuming5.png"><p>step6:</p><img src="/2019/01/16/阿里云-域名购买/yuming6.png">]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;这里使用阿里云iOS手机端购买域名为例。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="阿里云" scheme="http://yoursite.com/categories/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+    
+      <category term="阿里云" scheme="http://yoursite.com/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+      <category term="域名购买" scheme="http://yoursite.com/tags/%E5%9F%9F%E5%90%8D%E8%B4%AD%E4%B9%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阿里云-ECS购买</title>
+    <link href="http://yoursite.com/2019/01/16/%E9%98%BF%E9%87%8C%E4%BA%91-ECS%E8%B4%AD%E4%B9%B0/"/>
+    <id>http://yoursite.com/2019/01/16/阿里云-ECS购买/</id>
+    <published>2019-01-16T05:16:32.000Z</published>
+    <updated>2019-01-16T06:09:40.197Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>阿里云创立于2009年，是<a href="https://baike.baidu.com/item/%E5%85%A8%E7%90%83/2741427" target="_blank" rel="noopener">全球</a>领先的<a href="https://baike.baidu.com/item/%E4%BA%91%E8%AE%A1%E7%AE%97/9969353" target="_blank" rel="noopener">云计算</a>及人工智能科技<a href="https://baike.baidu.com/item/%E5%85%AC%E5%8F%B8" target="_blank" rel="noopener">公司</a>，致力于以在线公共<a href="https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1/85523" target="_blank" rel="noopener">服务</a>的<a href="https://baike.baidu.com/item/%E6%96%B9%E5%BC%8F/3616191" target="_blank" rel="noopener">方式</a>，提供<a href="https://baike.baidu.com/item/%E5%AE%89%E5%85%A8/5573311" target="_blank" rel="noopener">安全</a>、可靠的计算和数据处理能力，让计算和人工智能成为普惠<a href="https://baike.baidu.com/item/%E7%A7%91%E6%8A%80/662906" target="_blank" rel="noopener">科技</a>。</p><a id="more"></a><p>阿里云服务着制造、金融、<a href="https://baike.baidu.com/item/%E6%94%BF%E5%8A%A1/533839" target="_blank" rel="noopener">政务</a>、交通、<a href="https://baike.baidu.com/item/%E5%8C%BB%E7%96%97/3232414" target="_blank" rel="noopener">医疗</a>、<a href="https://baike.baidu.com/item/%E7%94%B5%E4%BF%A1/15421798" target="_blank" rel="noopener">电信</a>、能源等众多领域的领军企业，包括<a href="https://baike.baidu.com/item/%E4%B8%AD%E5%9B%BD%E8%81%94%E9%80%9A/194673" target="_blank" rel="noopener">中国联通</a>、<a href="https://baike.baidu.com/item/12306" target="_blank" rel="noopener">12306</a>、<a href="https://baike.baidu.com/item/%E4%B8%AD%E7%9F%B3%E5%8C%96/5290131" target="_blank" rel="noopener">中石化</a>、<a href="https://baike.baidu.com/item/%E4%B8%AD%E7%9F%B3%E6%B2%B9/9684575" target="_blank" rel="noopener">中石油</a>、<a href="https://baike.baidu.com/item/%E9%A3%9E%E5%88%A9%E6%B5%A6/14316" target="_blank" rel="noopener">飞利浦</a>、华大基因等大型企业客户，以及微博、<a href="https://baike.baidu.com/item/%E7%9F%A5%E4%B9%8E/4691322" target="_blank" rel="noopener">知乎</a>、锤子科技等明星互联网公司。在天猫<a href="https://baike.baidu.com/item/%E5%8F%8C11" target="_blank" rel="noopener">双11</a>全球狂欢节、12306春运购票等极富挑战的应用场景中，阿里云保持着良好的运行纪录 [1]  。</p><p>阿里云在全球各地部署高效节能的绿色数据中心，利用清洁计算为万物互联的新世界提供源源不断的能源动力，目前开服的区域包括中国（华北、华东、华南、香港）、新加坡、美国（美东、美西）、欧洲、中东、澳大利亚、日本。</p><p>2014年，阿里云曾帮助用户抵御全球互联网史上最大的DDoS攻击，峰值流量达到每秒453.8Gb [2]  。在Sort Benchmark 2016 排序竞赛 CloudSort项目中，阿里云以1.44$/TB的排序花费打破了AWS保持的4.51$/TB纪录 [3]  。在Sort Benchmark 2015，阿里云利用自研的分布式计算平台ODPS，377秒完成100TB数据排序，刷新了Apache Spark 1406秒的世界纪录 [3]  。</p><p>2018年9月22日，2018杭州·云栖大会上阿里云宣布成立全球交付中心。</p><p>(来源：百度百科)</p><h1 id="购买流程"><a href="#购买流程" class="headerlink" title="购买流程"></a>购买流程</h1><p>1.登陆阿里云官网：<a href="https://www.aliyun.com（注册用户并实名认证），另外建议下载阿里云App！" target="_blank" rel="noopener">https://www.aliyun.com（注册用户并实名认证），另外建议下载阿里云App！</a></p><p>2.点击”产品”，再点击”云服务器ECS”如下：</p><img src="/2019/01/16/阿里云-ECS购买/buy1.jpg"><p>3.点击“立即购买”，如图：</p><img src="/2019/01/16/阿里云-ECS购买/buy2.jpg"><p>4.可根据自己实际情况勾选，进入自定义购买界面，示例设置如下图：</p><img src="/2019/01/16/阿里云-ECS购买/buy3.jpg"><img src="/2019/01/16/阿里云-ECS购买/buy4.jpg"><p>5.网路和安全组，基本保持默认即可：</p><img src="/2019/01/16/阿里云-ECS购买/buy5.jpg"><p>6.系统配置界面，按照要求设置相关信息即可：</p><img src="/2019/01/16/阿里云-ECS购买/buy6.jpg"><p>7.下面的分组设置保持默认即可。</p><p>其实在第六步即可选择“确认订单”，进入付款流程，完成支付。</p><p>到此阿里云服务器ECS购买完毕！（操作仅供参考，大家以自己实际情况购买！）</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;阿里云创立于2009年，是&lt;a href=&quot;https://baike.baidu.com/item/%E5%85%A8%E7%90%83/2741427&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;全球&lt;/a&gt;领先的&lt;a href=&quot;https://baike.baidu.com/item/%E4%BA%91%E8%AE%A1%E7%AE%97/9969353&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;云计算&lt;/a&gt;及人工智能科技&lt;a href=&quot;https://baike.baidu.com/item/%E5%85%AC%E5%8F%B8&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;公司&lt;/a&gt;，致力于以在线公共&lt;a href=&quot;https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1/85523&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;服务&lt;/a&gt;的&lt;a href=&quot;https://baike.baidu.com/item/%E6%96%B9%E5%BC%8F/3616191&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;方式&lt;/a&gt;，提供&lt;a href=&quot;https://baike.baidu.com/item/%E5%AE%89%E5%85%A8/5573311&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;安全&lt;/a&gt;、可靠的计算和数据处理能力，让计算和人工智能成为普惠&lt;a href=&quot;https://baike.baidu.com/item/%E7%A7%91%E6%8A%80/662906&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;科技&lt;/a&gt;。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="阿里云" scheme="http://yoursite.com/categories/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+    
+      <category term="阿里云 ECS" scheme="http://yoursite.com/tags/%E9%98%BF%E9%87%8C%E4%BA%91-ECS/"/>
+    
+      <category term="aliyun ECS" scheme="http://yoursite.com/tags/aliyun-ECS/"/>
+    
+      <category term="购买" scheme="http://yoursite.com/tags/%E8%B4%AD%E4%B9%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阿里云-ECS与域名绑定</title>
+    <link href="http://yoursite.com/2019/01/16/%E9%98%BF%E9%87%8C%E4%BA%91-ECS%E4%B8%8E%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A/"/>
+    <id>http://yoursite.com/2019/01/16/阿里云-ECS与域名绑定/</id>
+    <published>2019-01-16T05:15:58.000Z</published>
+    <updated>2019-01-16T07:16:56.687Z</updated>
+    
+    <content type="html"><![CDATA[<p>域名ip绑定。</p><a id="more"></a><h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>step1：进入阿里云“管理控制台”，再点击“域名服务”，如下操作：</p><img src="/2019/01/16/阿里云-ECS与域名绑定/jiexi1.jpg"><p>step2:刚开始记录应为空，点击“添加记录”，如图：</p><img src="/2019/01/16/阿里云-ECS与域名绑定/jiexi2.jpg"><p>step3:按要求填写相关信息，如图：</p><img src="/2019/01/16/阿里云-ECS与域名绑定/jiexi3.jpg"><h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>1.记录类型：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">要将域名指向主机服务商提供的IP地址，请选择「A记录」；要将域名指向主机服务商提供的另一个域名，请选择「CNAME记录」。</span><br></pre></td></tr></table></figure><p>2.主机记录：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">www ：将域名解析为www.example.com，填写www；</span><br><span class="line">@：将域名解析为example.com（不带www），填写@或者不填写；</span><br><span class="line">mail ：将域名解析为mail.example.com，通常用于解析邮箱服务器；</span><br><span class="line">泛解析，所有子域名均被解析到统一地址（除单独设置的子域名解析）；</span><br><span class="line">二级域名 ：如：mail.example.com或abc.example.com，填写mail或abc；</span><br><span class="line">手机网站 ：如：m.example.com，填写m。</span><br></pre></td></tr></table></figure><p>3.记录值：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A记录值请填写您的服务器IP地址。</span><br></pre></td></tr></table></figure><p>4.TTL：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10分钟。</span><br></pre></td></tr></table></figure><p>（以上操作仅供参考！）</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;域名ip绑定。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="阿里云" scheme="http://yoursite.com/categories/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+    
+      <category term="阿里云" scheme="http://yoursite.com/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+      <category term="域名绑定" scheme="http://yoursite.com/tags/%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker-安装</title>
@@ -394,97 +492,6 @@
     
     
       <category term="基础设施即服务(IaaS)" scheme="http://yoursite.com/tags/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E5%8D%B3%E6%9C%8D%E5%8A%A1-IaaS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker-初识</title>
-    <link href="http://yoursite.com/2019/01/08/Docker-%E5%88%9D%E8%AF%86/"/>
-    <id>http://yoursite.com/2019/01/08/Docker-初识/</id>
-    <published>2019-01-08T14:56:07.000Z</published>
-    <updated>2019-01-09T12:35:53.116Z</updated>
-    
-    <content type="html"><![CDATA[<img src="/2019/01/08/Docker-初识/image1.jpg" title="This is an example image"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>确认过眼神，这就是想要的！</p><a id="more"></a><p>百度百科释：</p><p>Docker 是一个<a href="https://baike.baidu.com/item/%E5%BC%80%E6%BA%90/246339" target="_blank" rel="noopener">开源</a>的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 <a href="https://baike.baidu.com/item/Linux" target="_blank" rel="noopener">Linux</a> 机器上，也可以实现<a href="https://baike.baidu.com/item/%E8%99%9A%E6%8B%9F%E5%8C%96/547949" target="_blank" rel="noopener">虚拟化</a>。容器是完全使用<a href="https://baike.baidu.com/item/%E6%B2%99%E7%AE%B1/393318" target="_blank" rel="noopener">沙箱</a>机制，相互之间不会有任何接口。</p><h1 id="What"><a href="#What" class="headerlink" title="What ?"></a>What ?</h1><h2 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h2><p>Docker 是 <a href="https://baike.baidu.com/item/PaaS" target="_blank" rel="noopener">PaaS</a> 提供商 dotCloud 开源的一个基于 <a href="https://baike.baidu.com/item/LXC" target="_blank" rel="noopener">LXC</a> 的高级容器引擎，源代码托管在 <a href="https://baike.baidu.com/item/Github" target="_blank" rel="noopener">Github</a> 上, 基于<a href="https://baike.baidu.com/item/go%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">go语言</a>并遵从Apache2.0协议开源。</p><p>Docker自2013年以来非常火热，无论是从 github 上的代码活跃度，还是<a href="https://baike.baidu.com/item/Redhat" target="_blank" rel="noopener">Redhat</a>在RHEL6.5中集成对Docker的支持, 就连 Google 的 Compute Engine 也支持 docker 在其之上运行。</p><p>一款开源软件能否在商业上成功，很大程度上依赖三件事 - 成功的 user case(用例), 活跃的社区和一个好故事。 dotCloud 自家的 PaaS 产品建立在<a href="https://baike.baidu.com/item/docker" target="_blank" rel="noopener">docker</a>之上，长期维护且有大量的用户，社区也十分活跃，接下来我们看看docker的故事。</p><ul><li>环境管理复杂 - 从各种OS到各种中间件到各种app, 一款产品能够成功作为开发者需要关心的东西太多，且难于管理，这个问题几乎在所有现代IT相关行业都需要面对。</li><li>云计算时代的到来 - AWS的成功, 引导开发者将应用转移到 cloud 上, 解决了硬件管理的问题，然而中间件相关的问题依然存在 (所以openstack HEAT和 AWS cloudformation 都着力解决这个问题)。开发者思路变化提供了可能性。</li><li>虚拟化手段的变化 - cloud 时代采用标配硬件来降低成本，采用虚拟化手段来满足用户按需使用的需求以及保证可用性和隔离性。然而无论是KVM还是Xen在 docker 看来,都在浪费资源，因为用户需要的是高效运行环境而非OS, GuestOS既浪费资源又难于管理, 更加轻量级的LXC更加灵活和快速</li><li>LXC的移动性 - LXC在 linux 2.6 的 kernel 里就已经存在了，但是其设计之初并非为云计算考虑的，缺少标准化的描述手段和容器的可迁移性，决定其构建出的环境难于迁移和标准化管理(相对于KVM之类image和snapshot的概念)。docker 就在这个问题上做出实质性的革新。这是docker最独特的地方。</li></ul><img src="/2019/01/08/Docker-初识/image2.jpg" title="This is an example image"><p>面对上述几个问题，docker设想是交付运行环境如同海运，OS如同一个货轮，每一个在OS基础上的软件都如同一个集装箱，用户可以通过标准化手段自由组装运行环境，同时集装箱的内容可以由用户自定义，也可以由专业人员制造。这样，交付一个软件，就是一系列标准化组件的集合的交付，如同乐高积木，用户只需要选择合适的积木组合，并且在最顶端署上自己的名字(最后一个标准化组件是用户的app)。这也就是基于docker的PaaS产品的原型。</p><h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p>Docker 使用客户端-服务器 (C/S) 架构模式，使用远程API来管理和创建Docker容器。Docker 容器通过 Docker 镜像来创建。容器与镜像的关系类似于面向对象编程中的对象与类。 [3] </p><table><thead><tr><th>Docker</th><th>面向对象</th></tr></thead><tbody><tr><td>容器</td><td>对象</td></tr><tr><td>镜像</td><td>类</td></tr></tbody></table><p>Docker采用 C/S架构 Docker daemon 作为服务端接受来自客户的请求，并处理这些请求（创建、运行、分发容器）。 客户端和服务端既可以运行在一个机器上，也可通过 socket 或者RESTful API 来进行通信。</p><p>Docker daemon 一般在宿主主机后台运行，等待接收来自客户端的消息。 Docker 客户端则为用户提供一系列可执行命令，用户用这些命令实现跟 Docker daemon 交互。</p><img src="/2019/01/08/Docker-初识/image3.jpg" title="This is an example image"><h1 id="Why"><a href="#Why" class="headerlink" title="Why ?"></a>Why ?</h1><h2 id="更高效的利用系统资源"><a href="#更高效的利用系统资源" class="headerlink" title="更高效的利用系统资源"></a>更高效的利用系统资源</h2><p>由于容器不需要进行硬件虚拟以及运行完整操作系统等额外开销，Docker 对系统资源的利用率更高。无论是应用执行速度、内存损耗或者文件存储速度，都要比传统虚拟机技术更高效。因此，相比虚拟机技术，一个相同配置的主机，往往可以运行更多数量的应用。</p><h2 id="更快速的启动时间"><a href="#更快速的启动时间" class="headerlink" title="更快速的启动时间"></a>更快速的启动时间</h2><p>传统的虚拟机技术启动应用服务往往需要数分钟，而 Docker 容器应用，由于直接运行于宿主内核，无需启动完整的操作系统，因此可以做到秒级、甚至毫秒级的启动时间。大大的节约了开发、测试、部署的时间。</p><h2 id="一致的运行环境"><a href="#一致的运行环境" class="headerlink" title="一致的运行环境"></a>一致的运行环境</h2><p>开发过程中一个常见的问题是环境一致性问题。由于开发环境、测试环境、生产环境不一致，导致有些 bug 并未在开发过程中被发现。而 Docker 的镜像提供了除内核外完整的运行时环境，确保了应用运行环境一致性，从而不会再出现 <em>「这段代码在我机器上没问题啊」</em> 这类问题。</p><h2 id="持续交付和部署"><a href="#持续交付和部署" class="headerlink" title="持续交付和部署"></a>持续交付和部署</h2><p>对开发和运维（<a href="https://zh.wikipedia.org/wiki/DevOps" target="_blank" rel="noopener">DevOps</a>）人员来说，最希望的就是一次创建或配置，可以在任意地方正常运行。</p><p>使用 Docker 可以通过定制应用镜像来实现持续集成、持续交付、部署。开发人员可以通过 <code>Dockerfile</code>来进行镜像构建，并结合 <a href="https://en.wikipedia.org/wiki/Continuous_integration" target="_blank" rel="noopener">持续集成(Continuous Integration)</a> 系统进行集成测试，而运维人员则可以直接在生产环境中快速部署该镜像，甚至结合 <a href="https://en.wikipedia.org/wiki/Continuous_delivery" target="_blank" rel="noopener">持续部署(Continuous Delivery/Deployment)</a> 系统进行自动部署。</p><p>而且使用 <code>Dockerfile</code> 使镜像构建透明化，不仅仅开发团队可以理解应用运行环境，也方便运维团队理解应用运行所需条件，帮助更好的生产环境中部署该镜像。</p><h2 id="更轻松的迁移"><a href="#更轻松的迁移" class="headerlink" title="更轻松的迁移"></a>更轻松的迁移</h2><p>由于 Docker 确保了执行环境的一致性，使得应用的迁移更加容易。Docker 可以在很多平台上运行，无论是物理机、虚拟机、公有云、私有云，甚至是笔记本，其运行结果是一致的。因此用户可以很轻易的将在一个平台上运行的应用，迁移到另一个平台上，而不用担心运行环境的变化导致应用无法正常运行的情况。</p><h2 id="更轻松的维护和扩展"><a href="#更轻松的维护和扩展" class="headerlink" title="更轻松的维护和扩展"></a>更轻松的维护和扩展</h2><p>Docker 使用的分层存储以及镜像的技术，使得应用重复部分的复用更为容易，也使得应用的维护更新更加简单，基于基础镜像进一步扩展镜像也变得非常简单。此外，Docker 团队同各个开源项目团队一起维护了一大批高质量的 <a href="https://store.docker.com/search?q=&amp;source=verified&amp;type=image" target="_blank" rel="noopener">官方镜像</a>，既可以直接在生产环境使用，又可以作为基础进一步定制，大大的降低了应用服务的镜像制作成本。</p><h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p><a href="https://baike.baidu.com/item/Docker/13344470?fr=aladdin#1_3" target="_blank" rel="noopener">https://baike.baidu.com/item/Docker/13344470?fr=aladdin#1_3</a></p><p><a href="https://zh.wikipedia.org/wiki/Docker" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/Docker</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;img src=&quot;/2019/01/08/Docker-初识/image1.jpg&quot; title=&quot;This is an example image&quot;&gt;
-&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;确认过眼神，这就是想要的！&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Docker" scheme="http://yoursite.com/categories/Docker/"/>
-    
-    
-      <category term="Docker" scheme="http://yoursite.com/tags/Docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo-杂记</title>
-    <link href="http://yoursite.com/2019/01/08/Hexo-%E6%9D%82%E8%AE%B0/"/>
-    <id>http://yoursite.com/2019/01/08/Hexo-杂记/</id>
-    <published>2019-01-08T08:52:30.000Z</published>
-    <updated>2019-01-10T02:54:29.036Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="中文文档地址"><a href="#中文文档地址" class="headerlink" title="中文文档地址"></a>中文文档地址</h1><p><a href="https://hexo.io/zh-cn/docs" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs</a></p><h1 id="自定义中文表述"><a href="#自定义中文表述" class="headerlink" title="自定义中文表述"></a>自定义中文表述</h1><p>在/themes/next/languages/zh-CN.yml文件中定义即可</p><h1 id="动态背景"><a href="#动态背景" class="headerlink" title="动态背景"></a>动态背景</h1><p>在主题的配置文件中搜索Canvas-nest，下面有几种动态背景可设置。</p><p>其中canvas_nest只需将enable属性设置为true，即可。</p><p>另外三种JavaScript 3D library设置方式如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Step 1 </span><br><span class="line">$ cd themes/next</span><br><span class="line"></span><br><span class="line">Step 2 </span><br><span class="line">$ git clone https://github.com/theme-next/theme-next-three source/lib/three</span><br><span class="line"></span><br><span class="line">Step 3 → Set it up</span><br><span class="line">Enable module in NexT _config.yml file:</span><br><span class="line"></span><br><span class="line">three_waves: true</span><br><span class="line">OR</span><br><span class="line">canvas_lines: true</span><br><span class="line">OR</span><br><span class="line">canvas_sphere: true</span><br><span class="line"></span><br><span class="line">step 4 Update</span><br><span class="line">$ cd themes/next/source/lib/three</span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure><h1 id="更换背景图片"><a href="#更换背景图片" class="headerlink" title="更换背景图片"></a>更换背景图片</h1><p>先将选好的图片放入主题source文件下的images文件夹下面，让后找到\themes\next\source\css\_custom下的custom.styl文件，添加如下代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">body &#123; background:url(/images/backimage.png);&#125;</span><br></pre></td></tr></table></figure><p>另外如果想要每次刷新，背景图能更换则配置如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    background:url(https://source.unsplash.com/1920x1080/?nature);</span><br><span class="line">    background-repeat: no-repeat;</span><br><span class="line">    background-attachment:fixed;</span><br><span class="line">    background-position:50% 50%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>图片类型可进入官网：<a href="https://source.unsplash.com/" target="_blank" rel="noopener">https://source.unsplash.com</a>自己挑选。</p><h1 id="添加背景音乐"><a href="#添加背景音乐" class="headerlink" title="添加背景音乐"></a>添加背景音乐</h1><p>step 1</p><p>修改 <code>themes/next/layout/_macro/sidebar.swig</code> 文件theme.creative_commons.license上面增加如下代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 音乐播放器 --&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">&#123;% if theme.background_music %&#125;</span><br><span class="line">&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=427017519&amp;auto=1&amp;height=66&quot;&gt;&lt;/iframe&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure><p>step 2</p><p>在 <code>themes/next/_config.yml</code> 配置文件中添加歌单地址配置,也就是上面src后面的值</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//music.163.com/outchain/player?type=2&amp;id=427017519&amp;auto=1&amp;height=66</span><br></pre></td></tr></table></figure><h1 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">step 1</span><br><span class="line">cd /blog</span><br><span class="line"></span><br><span class="line">step 2</span><br><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br><span class="line"></span><br><span class="line">step 2</span><br><span class="line">更改hexo配置文件如下：</span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure><h1 id="设置左边菜单栏"><a href="#设置左边菜单栏" class="headerlink" title="设置左边菜单栏"></a>设置左边菜单栏</h1><p>进入主题的配置文件，找到menu,将注释的打开，如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  主页: / || home</span><br><span class="line">  关于: /about/ || user</span><br><span class="line">  标签: /tags/ || tags</span><br><span class="line">  分类: /categories/ || th</span><br><span class="line">  归档: /archives/ || archive</span><br><span class="line">  #schedule: /schedule/ || calendar</span><br><span class="line">  #sitemap: /sitemap.xml || sitemap</span><br><span class="line">  #commonweal: /404/ || heartbeat</span><br></pre></td></tr></table></figure><h1 id="头像"><a href="#头像" class="headerlink" title="头像"></a>头像</h1><p>进入主题的配置文件，配置如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line">avatar:</span><br><span class="line">  url: /images/avatar1.JPG</span><br><span class="line">  rounded: true</span><br><span class="line">  opacity: 1</span><br><span class="line">  rotated: false</span><br></pre></td></tr></table></figure><p>让后将avatar1.JPG图片放进主题的source文件夹下的images文件中。</p><h1 id="文章底部tag前的-替换"><a href="#文章底部tag前的-替换" class="headerlink" title="文章底部tag前的#替换"></a>文章底部tag前的#替换</h1><p>修改模板<code>/themes/next/layout/_macro/post.swig</code>，搜索 <code>rel=&quot;tag&quot;&gt;#</code>，将<code>#</code>换成<code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code></p><h1 id="主页添加阴影"><a href="#主页添加阴影" class="headerlink" title="主页添加阴影"></a>主页添加阴影</h1><p>打开<code>\themes\next\source\css\_custom\custom.styl</code>,向里面加入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 主页文章添加阴影效果</span><br><span class="line">.post &#123;</span><br><span class="line">margin-top: 60px;</span><br><span class="line">margin-bottom: 60px;</span><br><span class="line">padding: 25px;</span><br><span class="line">-webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);</span><br><span class="line">-moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="设置网站图标"><a href="#设置网站图标" class="headerlink" title="设置网站图标"></a>设置网站图标</h1><p>将制作好的图标放进/themes/next/source/images里，让后到主题配置文件中修改如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">favicon:</span><br><span class="line">  small: /images/favicon-16x16-next.png</span><br><span class="line">  medium: /images/favicon-32x32-next.png</span><br><span class="line">  apple_touch_icon: /images/apple-touch-icon-next.png</span><br><span class="line">  safari_pinned_tab: /images/logo.svg</span><br><span class="line">  #android_manifest: /images/manifest.json</span><br><span class="line">  #ms_browserconfig: /images/browserconfig.xml</span><br></pre></td></tr></table></figure><p>未完待续,,,,,,,,</p>]]></content>
-    
-    <summary type="html">
-    
-      俗话说“好记性，不如烂笔头”。关于Hexo一些小的使用技巧和注意事项就全放在这里吧！
-    
-    </summary>
-    
-      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo-分享</title>
-    <link href="http://yoursite.com/2019/01/08/Hexo-%E5%88%86%E4%BA%AB/"/>
-    <id>http://yoursite.com/2019/01/08/Hexo-分享/</id>
-    <published>2019-01-08T07:06:38.000Z</published>
-    <updated>2019-01-08T13:12:37.955Z</updated>
-    
-    <content type="html"><![CDATA[<img src="/2019/01/08/Hexo-分享/image1.jpg" title="This is an example image"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有时候我们宁可花大把时间google和百度，也不愿看看官方文档！论能看，会看文档的重要性！</p><a id="more"></a><p>打开Hexo主题站点的资源文件（即主题的source文件）中的配置文件，官方配置了三种不同的分享方式：</p><ul><li>Baidu Share</li><li>AddThis Share</li><li>NeedMoreShare2</li></ul><p>其中_config.yml文件中也明确说明：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Warning: Baidu Share does not support https.</span><br></pre></td></tr></table></figure><p>说是BaiduShare不支持https，那能使用Baidu Share吗？答案肯定是可以得，就是麻烦些。</p><p>这里只说明NeedMoreShare2和Baidu Share两种方式的分享配置。</p><h1 id="NeedMoreShare2-配置"><a href="#NeedMoreShare2-配置" class="headerlink" title="NeedMoreShare2 配置"></a>NeedMoreShare2 配置</h1><p>正当思考着如何下手时，瞟见_config.yml文件给出了如下信息：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># NeedMoreShare2</span><br><span class="line"># Dependencies: https://github.com/theme-next/theme-next-needmoreshare2</span><br></pre></td></tr></table></figure><p>那就先看看github。果然很靠谱，内容整理如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Step 1</span><br><span class="line">$ cd themes/next</span><br><span class="line"></span><br><span class="line">Step 2</span><br><span class="line">$ git clone https://github.com/theme-next/theme-next-needmoreshare2 source/lib/needsharebutton</span><br><span class="line"></span><br><span class="line">Step 3</span><br><span class="line">打开 NexT 的 _config.yml 文件，更改配置如下:</span><br><span class="line">needmoreshare2:</span><br><span class="line">  enable: true</span><br><span class="line">  postbottom:</span><br><span class="line">    enable: true</span><br><span class="line">  float:</span><br><span class="line">    enable: true</span><br></pre></td></tr></table></figure><p>嗯，就这样完事，5分钟不到哈！</p><h1 id="Baidu-Share"><a href="#Baidu-Share" class="headerlink" title="Baidu Share"></a>Baidu Share</h1><p>Baidu Share在另一个LandScape主题里有配置，当前使用的是NexT主题，配置的是NeedMoreShare2，但还是记录下如何解决如下问题：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Warning: Baidu Share does not support https.</span><br></pre></td></tr></table></figure><p>方案比较粗暴：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">step 1</span><br><span class="line">打开http://share.baidu.com/code网站，复制分享代码</span><br><span class="line"></span><br><span class="line">step 2</span><br><span class="line">打开themes\landscape\layout_partial\article.ejs，找到“&lt;footer class=&quot;article-footer&quot;&gt;”标签并将标签对包含代码替换为百度分享代码</span><br><span class="line"></span><br><span class="line">并将上面替换后的百度分享里的src做如下修改：</span><br><span class="line">src=&apos;/static/api/js/share.js?v=89860593.js 其它不动</span><br><span class="line"></span><br><span class="line">step 3</span><br><span class="line">下载static文件：https://github.com/hrwhisper/baiduShare </span><br><span class="line">解压后将static文件放到\themes\landscape\source路径下</span><br></pre></td></tr></table></figure><p>完成配置。</p><h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>个人更加喜欢NeedMoreShare2。使用命令一顿操作，配置简洁优雅，让人心情愉悦。百度分享，由于does not support https问题，破坏了轮子的使用平滑度，中间还需要找方案解决问题，让惜时如金的程序狗有点不爽！</p><p>（以上为个人操作，仅供参考！）</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;img src=&quot;/2019/01/08/Hexo-分享/image1.jpg&quot; title=&quot;This is an example image&quot;&gt;
-&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;有时候我们宁可花大把时间google和百度，也不愿看看官方文档！论能看，会看文档的重要性！&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo-上手</title>
-    <link href="http://yoursite.com/2019/01/08/Hexo-%E4%B8%8A%E6%89%8B/"/>
-    <id>http://yoursite.com/2019/01/08/Hexo-上手/</id>
-    <published>2019-01-08T07:05:38.000Z</published>
-    <updated>2019-01-08T14:58:53.856Z</updated>
-    
-    <content type="html"><![CDATA[<img src="/2019/01/08/Hexo-上手/image1.jpg" title="This is an example image"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>高中老师曾说过一句话：“一听就懂，一看就会，一做就错”，来形容学生眼高手低。编程做项目亦是如此。写Blog不（就）是为了BG，而是检验自己对项目技术理解程度。</p><a id="more"></a><p>目前比较流行的Blog框架如下：</p><ul><li>Jekyll (<a href="https://jekyllrb.com/" target="_blank" rel="noopener">https://jekyllrb.com/</a>)</li><li>hugo (<a href="http://www.gohugo.org/" target="_blank" rel="noopener">http://www.gohugo.org/</a>)</li><li>django (<a href="https://www.djangoproject.com/" target="_blank" rel="noopener">https://www.djangoproject.com/</a>)</li><li>hexo (<a href="https://hexo.io/" target="_blank" rel="noopener">https://hexo.io/</a>)</li></ul><p>这里选择Hexo（别问为什么，反正我是没收广告费的）。当然，如果你是python学习者,请选择django。</p><h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2><h2 id="设置npm镜像"><a href="#设置npm镜像" class="headerlink" title="设置npm镜像"></a>设置npm镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry &quot;https://registry.npm.taobao.org&quot;</span><br></pre></td></tr></table></figure><h2 id="Github账号"><a href="#Github账号" class="headerlink" title="Github账号"></a>Github账号</h2><h2 id="创建博客仓库"><a href="#创建博客仓库" class="headerlink" title="创建博客仓库"></a>创建博客仓库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注意：比如你的github账号为zhanshang，那么仓库名应为zhangshang.github.io</span><br></pre></td></tr></table></figure><h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><h2 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h2><h2 id="公匙添加到github上"><a href="#公匙添加到github上" class="headerlink" title="公匙添加到github上"></a>公匙添加到github上</h2><h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 安装hexo，我这里是cd进D:\DEV\myhexo路径安装的hexo,可根据自己习惯安装。</span><br><span class="line">npm install hexo-cli g</span><br><span class="line"># 初始化博客文件夹</span><br><span class="line">hexo init blog</span><br><span class="line"># 切换到该路径</span><br><span class="line">cd blog</span><br><span class="line"># 安装hexo的扩展插件</span><br><span class="line">npm install</span><br><span class="line"># 安装其它插件</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install hexo-admin --save</span><br><span class="line">npm install hexo-generator-archive --save</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">npm install hexo-generator-search --save</span><br><span class="line">npm install hexo-generator-tag --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure><h1 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h1><p>打开终端</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 生成静态页面</span><br><span class="line">hexo generate</span><br><span class="line"># 开启本地服务器</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure><p>打开浏览器，地址栏中输入：<strong><a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a></strong></p><h1 id="将hexo博客上传到github上"><a href="#将hexo博客上传到github上" class="headerlink" title="将hexo博客上传到github上"></a>将hexo博客上传到github上</h1><p>1.先进入D:\DEV\myhexo\blog路径下，打开_config.yml配置文件，将deploy修改如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Deployment 注释</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  # 类型</span><br><span class="line">  type: git</span><br><span class="line">  # 仓库</span><br><span class="line">  repo: git@github.com:github_name/github_name.github.io.git</span><br><span class="line">  # 分支</span><br><span class="line">  branch: master</span><br><span class="line">  </span><br><span class="line">注意：冒号后面都要有空格</span><br></pre></td></tr></table></figure><p>2.在终端依次输入如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 清空静态页面</span><br><span class="line">hexo clean</span><br><span class="line"># 生成静态页面</span><br><span class="line">hexo generate</span><br><span class="line"># 部署 </span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure><p>3.在浏览器地址栏输入：<a href="http://github_name.github.io,正常无误即可看见部署好的Blog页面。" target="_blank" rel="noopener">http://github_name.github.io,正常无误即可看见部署好的Blog页面。</a></p><h1 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h1><p>当运行hexo clean 后，此D:\DEV\myhexo\blog路径下的public文件将被清除；</p><p>运行hexo generate后，将重新生成public文件；</p><p>如果需要修改title /subtitle 等信息，进入D:\DEV\myhexo\blog路径下的_config.yml文件修改；</p><p>如果需要更换主题，进入D:\DEV\myhexo\blog路径下的themes文件操作，但别忘记更改_config.yml文件中的theme: landscape值。</p><h1 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h1><p>一顿操作下来，Hexo给人的感觉还是非常爽的！简单易上手，hexo clean,hexo g,hexo d,三步操作，敲着完全停不下来（有种爱上写博客的假象）。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;img src=&quot;/2019/01/08/Hexo-上手/image1.jpg&quot; title=&quot;This is an example image&quot;&gt;
-&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;高中老师曾说过一句话：“一听就懂，一看就会，一做就错”，来形容学生眼高手低。编程做项目亦是如此。写Blog不（就）是为了BG，而是检验自己对项目技术理解程度。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
   </entry>
   
