@@ -4,6 +4,95 @@
   
     
     <entry>
+      <title>SSH-Win10使用SSH免密拉取GitLab代码</title>
+      <link href="/2019/01/17/SSH-Win10%E4%BD%BF%E7%94%A8SSH%E5%85%8D%E5%AF%86%E6%8B%89%E5%8F%96GitLab%E4%BB%A3%E7%A0%81/"/>
+      <url>/2019/01/17/SSH-Win10%E4%BD%BF%E7%94%A8SSH%E5%85%8D%E5%AF%86%E6%8B%89%E5%8F%96GitLab%E4%BB%A3%E7%A0%81/</url>
+      
+        <content type="html"><![CDATA[<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p>1.打开电脑终端 cd 进入文件路径：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\Git\usr\bin</span><br></pre></td></tr></table></figure><p>2.运行如下密令</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;maojing&quot;</span><br><span class="line"></span><br><span class="line">注：后面的用户名根据实际情况填写，只要确保唯一性即可，填什么都可。</span><br></pre></td></tr></table></figure><p>3.终端显示如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\Git\usr\bin&gt;ssh-keygen -trsa -C &quot;maojing&quot;</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/c/Users/Administrator/.ssh/id_rsa):</span><br><span class="line">Created directory &apos;/c/Users/Administrator/.ssh&apos;.</span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved in /c/Users/Administrator/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /c/Users/Administrator/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:NjSd5gVOH+iPNlfqV7eHtp9350ismT7oxEP2eEyEQJY maojing</span><br><span class="line">The key&apos;s randomart image is:</span><br><span class="line">+---[RSA 2048]----+</span><br><span class="line">|       .+.o..    |</span><br><span class="line">|       .E=.= .   |</span><br><span class="line">|        o.* +    |</span><br><span class="line">|       . +.o  .  |</span><br><span class="line">|        S +o.o   |</span><br><span class="line">|       . =+=+.  o|</span><br><span class="line">|         .==+ ooo|</span><br><span class="line">|         ..oo=+o*|</span><br><span class="line">|         ...=+o=B|</span><br><span class="line">+----[SHA256]-----+</span><br><span class="line"></span><br><span class="line">C:\Program Files\Git\usr\bin&gt;</span><br></pre></td></tr></table></figure><p>4.获取公钥</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Your public key has been saved in /c/Users/Administrator/.ssh/id_rsa.pub.</span><br><span class="line"></span><br><span class="line">根据这句话即可找到公钥</span><br></pre></td></tr></table></figure><p>5.gitlab后台添加公钥</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">点击用户-设置-SSH密钥，将上面复制的密钥粘贴进对应的位置，点击add key即可。</span><br></pre></td></tr></table></figure><p>6.ssh免密拉取远端代码到本地代码仓库</p><p>剩余操作详见《gitLab http 操作》一文</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> SSH </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SSH </tag>
+            
+            <tag> Win 10 </tag>
+            
+            <tag> rsa </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SSH-访问远程主机</title>
+      <link href="/2019/01/17/SSH-%E8%AE%BF%E9%97%AE%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA/"/>
+      <url>/2019/01/17/SSH-%E8%AE%BF%E9%97%AE%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA/</url>
+      
+        <content type="html"><![CDATA[<h1 id="口令登录"><a href="#口令登录" class="headerlink" title="口令登录"></a>口令登录</h1><p>如果你是第一次登录对方主机，系统会出现下面的提示：</p><blockquote><p>　　$ ssh root@主机ip</p><p>　　The authenticity of host ‘host (12.18.429.21)’ can’t be established.</p><p>　　RSA key fingerprint is 98:2e:d7:e0:de:9f:ac:67:28:c2:42:2d:37:16:58:4d.</p><p>　　Are you sure you want to continue connecting (yes/no)?</p></blockquote><p>这段话的意思是，无法确认host主机的真实性，只知道它的公钥指纹，问你还想继续连接吗？</p><p>所谓”公钥指纹”，是指公钥长度较长（这里采用RSA算法，长达1024位），很难比对，所以对其进行MD5计算，将它变成一个128位的指纹。上例中是98:2e:d7:e0:de:9f:ac:67:28:c2:42:2d:37:16:58:4d，再进行比较，就容易多了。</p><p>很自然的一个问题就是，用户怎么知道远程主机的公钥指纹应该是多少？回答是没有好办法，远程主机必须在自己的网站上贴出公钥指纹，以便用户自行核对。</p><p>假定经过风险衡量以后，用户决定接受这个远程主机的公钥。</p><blockquote><p>　　Are you sure you want to continue connecting (yes/no)? yes</p></blockquote><p>系统会出现一句提示，表示host主机已经得到认可。</p><blockquote><p>　　Warning: Permanently added ‘host,12.18.429.21’ (RSA) to the list of known hosts.</p></blockquote><p>然后，会要求输入密码。</p><blockquote><p>　　Password: (enter password)</p></blockquote><p>如果密码正确，就可以登录了。</p><p>当远程主机的公钥被接受以后，它就会被保存在文件$HOME/.ssh/known_hosts之中。下次再连接这台主机，系统就会认出它的公钥已经保存在本地了，从而跳过警告部分，直接提示输入密码。</p><p>每个SSH用户都有自己的known_hosts文件，此外系统也有一个这样的文件，通常是/etc/ssh/ssh_known_hosts，保存一些对所有用户都可信赖的远程主机的公钥。</p><h1 id="公钥登录"><a href="#公钥登录" class="headerlink" title="公钥登录"></a>公钥登录</h1><p>使用密码登录，每次都必须输入密码，非常麻烦。好在SSH还提供了公钥登录，可以省去输入密码的步骤。</p><p>所谓”公钥登录”，原理很简单，就是用户将自己的公钥储存在远程主机上。登录的时候，远程主机会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回来。远程主机用事先储存的公钥进行解密，如果成功，就证明用户是可信的，直接允许登录shell，不再要求密码。</p><p>如何生成公钥请参考《SSH-Win10使用SSH免密拉取GitLab代码》，成功生成后再继续下面操作。</p><p>这时再输入下面的命令，将公钥传送到远程主机host上面：</p><blockquote><p>　　$ ssh-copy-id root@主机ip</p></blockquote><p>好了，从此你再登录，就不需要输入密码了。</p><p>如果还是不行，就打开远程主机的/etc/ssh/sshd_config这个文件，检查下面几行前面”#”注释是否取掉。</p><blockquote><p>　　RSAAuthentication yes<br>　　PubkeyAuthentication yes<br>　　AuthorizedKeysFile .ssh/authorized_keys</p></blockquote><p>然后，重启远程主机的ssh服务。</p><blockquote><p>　　// ubuntu系统<br>　　service ssh restart</p><p>　　// debian系统<br>　　/etc/init.d/ssh restart</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> SSH </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SSH </tag>
+            
+            <tag> 免密登录 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo-阿里云</title>
+      <link href="/2019/01/17/hexo-%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+      <url>/2019/01/17/hexo-%E9%98%BF%E9%87%8C%E4%BA%91/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>将博客部署在GitHub上，不失为一种省时，省力，省钱的优选方案，但我打心底还是想部署到阿里云上面，主要出于两方面考虑，一是隐私（当然github也可操作）；二是稳定性，毕竟阿里云服可选国内的。</p><a id="more"></a><p>但事实确实验证上面所说的。博客前面整理了阿里云ECS购买，域名备案等流程（整理来自个人笔记），特别是域名备案，算不上复杂，但走流程是需要提供材料，然后你懂的，就是耐心等待！这也是第一次个人实操域名备案（之前只是买买ECS做开发测试用）。</p><p>且先不管域名备案是否通过，我们先了解下如何将博客部署到阿里云上。</p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>遇到问题不可怕，可怕的是遇到问题后毫无思绪！</p><p>操作思路是这样，在云主机上搭建git仓库，使用nginx作为网页服务器，最终通过git将hexo博客部署到云主机上。</p><p>系统环境:Ubuntu Server 16.04.1 LTS 64位</p><h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="1-设置SSH登陆"><a href="#1-设置SSH登陆" class="headerlink" title="1.设置SSH登陆"></a>1.设置SSH登陆</h2><p>关于如何生成密钥请参考《SSH-Win10使用SSH免密拉取GitLab代码》。然后再window命令提示符执行如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id root@云主机ip</span><br></pre></td></tr></table></figure><p>将用户的公钥存储到远程主机上，过程会让你输入远程主机的密码（在购买ECS过程中有设置过的）。</p><ul><li><p>原理：用户将公钥储存在远程主机上。登录时，远程主机会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回给远程主机。远程主机用事先储存的公钥进行解密，如果成功，就证明用户是可信的，允许登录，不再要求密码。</p></li><li><p>注意：在window上执行命令时可能抛出” ‘ssh’ 不是内部或外部命令，也不是可运行的程序<br>或批处理文件。“问题，那么请在环境变量中添加如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GIT_HOME:C:\Program Files\Git</span><br><span class="line">然后编辑path新增</span><br><span class="line">%GIT_HOME%\bin</span><br><span class="line">然后在命令提示符输入：</span><br><span class="line">sh</span><br><span class="line">再执行</span><br><span class="line">ssh-copy-id root@云主机ip</span><br><span class="line">将公钥拷贝到远程云主机</span><br></pre></td></tr></table></figure></li><li><p>口令登陆：不用讲公钥拷贝到云主机，直接使用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@云主机ip</span><br></pre></td></tr></table></figure><p>然后按照提示输入主机root账户的登陆密码即可。</p></li></ul><h2 id="2-安装Git和nginx"><a href="#2-安装Git和nginx" class="headerlink" title="2.安装Git和nginx"></a>2.安装Git和nginx</h2><p>我这里使用的是Xshell访问云服务器，输入如下密令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install git-core nginx</span><br></pre></td></tr></table></figure><h2 id="3-配置nginx"><a href="#3-配置nginx" class="headerlink" title="3.配置nginx"></a>3.配置nginx</h2><p>执行如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/www/blog</span><br></pre></td></tr></table></figure><p>进入nginx配置文件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/conf.d/blog.conf</span><br></pre></td></tr></table></figure><p>配置如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 8080;</span><br><span class="line">    root /var/www/blog;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>重启nginx:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure><h2 id="4-Git-Hooks"><a href="#4-Git-Hooks" class="headerlink" title="4.Git Hooks"></a>4.Git Hooks</h2><p>我们要将hexo在本地生成的静态博客同步到远程git仓库。那么先要在远程主机上设置Git仓库，执行如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/blog.git &amp;&amp; cd ~/blog.git</span><br><span class="line">git init --bare</span><br></pre></td></tr></table></figure><p>配置Hooks脚本：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim blog.git/hooks/post-receive</span><br></pre></td></tr></table></figure><p>脚本如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/www/blog</span><br><span class="line">git clone /root/blog.git /var/www/blog</span><br></pre></td></tr></table></figure><p>解释：先将原有的blog删除，然后从仓库克隆一份到blog文件下。</p><p>注意：如果上面vim进入post-receive文件中，退出时有问题，则按照路径一步步进入到hooks文件夹下，再执行vim post-receive进入，编辑脚本，再保存退出即可。</p><h2 id="5-修改Hexo配置文件"><a href="#5-修改Hexo配置文件" class="headerlink" title="5.修改Hexo配置文件"></a>5.修改Hexo配置文件</h2><p>修改_config.yml如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: root@云主机ip:blog.git</span><br></pre></td></tr></table></figure><h2 id="6-部署"><a href="#6-部署" class="headerlink" title="6.部署"></a>6.部署</h2><p>依次输入如下密令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>让后打开浏览器输入：http://云主机ip:8080即可访问。</p><h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>将hexo部署到阿里云上相比部署到github上，还是复杂些。除了涉及服务器ECS购买，域名购买绑定，域名备案外，另外技术上还涉及SSH，ngnix，git等的使用。但考虑到阿里云具备的开篇所提到的两点好处，一切都值了！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> aliyun </tag>
+            
+            <tag> ssh </tag>
+            
+            <tag> nginx </tag>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>阿里云-域名备案</title>
       <link href="/2019/01/16/%E9%98%BF%E9%87%8C%E4%BA%91-%E5%9F%9F%E5%90%8D%E5%A4%87%E6%A1%88/"/>
       <url>/2019/01/16/%E9%98%BF%E9%87%8C%E4%BA%91-%E5%9F%9F%E5%90%8D%E5%A4%87%E6%A1%88/</url>
