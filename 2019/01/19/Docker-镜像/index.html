@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+<script> function GetRandomNum(Min,Max) { var Range = Max - Min; var Rand = Math.random(); return(Min + Math.round(Rand * Range)); } function setSidebarMarginTop (headerOffset) { return $('#sidebar').css({ 'margin-top': headerOffset }); } function getHeaderOffset () { return $('.header-inner').height() + CONFIG.sidebar.offset; } window.onload=function(){ var subtitle = "匮乏即是富足，自律产生喜悦！"; var mytitle = subtitle.split("W"); var max = mytitle.length-1; var index = GetRandomNum(0,max); var text = mytitle[index]; $("#helloTitle").html(text); var headOffset = getHeaderOffset(); setSidebarMarginTop(headOffset); // alert(getHeaderOffset()); } </script>
+
+
+
+  
+
+
+
+
+  <meta name="description" content="前言前面已经介绍了什么是Docker，为什么要使用Docker,以及其它一些关于Docker的相关概念，目的是加身对Docker的理解。其中就有介绍过Docker镜像这个概念（这里就不展开说），接下来我们要知道如何使用Docker镜像，以及如何使用Dockerfile定制镜像。">
+<meta name="keywords" content="Docker,镜像">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker-镜像">
+<meta property="og:url" content="http://yoursite.com/2019/01/19/Docker-镜像/index.html">
+<meta property="og:site_name" content="Mao Jing">
+<meta property="og:description" content="前言前面已经介绍了什么是Docker，为什么要使用Docker,以及其它一些关于Docker的相关概念，目的是加身对Docker的理解。其中就有介绍过Docker镜像这个概念（这里就不展开说），接下来我们要知道如何使用Docker镜像，以及如何使用Dockerfile定制镜像。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-19T09:35:39.379Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker-镜像">
+<meta name="twitter:description" content="前言前面已经介绍了什么是Docker，为什么要使用Docker,以及其它一些关于Docker的相关概念，目的是加身对Docker的理解。其中就有介绍过Docker镜像这个概念（这里就不展开说），接下来我们要知道如何使用Docker镜像，以及如何使用Dockerfile定制镜像。">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mao Jing" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/19/Docker-镜像/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Docker-镜像 | Mao Jing</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mao Jing</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">匮乏即是富足，自律产生喜悦！</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>主页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-归档">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+<script> function GetRandomNum(Min,Max) { var Range = Max - Min; var Rand = Math.random(); return(Min + Math.round(Rand * Range)); } function setSidebarMarginTop (headerOffset) { return $('#sidebar').css({ 'margin-top': headerOffset }); } function getHeaderOffset () { return $('.header-inner').height() + CONFIG.sidebar.offset; } window.onload=function(){ var subtitle = "匮乏即是富足，自律产生喜悦！"; var mytitle = subtitle.split("W"); var max = mytitle.length-1; var index = GetRandomNum(0,max); var text = mytitle[index]; $("#helloTitle").html(text); var headOffset = getHeaderOffset(); setSidebarMarginTop(headOffset); // alert(getHeaderOffset()); } </script> 
+
+
+
+
+<script> function GetRandomNum(Min,Max) { var Range = Max - Min; var Rand = Math.random(); return(Min + Math.round(Rand * Range)); } function setSidebarMarginTop (headerOffset) { return $('#sidebar').css({ 'margin-top': headerOffset }); } function getHeaderOffset () { return $('.header-inner').height() + CONFIG.sidebar.offset; } window.onload=function(){ var subtitle = "匮乏即是富足，自律产生喜悦！"; var mytitle = subtitle.split("W"); var max = mytitle.length-1; var index = GetRandomNum(0,max); var text = mytitle[index]; $("#helloTitle").html(text); var headOffset = getHeaderOffset(); setSidebarMarginTop(headOffset); // alert(getHeaderOffset()); } </script>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/19/Docker-镜像/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mao Jing">
+      <meta itemprop="description" content="大家好，我是Mao Jing ，欢迎来到我的个人Blog！">
+      <meta itemprop="image" content="/images/avatar1.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mao Jing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Docker-镜像
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Mao jing发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-19 14:49:02 / 修改时间：17:35:39" itemprop="dateCreated datePublished" datetime="2019-01-19T14:49:02+08:00">2019-01-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前面已经介绍了什么是Docker，为什么要使用Docker,以及其它一些关于Docker的相关概念，目的是加身对Docker的理解。其中就有介绍过Docker镜像这个概念（这里就不展开说），接下来我们要知道如何使用Docker镜像，以及如何使用Dockerfile定制镜像。</p>
+<a id="more"></a>
+<h1 id="常规操作"><a href="#常规操作" class="headerlink" title="常规操作"></a>常规操作</h1><h2 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h2><p>命令格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<p>1.地址格式一般是 &lt;域名/IP&gt;[:端口号] ，默认地址是Docker Hub；</p>
+<p>2.仓库名是两段式名称，即&lt;用户名&gt;/&lt;软件名&gt;,对于Docker Hub，如果不给出用户名，则默认为library，也即是官方镜像。</p>
+<p>例子：获取ubuntu镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root@mkin:~# docker pull ubuntu:16.04</span><br><span class="line">16.04: Pulling from library/ubuntu</span><br><span class="line">b849b56b69e7: Pull complete </span><br><span class="line">42986ef25bcd: Pull complete </span><br><span class="line">d927c1b717ec: Pull complete </span><br><span class="line">15b86ea20233: Pull complete </span><br><span class="line">Digest: sha256:b967b9f2a5625231a22db642609e61b7b1a5481128f51fe771e91bb92e0a35d0</span><br><span class="line">Status: Downloaded newer image for ubuntu:16.04</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<p>1.仔细观察下载过程，是符合前面提及的分层存储的概念，终端显示了每一层的ID的前12位。另外下载完成后也给出了镜像完整的sha256摘要。</p>
+<p>2.如果下载镜像缓慢，记得参考前面，配置加速。</p>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>这里我们以前面获取的ubuntu镜像为基础，启动并运行一个容器。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">root@mkin:~# docker run -it --rm ubuntu:16.04 bash  </span><br><span class="line">root@d22246635fdc:/# cat /etc/os-release</span><br><span class="line">NAME=&quot;Ubuntu&quot;</span><br><span class="line">VERSION=&quot;16.04.5 LTS (Xenial Xerus)&quot;</span><br><span class="line">ID=ubuntu</span><br><span class="line">ID_LIKE=debian</span><br><span class="line">PRETTY_NAME=&quot;Ubuntu 16.04.5 LTS&quot;</span><br><span class="line">VERSION_ID=&quot;16.04&quot;</span><br><span class="line">HOME_URL=&quot;http://www.ubuntu.com/&quot;</span><br><span class="line">SUPPORT_URL=&quot;http://help.ubuntu.com/&quot;</span><br><span class="line">BUG_REPORT_URL=&quot;http://bugs.launchpad.net/ubuntu/&quot;</span><br><span class="line">VERSION_CODENAME=xenial</span><br><span class="line">UBUNTU_CODENAME=xenial</span><br><span class="line">root@d22246635fdc:/# </span><br><span class="line">root@d22246635fdc:/# exit</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<p>1.其中docker run 便是运行容器的命令；</p>
+<p>2.-it: -i是交互式操作；-t是终端；</p>
+<p>3.-rm: 在容器退出后将其删除，避免测试时，浪费空间；</p>
+<p>4.ubuntu：16.04： 是指用ubuntu：16.04镜像为基础来启动容器；</p>
+<p>5.bash是放在镜像名后的命令，表示我们希望有交互式shell，因此使用的是bash;</p>
+<p>6.进入容器后，我们执行了cat /etc/os-release命令，这是查看当前系统版本的命令。</p>
+<p>7.exit:退出容器。</p>
+<h2 id="列出镜像"><a href="#列出镜像" class="headerlink" title="列出镜像"></a>列出镜像</h2><p>命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@mkin:~# docker image ls</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">ubuntu              16.04               b0ef3016420a        3 weeks ago         117MB</span><br><span class="line">hello-world         latest              4ab4c602aa5e        4 months ago        1.84kB</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<p>1.体积：ubuntu在Docker Hub上和这里显示的体积大小是不一样的。这是因为这里显示的是镜像下载到本地展开后的大小，Docker Hub上显示的是压缩后的大小。</p>
+<p>另外需要注意的是，这里列出的镜像体积总和并不一定是镜像实际占用的体积，因为Docker镜像采用的是多层存储结构，可以继承，复用，所以不同镜像可能使用相同的镜像基础，所以这里列出的镜像体积可能比实际镜像占用的体积大些。</p>
+<p>查看镜像，容器，数据卷所占空间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@mkin:~# docker system df</span><br><span class="line">TYPE                TOTAL               ACTIVE              SIZE                RECLAIMABLE</span><br><span class="line">Images              2                   1                   116.7MB             116.7MB (99%)</span><br><span class="line">Containers          1                   0                   0B                  0B</span><br><span class="line">Local Volumes       0                   0                   0B                  0B</span><br><span class="line">Build Cache         0                   0                   0B                  0B</span><br></pre></td></tr></table></figure>
+<h2 id="dangling-image"><a href="#dangling-image" class="headerlink" title="dangling image"></a>dangling image</h2><p>使用docker image ls命令查看镜像时如果有显示为<code>&lt;none&gt;</code>的镜像，即为<code>dangling image</code>。出现原因：</p>
+<ol>
+<li><p><code>docker pull</code> 可能导致这种情况;</p>
+</li>
+<li><p><code>docker build</code> 也同样可以导致这种现象。</p>
+<p>由于新旧镜像同名，旧镜像名称被取消，从而出现仓库名、标签均为 <code>&lt;none&gt;</code> 的镜像。</p>
+</li>
+</ol>
+<p>可使用如下命令专门显示<code>dangling image</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image ls -f dangling=true</span><br></pre></td></tr></table></figure>
+<p>删除<code>dangling image</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image prune</span><br></pre></td></tr></table></figure>
+<h2 id="显示所有包括中间层在内的镜像"><a href="#显示所有包括中间层在内的镜像" class="headerlink" title="显示所有包括中间层在内的镜像"></a>显示所有包括中间层在内的镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image ls -a</span><br></pre></td></tr></table></figure>
+<p>注意：加速镜像构建、重复利用资源，Docker 会利用中间层镜像。所以在使用一段时间后，可能会看到一些依赖的中间层镜像。默认的 <code>docker image ls</code> 列表中只会显示顶层镜像，如果想显示中间层镜像，需要使用<code>-a</code>参数。</p>
+<p>这样会有很多没有标签的镜像，与前面的<code>dangling image</code>不同，这些无标签的镜像都是中间层镜像，是其它镜像所依赖的镜像，不应该被删除。</p>
+<h2 id="列出部分镜像"><a href="#列出部分镜像" class="headerlink" title="列出部分镜像"></a>列出部分镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image ls ubuntu</span><br></pre></td></tr></table></figure>
+<h2 id="删除本地镜像"><a href="#删除本地镜像" class="headerlink" title="删除本地镜像"></a>删除本地镜像</h2><p>先列出镜像：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@mkin:~# docker image ls</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">ubuntu              16.04               b0ef3016420a        3 weeks ago         117MB</span><br><span class="line">hello-world         latest              4ab4c602aa5e        4 months ago        1.84kB</span><br></pre></td></tr></table></figure>
+<p>使用<code>imgae ID</code>删除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root@mkin:~# docker image rm b0e</span><br><span class="line">Untagged: ubuntu:16.04</span><br><span class="line">Untagged: ubuntu@sha256:b967b9f2a5625231a22db642609e61b7b1a5481128f51fe771e91bb92e0a35d0</span><br><span class="line">Deleted: sha256:b0ef3016420a4052400d0a36f5144ebdee5d358ef6942afee072517b5a94168c</span><br><span class="line">Deleted: sha256:7c42fc68785f05435c7d0a15ab5eba645dd51431ff85ba8c81aac71b6d7fa676</span><br><span class="line">Deleted: sha256:9ae10a8fb5d0419283b7d8ede59c6cb17df79c1bc0f0367ad5d5fd5f9040b9b7</span><br><span class="line">Deleted: sha256:8c7764429ac5850455be6b16dcbf2f3e916522ea400c90133b498701debfe3a2</span><br><span class="line">Deleted: sha256:8241afc74c6f5ca20c3bd7f3ddb3e5621d637ee85aaf40de440bf465b2a9984f</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<p>1.ID可以是完整的，也可以是ID的前三位即可;</p>
+<p>2.也可以使用<code>docker image rm &lt;仓库名如centos&gt;</code>;</p>
+<p>3.也可食用<code>docker image rm 镜像摘要</code>。</p>
+<p>4.删除行为分为两类，一类是 <code>Untagged</code>，另一类是 <code>Deleted</code>。镜像的唯一标识是其 ID 和摘要，而一个镜像可以有多个标签。因为一个镜像可以对应多个标签，因此当我们删除了所指定的标签后，可能还有别的标签指向了这个镜像，如果是这种情况，那么 <code>Delete</code> 行为就不会发生。所以并非所有的 <code>docker image rm</code> 都会产生删除镜像的行为，有可能仅仅是取消了某个标签而已。</p>
+<h2 id="配合docker-image-ls"><a href="#配合docker-image-ls" class="headerlink" title="配合docker image ls"></a>配合docker image ls</h2><p>删除所有仓库名为 <code>redis</code> 的镜像：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image rm $(docker image ls -q redis)</span><br></pre></td></tr></table></figure>
+<p>删除所有在 <code>mongo:3.2</code> 之前的镜像：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker image rm $(docker image ls -q -f before=mongo:3.2)</span><br></pre></td></tr></table></figure>
+<h1 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h1><h2 id="Dockerfile定制镜像"><a href="#Dockerfile定制镜像" class="headerlink" title="Dockerfile定制镜像"></a>Dockerfile定制镜像</h2><p>以定制<code>ngnix</code>镜像为例：</p>
+<p>1.在<code>/usr/local/</code>路径下创建<code>nginx</code>文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir nginx</span><br></pre></td></tr></table></figure>
+<p>2.进入<code>nginx</code>文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd nginx</span><br></pre></td></tr></table></figure>
+<p>3.创建并编辑<code>Dockerfile</code>文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim Dockerfile</span><br></pre></td></tr></table></figure>
+<p>编辑内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FROM nginx</span><br><span class="line">RUN echo &apos;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&apos; &gt; /usr/share/nginx/html/index.html</span><br></pre></td></tr></table></figure>
+<p>4.构建：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">root@mkin:/usr/<span class="built_in">local</span>/nginx<span class="comment"># docker build -t nginx:v3 .</span></span><br><span class="line">Sending build context to Docker daemon  2.048kB</span><br><span class="line">Step 1/2 : FROM nginx</span><br><span class="line">latest: Pulling from library/nginx</span><br><span class="line">177e7ef0df69: Pull complete </span><br><span class="line">ea57c53235df: Pull complete </span><br><span class="line">bbdb1fbd4a86: Pull complete </span><br><span class="line">Digest: sha256:b543f6d0983fbc25b9874e22f4fe257a567111da96fd1d8f1b44315f1236398c</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> nginx:latest</span><br><span class="line"> ---&gt; 7042885a156a</span><br><span class="line">Step 2/2 : RUN <span class="built_in">echo</span> <span class="string">'&lt;h1&gt;Hello, Docker!&lt;/h1&gt;'</span> &gt; /usr/share/nginx/html/index.html</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 498081e4a8f3</span><br><span class="line">Removing intermediate container 498081e4a8f3</span><br><span class="line"> ---&gt; fcd07ecaa685</span><br><span class="line">Successfully built fcd07ecaa685</span><br><span class="line">Successfully tagged nginx:v3</span><br></pre></td></tr></table></figure>
+<p>5.查看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@mkin:/usr/local/nginx# docker image ls</span><br><span class="line">REPOSITORY          TAG         IMAGE ID        CREATED             SIZE</span><br><span class="line">nginx               v3        fcd07ecaa685     9 seconds ago       109MB</span><br></pre></td></tr></table></figure>
+<p>6.运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@mkin:/usr/local/nginx# docker run --name mynginx -d fcd07ecaa685</span><br><span class="line">eade36419390f809357fbe7eaa93df2448b64a8c5928315972552fb902cc935f</span><br></pre></td></tr></table></figure>
+<p>7.运行容器查看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@mkin:/usr/local/nginx# docker ps</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>CONTAINER ID</th>
+<th>IMAGE</th>
+<th>COMMAND</th>
+<th>CREATED</th>
+<th>STATUS</th>
+<th>PORTS</th>
+<th>NAMES</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eade36419390</td>
+<td>fcd07ecaa685</td>
+<td>“nginx -g’daemon of…”</td>
+<td>54 seconds ago</td>
+<td>Up 52 seconds</td>
+<td>80/tcp</td>
+<td>mynginx</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Dockerfile指令"><a href="#Dockerfile指令" class="headerlink" title="Dockerfile指令"></a>Dockerfile指令</h2><p>请参考：</p>
+<p>Dockerfie 官方文档](<a href="https://docs.docker.com/engine/reference/builder/" target="_blank" rel="noopener">https://docs.docker.com/engine/reference/builder/</a>)</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
+          
+            <a href="/tags/镜像/" rel="tag"><i class="fa fa-tag"></i> 镜像</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/17/SSH-Win10使用SSH免密拉取GitLab代码/" rel="next" title="SSH-Win10使用SSH免密拉取GitLab代码">
+                <i class="fa fa-chevron-left"></i> SSH-Win10使用SSH免密拉取GitLab代码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/19/Docker-容器/" rel="prev" title="Docker-容器">
+                Docker-容器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar1.JPG" alt="Mao Jing">
+            
+              <p class="site-author-name" itemprop="name">Mao Jing</p>
+              <p class="site-description motion-element" itemprop="description">大家好，我是Mao Jing ，欢迎来到我的个人Blog！</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/maojingrfs" title="GitHub &rarr; https://github.com/maojingrfs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:my_haloj@163.com" title="E-Mail &rarr; mailto:my_haloj@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/p/1005056928837982/home" title="Weibo &rarr; https://weibo.com/p/1005056928837982/home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+		  <!-- 音乐播放器 -->
+		  <div>
+		  
+		  	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=427017519&auto=1&height=66"></iframe>
+		  
+		  </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="https://www.github.com" rel="noopener" target="_blank">GitHub</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.csdn.net/" title="https://www.csdn.net/" rel="noopener" target="_blank">CSDN</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常规操作"><span class="nav-number">2.</span> <span class="nav-text">常规操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取镜像"><span class="nav-number">2.1.</span> <span class="nav-text">获取镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行"><span class="nav-number">2.2.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列出镜像"><span class="nav-number">2.3.</span> <span class="nav-text">列出镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dangling-image"><span class="nav-number">2.4.</span> <span class="nav-text">dangling image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示所有包括中间层在内的镜像"><span class="nav-number">2.5.</span> <span class="nav-text">显示所有包括中间层在内的镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列出部分镜像"><span class="nav-number">2.6.</span> <span class="nav-text">列出部分镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除本地镜像"><span class="nav-number">2.7.</span> <span class="nav-text">删除本地镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配合docker-image-ls"><span class="nav-number">2.8.</span> <span class="nav-text">配合docker image ls</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dockerfile"><span class="nav-number">3.</span> <span class="nav-text">Dockerfile</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dockerfile定制镜像"><span class="nav-number">3.1.</span> <span class="nav-text">Dockerfile定制镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dockerfile指令"><span class="nav-number">3.2.</span> <span class="nav-text">Dockerfile指令</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mao Jing</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
