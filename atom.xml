@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-20T07:54:28.741Z</updated>
+  <updated>2019-01-21T04:54:39.813Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker Compose-概念</title>
+    <link href="http://yoursite.com/2019/01/21/Docker-Compose-%E6%A6%82%E5%BF%B5/"/>
+    <id>http://yoursite.com/2019/01/21/Docker-Compose-概念/</id>
+    <published>2019-01-21T04:54:39.000Z</published>
+    <updated>2019-01-21T04:54:39.813Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Docker-常用命令</title>
@@ -97,9 +111,9 @@
     <link href="http://yoursite.com/2019/01/19/Positive-Discipline-%E5%88%9D%E8%A1%B7/"/>
     <id>http://yoursite.com/2019/01/19/Positive-Discipline-初衷/</id>
     <published>2019-01-19T06:52:49.000Z</published>
-    <updated>2019-01-20T16:25:06.520Z</updated>
+    <updated>2019-01-21T04:43:50.878Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    在《孩子，把你的手给我》书中这样说：我们不但要有一颗爱孩子的心，更要懂得如何去爱孩子。我知道这句话前部分是为人父母最基本的品质，但重点在后面一部分，如何去爱孩子？重点在于爱的表现方式上，最典型笼统式的两种常见方式是溺爱和惩罚，当然这都是极端，是不太可取的。但准爸妈们是否有过自问：我该如何正确的爱孩子？</p><h1 id="我的初衷"><a href="#我的初衷" class="headerlink" title="我的初衷"></a>我的初衷</h1><p>​    16年5月15日，注定是我人生意义非凡的一天—大女儿出生。记得当时，产房外，得知母女平安后，我激动的哭了出来。</p><p>​    女儿出生，给我们两个原生家庭带来了无限幸福感。刚开始，亲戚朋友见了面，都会相互恭喜，恭喜什么？无外乎就是，恭喜你做爷爷，做奶奶，做伯伯……到后来，时间稍长些，孩子的存在，新奇感便也渐渐淡下来。</p><p>​    陪伴孩子成长中，我和老婆刚开始不察觉，但现在来看，原来我们也变了很多。孩子出生后，老婆变各种育儿科普—-育儿书籍.网站论坛。慢慢也形成了自己一套育儿理论方式，想在同辈里的宝妈们，几乎都会主动和她请教育儿经。当然，我只是站在老公的角度看待这些现象，但老婆做出这些行动以及能坚持这些行为的内在驱动力，似乎应该是很少去尝试理解（但这也成为现在打心底佩服老婆的原因）。</p><p>​    我心里，只有未来。关于宝贝的未来，我思考了很多，似乎得出的结论只有一个：我得好好挣钱！一个总是思考未来的爸爸，必然会忽视很多当下的细节！这估计也是偶尔跟老婆在关于育儿方面起争执的症结所在吧！</p><p>​    最近，女儿慢慢成长了，2岁半，上了蒙氏幼儿园。在学校老师们用心的喂了点“盐”，经常在家就是：爸爸，没经过我的允许，你不可以怎样怎样。当然我是非常认可老师们教会宝贝们正确表达自己。只是很多时候，孩子会用“哭闹”这种方式来表达自己的诉求，不对，准确说是，我有种被要挟然后被打败的感觉！</p><p>​    和孩子的博弈每天都会上演，剧情一般是这样。</p><p>​    “爸爸，我要…….(需求)”</p><p>​    “不可以”</p><p>​    “呜呜呜……啊啊啊啊啊……”</p><p>​    如果需求正常，到好，满足便是，妇女相安无事！但宝贝经常会提一些不合时，不合适的要求，作为爸爸能全部满足吗？当然是不可以。可越是孩子长大，精力越盛，面对他的各种哭诉，我的确是疲于应对，但自己的宝贝，不能说采取恐吓威胁，武力解决，亦或是百依百顺，这样子，实在不敢想象，结果会怎样。</p><p>​    “你要用和善而坚定的态度拒绝宝贝的不合理需求…..“，老婆对我说过的这句话，我一直没深究它的出处。也就是今天我得到了答案，在老婆之前看过的一本书里–《Positive Discipline 正面管教》。</p><p>​    《Positive Discipline 正面管教》是由美籍作家Jane Nelsen(简.尼尔森)著，由中国作家王冰译。简.尼尔森是一名教育学博士，解除的心理学家，教育家，反正是个”大家“，当然作者的社会荣誉地位，倒不是我最关心的，当我看到介绍，作者是7个孩子的母亲，22个孩子的祖母或外祖母，还是两个孩子的曾祖母，我开始好奇了！作者是如何面对和处理与子女关系的。</p><p>​    书中译者王冰在使用了《Positive Discipline 正面管教》里面提及的系列正面管教方法后，按她自己的原话”我很快发现自己可以不再需要’克制’”自己，开始自然而然地‘出乎本能‘地改变着我和孩子自建的相处模式。孩子也因此变得更配合，更可爱。我如饥似渴地都下去，不知不觉进入一个豁然开朗的新天地”。译者王冰的自述，不正是我内心所渴望的吗。</p><p>​    另外译者还提及翻译《Positive Discipline 正面管教》一书的初衷，当然我的思想境界可能还未达到她那个高度，用我自己的话来说“我希望，使用有效的，正面的方法管教孩子，让孩子在自信，自立的快乐环境中健康成长，把良好的行为品德，友谊的社会技能深深植入孩子心底”。这也是我的初衷！</p><h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>​    思考下：如何不惩罚，不骄纵地有效管教孩子！</p><p>​    </p><p>​    </p>]]></content>
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​    在《孩子，把你的手给我》书中这样说：我们不但要有一颗爱孩子的心，更要懂得如何去爱孩子。我知道这句话前部分是为人父母最基本的品质，但重点在后面一部分，如何去爱孩子？重点在于爱的表现方式上，最典型笼统式的两种常见方式是溺爱和惩罚，当然这都是极端，是不太可取的。但准爸妈们是否有过自问：我该如何正确的爱孩子？</p><h1 id="我的初衷"><a href="#我的初衷" class="headerlink" title="我的初衷"></a>我的初衷</h1><p>​    16年5月15日，注定是我人生意义非凡的一天—大女儿出生。记得当时，产房外，得知母女平安后，我激动的哭了出来。</p><p>​    女儿出生，给我们两个原生家庭带来了无限幸福感。刚开始，亲戚朋友见了面，都会相互恭喜，恭喜什么？无外乎就是，恭喜你做爷爷，做奶奶，做伯伯……到后来，时间稍长些，新奇感便也渐渐淡下来，更多便是孩子如何与自己与周遭相处的事儿。</p><p>​    陪伴孩子成长中，我和老婆刚开始不察觉，但现在来看，原来我们也变了很多。孩子出生后，老婆变各种育儿科普–育儿书籍.网站论坛。慢慢也形成了自己一套育儿理论方式，想在同辈里的宝妈们，大多会主动向她请教育儿经。当然，我只是站在老公的角度看待这些客观现象，但老婆做出这些学习的行动以及能坚持这些行为的内在驱动力，似乎应该是很少去尝试理解（但这也成为现在打心底佩服老婆的原因）。</p><p>​    我心里，只有未来。关于宝贝的未来，我思考了很多，似乎得出的结论只有一个：我得好好挣钱！一个总是思考未来的爸爸，必然会忽视很多当下的细节！这估计也是偶尔跟老婆在关于育儿方面起争执的症结所在吧！</p><p>​    最近，女儿慢慢成长了，2岁半，上了蒙氏幼儿园。在学校老师们用心的喂了点“盐”，经常在家就是：爸爸，没经过我的允许，你不可以怎样怎样。当然我是非常认可老师们教会宝贝们正确表达自己。只是很多时候，孩子会用“哭闹”这种方式来表达自己的诉求，不对，准确说是，我有种被要挟然后被打败的感觉！</p><p>​    和孩子的博弈每天都会上演，剧情一般是这样。</p><p>​    “爸爸，我要…….(需求)”</p><p>​    “不可以”</p><p>​    “呜呜呜……啊啊啊啊啊……”</p><p>​    如果需求正常，到好，满足便是，父女相安无事！但宝贝经常会提一些不合时，不合适的要求，作为爸爸能全部满足吗？当然是不可以。可越是孩子长大，精力越盛，面对她的各种哭诉，我的确是疲于应对，但自己的宝贝，不能说采取恐吓威胁，武力解决，亦或是百依百顺，这样子，实在不敢想象，今后会教出怎样的孩子。</p><p>​    “你要用和善而坚定的态度拒绝宝贝的不合理需求…..”，老婆对我说过的这句话，我一直没深究它的出处。也就是今天我得到了答案，在老婆之前看过的一本书里–《Positive Discipline 正面管教》。</p><p>​    《Positive Discipline 正面管教》是由美籍作家Jane Nelsen(简.尼尔森)著，由中国作家王冰译。简.尼尔森是一名教育学博士，杰出的心理学家，教育家，反正是个“大家”，当然作者的社会荣誉，倒不是我最关心的，当我看到介绍，作者是7个孩子的母亲，22个孩子的祖母或外祖母，还是两个孩子的曾祖母，我开始好奇了！作者是如何面对和处理与子女关系的。</p><p>​    书中译者王冰在使用了《Positive Discipline 正面管教》里面提及的系列正面管教方法后，按她自己的原话”我很快发现自己可以不再需要’克制’自己，开始自然而然地‘出乎本能‘地改变着我和孩子之间的相处模式。孩子也因此变得更配合，更可爱。我如饥似渴地读下去，不知不觉进入一个豁然开朗的新天地”。译者王冰的自述，不正是我内心所渴望的吗。</p><p>​    另外译者还提及翻译《Positive Discipline 正面管教》一书的初衷，当然我的思想境界可能还未达到她那个高度，用我自己的话来说“我希望，使用有效的，正面的方法管教孩子，让孩子在自信，自立的快乐环境中健康成长，把良好的行为品德，有益的社会技能深深植入孩子心底”。这也是我的初衷！</p><h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>​    思考下：如何不惩罚，不骄纵地有效管教孩子！</p><p>​    </p><p>​    </p>]]></content>
     
     <summary type="html">
     
@@ -107,12 +121,14 @@
     
     </summary>
     
-      <category term="正面管教" scheme="http://yoursite.com/categories/%E6%AD%A3%E9%9D%A2%E7%AE%A1%E6%95%99/"/>
+      <category term="生活" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
       <category term="Positive Discipline" scheme="http://yoursite.com/tags/Positive-Discipline/"/>
     
       <category term="正面管教" scheme="http://yoursite.com/tags/%E6%AD%A3%E9%9D%A2%E7%AE%A1%E6%95%99/"/>
+    
+      <category term="育儿" scheme="http://yoursite.com/tags/%E8%82%B2%E5%84%BF/"/>
     
   </entry>
   
@@ -267,7 +283,7 @@
     <link href="http://yoursite.com/2019/01/17/hexo-%E9%98%BF%E9%87%8C%E4%BA%91/"/>
     <id>http://yoursite.com/2019/01/17/hexo-阿里云/</id>
     <published>2019-01-17T04:51:54.000Z</published>
-    <updated>2019-01-17T06:47:24.146Z</updated>
+    <updated>2019-01-21T04:31:33.466Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>将博客部署在GitHub上，不失为一种省时，省力，省钱的优选方案，但我打心底还是想部署到阿里云上面，主要出于两方面考虑，一是隐私（当然github也可操作）；二是稳定性，毕竟阿里云服可选国内的。</p><a id="more"></a><p>但事实确实验证上面所说的。博客前面整理了阿里云ECS购买，域名备案等流程（整理来自个人笔记），特别是域名备案，算不上复杂，但走流程是需要提供材料，然后你懂的，就是耐心等待！这也是第一次个人实操域名备案（之前只是买买ECS做开发测试用）。</p><p>且先不管域名备案是否通过，我们先了解下如何将博客部署到阿里云上。</p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>遇到问题不可怕，可怕的是遇到问题后毫无思绪！</p><p>操作思路是这样，在云主机上搭建git仓库，使用nginx作为网页服务器，最终通过git将hexo博客部署到云主机上。</p><p>系统环境:Ubuntu Server 16.04.1 LTS 64位</p><h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="1-设置SSH登陆"><a href="#1-设置SSH登陆" class="headerlink" title="1.设置SSH登陆"></a>1.设置SSH登陆</h2><p>关于如何生成密钥请参考《SSH-Win10使用SSH免密拉取GitLab代码》。然后再window命令提示符执行如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id root@云主机ip</span><br></pre></td></tr></table></figure><p>将用户的公钥存储到远程主机上，过程会让你输入远程主机的密码（在购买ECS过程中有设置过的）。</p><ul><li><p>原理：用户将公钥储存在远程主机上。登录时，远程主机会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回给远程主机。远程主机用事先储存的公钥进行解密，如果成功，就证明用户是可信的，允许登录，不再要求密码。</p></li><li><p>注意：在window上执行命令时可能抛出” ‘ssh’ 不是内部或外部命令，也不是可运行的程序<br>或批处理文件。“问题，那么请在环境变量中添加如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GIT_HOME:C:\Program Files\Git</span><br><span class="line">然后编辑path新增</span><br><span class="line">%GIT_HOME%\bin</span><br><span class="line">然后在命令提示符输入：</span><br><span class="line">sh</span><br><span class="line">再执行</span><br><span class="line">ssh-copy-id root@云主机ip</span><br><span class="line">将公钥拷贝到远程云主机</span><br></pre></td></tr></table></figure></li><li><p>口令登陆：不用讲公钥拷贝到云主机，直接使用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@云主机ip</span><br></pre></td></tr></table></figure><p>然后按照提示输入主机root账户的登陆密码即可。</p></li></ul><h2 id="2-安装Git和nginx"><a href="#2-安装Git和nginx" class="headerlink" title="2.安装Git和nginx"></a>2.安装Git和nginx</h2><p>我这里使用的是Xshell访问云服务器，输入如下密令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install git-core nginx</span><br></pre></td></tr></table></figure><h2 id="3-配置nginx"><a href="#3-配置nginx" class="headerlink" title="3.配置nginx"></a>3.配置nginx</h2><p>执行如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/www/blog</span><br></pre></td></tr></table></figure><p>进入nginx配置文件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/conf.d/blog.conf</span><br></pre></td></tr></table></figure><p>配置如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 8080;</span><br><span class="line">    root /var/www/blog;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>重启nginx:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure><h2 id="4-Git-Hooks"><a href="#4-Git-Hooks" class="headerlink" title="4.Git Hooks"></a>4.Git Hooks</h2><p>我们要将hexo在本地生成的静态博客同步到远程git仓库。那么先要在远程主机上设置Git仓库，执行如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/blog.git &amp;&amp; cd ~/blog.git</span><br><span class="line">git init --bare</span><br></pre></td></tr></table></figure><p>配置Hooks脚本：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim blog.git/hooks/post-receive</span><br></pre></td></tr></table></figure><p>脚本如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/www/blog</span><br><span class="line">git clone /root/blog.git /var/www/blog</span><br></pre></td></tr></table></figure><p>解释：先将原有的blog删除，然后从仓库克隆一份到blog文件下。</p><p>注意：如果上面vim进入post-receive文件中，退出时有问题，则按照路径一步步进入到hooks文件夹下，再执行vim post-receive进入，编辑脚本，再保存退出即可。</p><h2 id="5-修改Hexo配置文件"><a href="#5-修改Hexo配置文件" class="headerlink" title="5.修改Hexo配置文件"></a>5.修改Hexo配置文件</h2><p>修改_config.yml如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: root@云主机ip:blog.git</span><br></pre></td></tr></table></figure><h2 id="6-部署"><a href="#6-部署" class="headerlink" title="6.部署"></a>6.部署</h2><p>依次输入如下密令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>让后打开浏览器输入：http://云主机ip:8080即可访问。</p><h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>将hexo部署到阿里云上相比部署到github上，还是复杂些。除了涉及服务器ECS购买，域名购买绑定，域名备案外，另外技术上还涉及SSH，ngnix，git等的使用。但考虑到阿里云具备的开篇所提到的两点好处，一切都值了！</p>]]></content>
     
@@ -277,7 +293,7 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
     
     
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
@@ -455,30 +471,6 @@
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
       <category term="Mysql" scheme="http://yoursite.com/tags/Mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux-安装Tomcat</title>
-    <link href="http://yoursite.com/2019/01/15/Linux-%E5%AE%89%E8%A3%85Tomcat/"/>
-    <id>http://yoursite.com/2019/01/15/Linux-安装Tomcat/</id>
-    <published>2019-01-15T09:11:43.000Z</published>
-    <updated>2019-01-15T09:19:27.853Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>此处以 Tomcat 8.5.23 为例</p><a id="more"></a><h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p><a href="https://tomcat.apache.org/" target="_blank" rel="noopener">https://tomcat.apache.org/</a></p><h2 id="解压缩并移动到指定目录"><a href="#解压缩并移动到指定目录" class="headerlink" title="解压缩并移动到指定目录"></a>解压缩并移动到指定目录</h2><h3 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf apache-tomcat-8.5.23.tar.gz</span><br></pre></td></tr></table></figure><h3 id="变更目录名"><a href="#变更目录名" class="headerlink" title="变更目录名"></a>变更目录名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv apache-tomcat-8.5.23 tomcat</span><br></pre></td></tr></table></figure><h3 id="移动目录"><a href="#移动目录" class="headerlink" title="移动目录"></a>移动目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv tomcat/ /usr/local/</span><br></pre></td></tr></table></figure><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/tomcat/bin/startup.sh</span><br></pre></td></tr></table></figure><h3 id="停止"><a href="#停止" class="headerlink" title="停止"></a>停止</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/tomcat/bin/shutdown.sh</span><br></pre></td></tr></table></figure><h3 id="目录内执行脚本"><a href="#目录内执行脚本" class="headerlink" title="目录内执行脚本"></a>目录内执行脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./startup.sh</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;此处以 Tomcat 8.5.23 为例&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
-    
-    
-      <category term="Tomcat" scheme="http://yoursite.com/tags/Tomcat/"/>
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
   </entry>
   
