@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/01/22/GitLab-%E5%9F%BA%E4%BA%8EDocker%E5%AE%89%E8%A3%85/</loc>
+    
+    <lastmod>2019-01-22T09:54:29.862Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/01/22/GitLab-%E7%AE%80%E4%BB%8B/</loc>
+    
+    <lastmod>2019-01-22T09:29:58.314Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/01/21/Docker%20Compose-%E5%9F%BA%E7%A1%80/</loc>
     
     <lastmod>2019-01-22T09:01:25.306Z</lastmod>
