@@ -59,13 +59,13 @@
     <link href="http://yoursite.com/2019/01/20/Docker-MySql/"/>
     <id>http://yoursite.com/2019/01/20/Docker-MySql/</id>
     <published>2019-01-20T03:19:12.000Z</published>
-    <updated>2019-01-20T07:20:44.994Z</updated>
+    <updated>2019-01-21T06:59:08.050Z</updated>
     
     <content type="html"><![CDATA[<h1 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h1><p>我们可先使用如下命令，查询Docker Hub上关于MySql相关信息，如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@mkin:/usr/local/docker/mysql# docker search mysql</span><br></pre></td></tr></table></figure><h1 id="获取MySql"><a href="#获取MySql" class="headerlink" title="获取MySql"></a>获取MySql</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">root@mkin:/usr/local/docker/mysql# docker pull mysql</span><br><span class="line">Using default tag: latest</span><br><span class="line">latest: Pulling from library/mysql</span><br><span class="line">177e7ef0df69: Pull complete </span><br><span class="line">cac25352c4c8: Pull complete </span><br><span class="line">8585afabb40a: Pull complete </span><br><span class="line">1e4af4996053: Pull complete </span><br><span class="line">c326522894da: Pull complete </span><br><span class="line">9020d6b6b171: Pull complete </span><br><span class="line">55eb37ec6e5f: Pull complete </span><br><span class="line">37f3f3d72fbd: Pull complete </span><br><span class="line">03f098d64268: Pull complete </span><br><span class="line">46a52a54cfe9: Pull complete </span><br><span class="line">202bc662895d: Pull complete </span><br><span class="line">46014f07b258: Pull complete </span><br><span class="line">Digest: sha256:196c04e1944c5e4ea3ab86ae5f78f697cf18ee43865f25e334a6ffb1dbea81e6</span><br><span class="line">Status: Downloaded newer image for mysql:latest</span><br></pre></td></tr></table></figure><h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@mkin:/usr/local/docker/mysql# docker run -p 3306:3306 --name mysql \</span><br><span class="line"> -v /usr/local/docker/mysql/conf:/etc/mysql/conf.d \</span><br><span class="line"> -v /usr/local/docker/mysql/logs:/var/log/mysql \</span><br><span class="line"> -v /usr/local/docker/mysql/data:/var/lib/mysql \</span><br><span class="line"> -e MYSQL_ROOT_PASSWORD=123456 \</span><br><span class="line"> -d mysql</span><br></pre></td></tr></table></figure><p>注意：</p><ul><li><code>-p 3306:3306</code>：将容器的3306端口映射到主机的3306端口</li><li><code>-v /usr/local/docker/mysql/conf:/etc/mysql/conf.d</code>：将主机当前目录下的 conf 挂载到容器的 <code>/etc/mysql/conf.d</code></li><li><code>-v /usr/local/docker/mysql/logs:/var/log/mysql</code>：将主机当前目录下的 logs 目录挂载到容器的<code>/var/log/mysql</code></li><li><code>-v /usr/local/docker/mysql/data:/var/lib/mysql</code>：将主机当前目录下的 data 目录挂载到容器的 <code>/var/lib/mysql</code></li><li><code>-e MYSQL\_ROOT\_PASSWORD=123456</code>：初始化root用户的密码</li></ul><h1 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@mkin:~# docker ps</span><br></pre></td></tr></table></figure><table><thead><tr><th>CONTAINER ID</th><th>IMAGE</th><th>COMMAND</th><th>CREATED</th><th>STATUS</th><th>PORTS</th><th>NAMES</th></tr></thead><tbody><tr><td>3d04b5c68a08</td><td>mysql</td><td>“docker-entrypoint.s…”</td><td>8 minutes ago</td><td>Up 8 minutes</td><td>0.0.0.0:3306-&gt;3306/tcp, 33060/tcp</td><td>mysql</td></tr></tbody></table><p>使用SQLyog链接不上，并抛出如下问题：</p><img src="/2019/01/20/Docker-MySql/mysqlError1.jpg"><p>原因：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql8 之前的版本中加密规则是mysql_native_password,而在mysql8之后,加密规则是caching_sha2_password</span><br></pre></td></tr></table></figure><p>方案：</p><p>我们把mysql用户登录密码加密规则还原成mysql_native_password。</p><p>步骤：</p><p>1.进入容器：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 3d0 bash</span><br></pre></td></tr></table></figure><p>2.链接mysql:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@3d04b5c68a08:/# mysql -uroot -p</span><br><span class="line">Enter password:</span><br></pre></td></tr></table></figure><p>3.配置:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER  USER  &apos;root&apos;  IDENTIFIED  WITH  mysql_native_password  BY  &apos;123456&apos;;</span><br></pre></td></tr></table></figure><p>5.然后再使用SQLyog测试链接，成功！</p><img src="/2019/01/20/Docker-MySql/mysqlError2.jpg">]]></content>
     
     <summary type="html">
     
-      这里将介记录在Docker上构建MySql。
+      这里将记录在Docker上构建MySql。
     
     </summary>
     
@@ -75,34 +75,6 @@
       <category term="Docker" scheme="http://yoursite.com/tags/Docker/"/>
     
       <category term="MySql" scheme="http://yoursite.com/tags/MySql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Positive Discipline-引言</title>
-    <link href="http://yoursite.com/2019/01/19/Positive-Discipline-%E5%BC%95%E8%A8%80/"/>
-    <id>http://yoursite.com/2019/01/19/Positive-Discipline-引言/</id>
-    <published>2019-01-19T06:53:36.000Z</published>
-    <updated>2019-01-19T06:53:36.549Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Positive Discipline-序言</title>
-    <link href="http://yoursite.com/2019/01/19/Positive-Discipline-%E5%BA%8F%E8%A8%80/"/>
-    <id>http://yoursite.com/2019/01/19/Positive-Discipline-序言/</id>
-    <published>2019-01-19T06:53:12.000Z</published>
-    <updated>2019-01-19T06:53:12.936Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
     
   </entry>
   
@@ -471,6 +443,54 @@
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
       <category term="Mysql" scheme="http://yoursite.com/tags/Mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux-安装Tomcat</title>
+    <link href="http://yoursite.com/2019/01/15/Linux-%E5%AE%89%E8%A3%85Tomcat/"/>
+    <id>http://yoursite.com/2019/01/15/Linux-安装Tomcat/</id>
+    <published>2019-01-15T09:11:43.000Z</published>
+    <updated>2019-01-15T09:19:27.853Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>此处以 Tomcat 8.5.23 为例</p><a id="more"></a><h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p><a href="https://tomcat.apache.org/" target="_blank" rel="noopener">https://tomcat.apache.org/</a></p><h2 id="解压缩并移动到指定目录"><a href="#解压缩并移动到指定目录" class="headerlink" title="解压缩并移动到指定目录"></a>解压缩并移动到指定目录</h2><h3 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf apache-tomcat-8.5.23.tar.gz</span><br></pre></td></tr></table></figure><h3 id="变更目录名"><a href="#变更目录名" class="headerlink" title="变更目录名"></a>变更目录名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv apache-tomcat-8.5.23 tomcat</span><br></pre></td></tr></table></figure><h3 id="移动目录"><a href="#移动目录" class="headerlink" title="移动目录"></a>移动目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv tomcat/ /usr/local/</span><br></pre></td></tr></table></figure><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/tomcat/bin/startup.sh</span><br></pre></td></tr></table></figure><h3 id="停止"><a href="#停止" class="headerlink" title="停止"></a>停止</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/tomcat/bin/shutdown.sh</span><br></pre></td></tr></table></figure><h3 id="目录内执行脚本"><a href="#目录内执行脚本" class="headerlink" title="目录内执行脚本"></a>目录内执行脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./startup.sh</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;此处以 Tomcat 8.5.23 为例&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Tomcat" scheme="http://yoursite.com/tags/Tomcat/"/>
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux-安装Java</title>
+    <link href="http://yoursite.com/2019/01/15/Linux-%E5%AE%89%E8%A3%85Java/"/>
+    <id>http://yoursite.com/2019/01/15/Linux-安装Java/</id>
+    <published>2019-01-15T09:05:49.000Z</published>
+    <updated>2019-01-15T09:20:05.917Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>此处以 JDK 1.8.0_152 为例</p><a id="more"></a><h2 id="官方下载"><a href="#官方下载" class="headerlink" title="官方下载"></a>官方下载</h2><p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p><h2 id="解压缩并移动到指定目录"><a href="#解压缩并移动到指定目录" class="headerlink" title="解压缩并移动到指定目录"></a>解压缩并移动到指定目录</h2><h3 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-8u152-linux-x64.tar.gz</span><br></pre></td></tr></table></figure><h3 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /usr/local/java</span><br></pre></td></tr></table></figure><h3 id="移动安装包"><a href="#移动安装包" class="headerlink" title="移动安装包"></a>移动安装包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv jdk1.8.0_152/ /usr/local/java/</span><br></pre></td></tr></table></figure><h3 id="设置所有者"><a href="#设置所有者" class="headerlink" title="设置所有者"></a>设置所有者</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R root:root /usr/local/java/</span><br></pre></td></tr></table></figure><h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><h3 id="配置系统环境变量"><a href="#配置系统环境变量" class="headerlink" title="配置系统环境变量"></a>配置系统环境变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/environment</span><br></pre></td></tr></table></figure><h3 id="添加如下语句"><a href="#添加如下语句" class="headerlink" title="添加如下语句"></a>添加如下语句</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PATH=&quot;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games&quot;</span><br><span class="line">export JAVA_HOME=/usr/local/java/jdk1.8.0_152</span><br><span class="line">export JRE_HOME=/usr/local/java/jdk1.8.0_152/jre</span><br><span class="line">export CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib</span><br></pre></td></tr></table></figure><h3 id="配置用户环境变量"><a href="#配置用户环境变量" class="headerlink" title="配置用户环境变量"></a>配置用户环境变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/profile</span><br></pre></td></tr></table></figure><h3 id="添加如下语句-1"><a href="#添加如下语句-1" class="headerlink" title="添加如下语句"></a>添加如下语句</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">if [ &quot;$PS1&quot; ]; then</span><br><span class="line">  if [ &quot;$BASH&quot; ] &amp;&amp; [ &quot;$BASH&quot; != &quot;/bin/sh&quot; ]; then</span><br><span class="line">    # The file bash.bashrc already sets the default PS1.</span><br><span class="line">    # PS1=&apos;\h:\w\$ &apos;</span><br><span class="line">    if [ -f /etc/bash.bashrc ]; then</span><br><span class="line">      . /etc/bash.bashrc</span><br><span class="line">    fi</span><br><span class="line">  else</span><br><span class="line">    if [ &quot;`id -u`&quot; -eq 0 ]; then</span><br><span class="line">      PS1=&apos;# &apos;</span><br><span class="line">    else</span><br><span class="line">      PS1=&apos;$ &apos;</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">export JAVA_HOME=/usr/local/java/jdk1.8.0_152</span><br><span class="line">export JRE_HOME=/usr/local/java/jdk1.8.0_152/jre</span><br><span class="line">export CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib</span><br><span class="line">export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH:$HOME/bin</span><br><span class="line"></span><br><span class="line">if [ -d /etc/profile.d ]; then</span><br><span class="line">  for i in /etc/profile.d/*.sh; do</span><br><span class="line">    if [ -r $i ]; then</span><br><span class="line">      . $i</span><br><span class="line">    fi</span><br><span class="line">  done</span><br><span class="line">  unset i</span><br><span class="line">fi</span><br></pre></td></tr></table></figure><h3 id="环境变量生效"><a href="#环境变量生效" class="headerlink" title="环境变量生效"></a>环境变量生效</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure><h2 id="其他用户更新环境变量"><a href="#其他用户更新环境变量" class="headerlink" title="其他用户更新环境变量"></a>其他用户更新环境变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su **</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;此处以 JDK 1.8.0_152 为例&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
   </entry>
   
