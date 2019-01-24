@@ -111,10 +111,12 @@
 <meta property="og:site_name" content="Mao Jing">
 <meta property="og:description" content="前言Shiro身份验证涉及两个重要概念，principals和credentials。最常见的principals和credentials是用户名和密码，另外还有Subject和Realm。下面通过实际例子说明。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-24T08:13:25.547Z">
+<meta property="og:image" content="http://yoursite.com/2019/01/24/Shiro-身份验证/image1.jpg">
+<meta property="og:updated_time" content="2019-01-24T10:12:52.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shiro-身份验证">
 <meta name="twitter:description" content="前言Shiro身份验证涉及两个重要概念，principals和credentials。最常见的principals和credentials是用户名和密码，另外还有Subject和Realm。下面通过实际例子说明。">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/24/Shiro-身份验证/image1.jpg">
 
 
 
@@ -402,7 +404,7 @@
                 
               
 
-              <time title="创建时间：2019-01-24 15:23:32 / 修改时间：16:13:25" itemprop="dateCreated datePublished" datetime="2019-01-24T15:23:32+08:00">2019-01-24</time>
+              <time title="创建时间：2019-01-24 15:23:32 / 修改时间：18:12:52" itemprop="dateCreated datePublished" datetime="2019-01-24T15:23:32+08:00">2019-01-24</time>
             
 
             
@@ -482,7 +484,7 @@
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Shiro身份验证涉及两个重要概念，principals和credentials。最常见的principals和credentials是用户名和密码，另外还有Subject和Realm。下面通过实际例子说明。</p>
 <a id="more"></a>
-<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>1.使用Spring Boot 2.1.2创建一个web项目，构建中我是勾选了<code>web</code>和<code>SQL</code>-&gt;<code>MySql</code>。</p>
+<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>1.这里使用Spring Boot 2.1.2创建一个web项目，构建中我是勾选了<code>web</code>和<code>SQL</code>-&gt;<code>MySql</code>。</p>
 <p>2.我的pom.xml文件中的依赖：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">        &lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">        &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;shiro-core&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.4.0&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;druid&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.1.12&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;junit&lt;/artifactId&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
 <p>3.测试中需要在<code>resources</code>-&gt;<code>static</code>文件夹下创建<code>html</code>文件，所以<code>application.properties</code>配置如下：</p>
@@ -497,6 +499,7 @@
 <h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.收集用户身份/凭证，即如用户名/密码；</span><br><span class="line"></span><br><span class="line">2、调用Subject.login进行登录，如果失败将得到相应的AuthenticationException异常，根据异常提示用户错误信息；否则登录成功；</span><br><span class="line"></span><br><span class="line">3、最后调用Subject.logout进行退出操作</span><br></pre></td></tr></table></figure>
 <h2 id="jdbcRealm测试"><a href="#jdbcRealm测试" class="headerlink" title="jdbcRealm测试"></a>jdbcRealm测试</h2><p>将上面的<code>textRealm</code>测试跑通，并理解的前提下，再切换到<code>jdbcRealm</code>便好理解多了。</p>
 <h3 id="1-数据库"><a href="#1-数据库" class="headerlink" title="1.数据库"></a>1.数据库</h3><p>创建一个<code>shiro</code>数据库，并创建一个名为<code>users</code>的表。如下图：</p>
+<img src="/2019/01/24/Shiro-身份验证/image1.jpg">
 <h3 id="2-shiro-jdbc-realm1-ini"><a href="#2-shiro-jdbc-realm1-ini" class="headerlink" title="2.shiro-jdbc-realm1.ini"></a>2.<code>shiro-jdbc-realm1.ini</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">jdbcRealm=org.apache.shiro.realm.jdbc.JdbcRealm</span><br><span class="line">dataSource=com.alibaba.druid.pool.DruidDataSource</span><br><span class="line">dataSource.driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">dataSource.url=jdbc:mysql://localhost:3306/shiro?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false</span><br><span class="line">dataSource.username=root</span><br><span class="line">dataSource.password=123</span><br><span class="line">jdbcRealm.dataSource=$dataSource</span><br><span class="line">securityManager.realms=$jdbcRealm</span><br></pre></td></tr></table></figure>
 <h3 id="2-修改"><a href="#2-修改" class="headerlink" title="2.修改"></a>2.修改</h3><p>将上面<code>LoginController</code>里面的 配置文件路径修改为：<code>shiro-jdbc-realm1.ini</code>即可测试。</p>
 <h2 id="自定义Realm"><a href="#自定义Realm" class="headerlink" title="自定义Realm"></a>自定义Realm</h2><h3 id="1-数据库-1"><a href="#1-数据库-1" class="headerlink" title="1.数据库"></a>1.数据库</h3><p>沿用<code>shiro</code>数据库即可。</p>
