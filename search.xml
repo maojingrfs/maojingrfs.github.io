@@ -4,6 +4,71 @@
   
     
     <entry>
+      <title>Shiro-验证码(5)</title>
+      <link href="/2019/01/25/Shiro-%E9%AA%8C%E8%AF%81%E7%A0%81(5)/"/>
+      <url>/2019/01/25/Shiro-%E9%AA%8C%E8%AF%81%E7%A0%81(5)/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Shiro-缓存&amp;remenberMe(4)</title>
+      <link href="/2019/01/25/Shiro-%E7%BC%93%E5%AD%98&amp;remenberMe(4)/"/>
+      <url>/2019/01/25/Shiro-%E7%BC%93%E5%AD%98&amp;remenberMe(4)/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Shiro-权限(3)</title>
+      <link href="/2019/01/25/Shiro-%E6%9D%83%E9%99%90(3)/"/>
+      <url>/2019/01/25/Shiro-%E6%9D%83%E9%99%90(3)/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Shiro-验证(2)</title>
+      <link href="/2019/01/25/Shiro-%E9%AA%8C%E8%AF%81(2)/"/>
+      <url>/2019/01/25/Shiro-%E9%AA%8C%E8%AF%81(2)/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Shiro-Spring boot环境搭建(1)</title>
+      <link href="/2019/01/25/Shiro-Spring%20boot%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA(1)/"/>
+      <url>/2019/01/25/Shiro-Spring%20boot%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA(1)/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Shiro-身份验证</title>
       <link href="/2019/01/24/Shiro-%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/"/>
       <url>/2019/01/24/Shiro-%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/</url>
@@ -482,7 +547,7 @@
       <link href="/2019/01/17/hexo-%E9%98%BF%E9%87%8C%E4%BA%91/"/>
       <url>/2019/01/17/hexo-%E9%98%BF%E9%87%8C%E4%BA%91/</url>
       
-        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>将博客部署在GitHub上，不失为一种省时，省力，省钱的优选方案，但我打心底还是想部署到阿里云上面，主要出于两方面考虑，一是隐私（当然github也可操作）；二是稳定性，毕竟阿里云服可选国内的。</p><a id="more"></a><p>但事实确实验证上面所说的。博客前面整理了阿里云ECS购买，域名备案等流程（整理来自个人笔记），特别是域名备案，算不上复杂，但走流程是需要提供材料，然后你懂的，就是耐心等待！这也是第一次个人实操域名备案（之前只是买买ECS做开发测试用）。</p><p>且先不管域名备案是否通过，我们先了解下如何将博客部署到阿里云上。</p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>遇到问题不可怕，可怕的是遇到问题后毫无思绪！</p><p>操作思路是这样，在云主机上搭建git仓库，使用nginx作为网页服务器，最终通过git将hexo博客部署到云主机上。</p><p>系统环境:Ubuntu Server 16.04.1 LTS 64位</p><h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="1-设置SSH登陆"><a href="#1-设置SSH登陆" class="headerlink" title="1.设置SSH登陆"></a>1.设置SSH登陆</h2><p>关于如何生成密钥请参考《SSH-Win10使用SSH免密拉取GitLab代码》。然后再window命令提示符执行如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id root@云主机ip</span><br></pre></td></tr></table></figure><p>将用户的公钥存储到远程主机上，过程会让你输入远程主机的密码（在购买ECS过程中有设置过的）。</p><ul><li><p>原理：用户将公钥储存在远程主机上。登录时，远程主机会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回给远程主机。远程主机用事先储存的公钥进行解密，如果成功，就证明用户是可信的，允许登录，不再要求密码。</p></li><li><p>注意：在window上执行命令时可能抛出” ‘ssh’ 不是内部或外部命令，也不是可运行的程序<br>或批处理文件。“问题，那么请在环境变量中添加如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GIT_HOME:C:\Program Files\Git</span><br><span class="line">然后编辑path新增</span><br><span class="line">%GIT_HOME%\bin</span><br><span class="line">然后在命令提示符输入：</span><br><span class="line">sh</span><br><span class="line">再执行</span><br><span class="line">ssh-copy-id root@云主机ip</span><br><span class="line">将公钥拷贝到远程云主机</span><br></pre></td></tr></table></figure></li><li><p>口令登陆：不用讲公钥拷贝到云主机，直接使用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@云主机ip</span><br></pre></td></tr></table></figure><p>然后按照提示输入主机root账户的登陆密码即可。</p></li></ul><h2 id="2-安装Git和nginx"><a href="#2-安装Git和nginx" class="headerlink" title="2.安装Git和nginx"></a>2.安装Git和nginx</h2><p>我这里使用的是Xshell访问云服务器，输入如下密令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install git-core nginx</span><br></pre></td></tr></table></figure><h2 id="3-配置nginx"><a href="#3-配置nginx" class="headerlink" title="3.配置nginx"></a>3.配置nginx</h2><p>执行如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/www/blog</span><br></pre></td></tr></table></figure><p>进入nginx配置文件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/conf.d/blog.conf</span><br></pre></td></tr></table></figure><p>配置如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 8080;</span><br><span class="line">    root /var/www/blog;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>重启nginx:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure><h2 id="4-Git-Hooks"><a href="#4-Git-Hooks" class="headerlink" title="4.Git Hooks"></a>4.Git Hooks</h2><p>我们要将hexo在本地生成的静态博客同步到远程git仓库。那么先要在远程主机上设置Git仓库，执行如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/blog.git &amp;&amp; cd ~/blog.git</span><br><span class="line">git init --bare</span><br></pre></td></tr></table></figure><p>配置Hooks脚本：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim blog.git/hooks/post-receive</span><br></pre></td></tr></table></figure><p>脚本如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/www/blog</span><br><span class="line">git clone /root/blog.git /var/www/blog</span><br></pre></td></tr></table></figure><p>解释：先将原有的blog删除，然后从仓库克隆一份到blog文件下。</p><p>注意：如果上面vim进入post-receive文件中，退出时有问题，则按照路径一步步进入到hooks文件夹下，再执行vim post-receive进入，编辑脚本，再保存退出即可。</p><h2 id="5-修改Hexo配置文件"><a href="#5-修改Hexo配置文件" class="headerlink" title="5.修改Hexo配置文件"></a>5.修改Hexo配置文件</h2><p>修改_config.yml如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: root@云主机ip:blog.git</span><br></pre></td></tr></table></figure><h2 id="6-部署"><a href="#6-部署" class="headerlink" title="6.部署"></a>6.部署</h2><p>依次输入如下密令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>让后打开浏览器输入：http://云主机ip:8080即可访问。</p><h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>将hexo部署到阿里云上相比部署到github上，还是复杂些。除了涉及服务器ECS购买，域名购买绑定，域名备案外，另外技术上还涉及SSH，ngnix，git等的使用。但考虑到阿里云具备的开篇所提到的两点好处，一切都值了！</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>将博客部署在GitHub上，不失为一种省时，省力，省钱的优选方案，但我打心底还是想部署到阿里云上面，主要出于两方面考虑，一是隐私（当然github也可操作）；二是稳定性，毕竟阿里云服可选国内的。</p><a id="more"></a><p>但事实确实验证上面所说的。博客前面整理了阿里云ECS购买，域名备案等流程（整理来自个人笔记），特别是域名备案，算不上复杂，但走流程是需要提供材料，然后你懂的，就是耐心等待！这也是第一次个人实操域名备案（之前只是买买ECS做开发测试用）。</p><p>且先不管域名备案是否通过，我们先了解下如何将博客部署到阿里云上。</p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>遇到问题不可怕，可怕的是遇到问题后毫无思绪！</p><p>操作思路是这样，在云主机上搭建git仓库，使用nginx作为网页服务器，最终通过git将hexo博客部署到云主机上。</p><p>系统环境:Ubuntu Server 16.04.1 LTS 64位</p><h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="1-设置SSH登陆"><a href="#1-设置SSH登陆" class="headerlink" title="1.设置SSH登陆"></a>1.设置SSH登陆</h2><p>关于如何生成密钥请参考《SSH-Win10使用SSH免密拉取GitLab代码》。然后再window命令提示符执行如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id root@云主机ip</span><br></pre></td></tr></table></figure><p>将用户的公钥存储到远程主机上，过程会让你输入远程主机的密码（在购买ECS过程中有设置过的）。</p><ul><li><p>原理：用户将公钥储存在远程主机上。登录时，远程主机会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回给远程主机。远程主机用事先储存的公钥进行解密，如果成功，就证明用户是可信的，允许登录，不再要求密码。</p></li><li><p>注意：在window上执行命令时可能抛出” ‘ssh’ 不是内部或外部命令，也不是可运行的程序<br>或批处理文件。“问题，那么请在环境变量中添加如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GIT_HOME:C:\Program Files\Git</span><br><span class="line">然后编辑path新增</span><br><span class="line">%GIT_HOME%\bin</span><br><span class="line">然后在命令提示符输入：</span><br><span class="line">sh</span><br><span class="line">再执行</span><br><span class="line">ssh-copy-id root@云主机ip</span><br><span class="line">将公钥拷贝到远程云主机</span><br></pre></td></tr></table></figure></li><li><p>口令登陆：不用讲公钥拷贝到云主机，直接使用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@云主机ip</span><br></pre></td></tr></table></figure><p>然后按照提示输入主机root账户的登陆密码即可。</p></li></ul><h2 id="2-安装Git和nginx"><a href="#2-安装Git和nginx" class="headerlink" title="2.安装Git和nginx"></a>2.安装Git和nginx</h2><p>我这里使用的是Xshell访问云服务器，输入如下密令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install git-core nginx</span><br></pre></td></tr></table></figure><h2 id="3-配置nginx"><a href="#3-配置nginx" class="headerlink" title="3.配置nginx"></a>3.配置nginx</h2><p>执行如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/www/blog</span><br></pre></td></tr></table></figure><p>进入nginx配置文件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/conf.d/blog.conf</span><br></pre></td></tr></table></figure><p>配置如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 8080;</span><br><span class="line">    root /var/www/blog;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>域名备案下来后如下配置：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name www.myhaloj.com myhaloj.com;</span><br><span class="line">    index index.html index.htm index.php default.html default.htm default.php;</span><br><span class="line">    root  /var/www/blog;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>重启nginx:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure><h2 id="4-Git-Hooks"><a href="#4-Git-Hooks" class="headerlink" title="4.Git Hooks"></a>4.Git Hooks</h2><p>我们要将hexo在本地生成的静态博客同步到远程git仓库。那么先要在远程主机上设置Git仓库，执行如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/blog.git &amp;&amp; cd ~/blog.git</span><br><span class="line">git init --bare</span><br></pre></td></tr></table></figure><p>配置Hooks脚本：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim blog.git/hooks/post-receive</span><br></pre></td></tr></table></figure><p>脚本如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/www/blog</span><br><span class="line">git clone /root/blog.git /var/www/blog</span><br></pre></td></tr></table></figure><p>解释：先将原有的blog删除，然后从仓库克隆一份到blog文件下。</p><p>注意：如果上面vim进入post-receive文件中，退出时有问题，则按照路径一步步进入到hooks文件夹下，再执行vim post-receive进入，编辑脚本，再保存退出即可。</p><h2 id="5-修改Hexo配置文件"><a href="#5-修改Hexo配置文件" class="headerlink" title="5.修改Hexo配置文件"></a>5.修改Hexo配置文件</h2><p>修改_config.yml如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: root@云主机ip:blog.git</span><br></pre></td></tr></table></figure><h2 id="6-部署"><a href="#6-部署" class="headerlink" title="6.部署"></a>6.部署</h2><p>依次输入如下密令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>让后打开浏览器输入：http://云主机ip:8080即可访问。</p><h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>将hexo部署到阿里云上相比部署到github上，还是复杂些。除了涉及服务器ECS购买，域名购买绑定，域名备案外，另外技术上还涉及SSH，ngnix，git等的使用。但考虑到阿里云具备的开篇所提到的两点好处，一切都值了！</p>]]></content>
       
       
       <categories>
