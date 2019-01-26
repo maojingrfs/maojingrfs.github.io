@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/01/26/Nginx-%E5%BF%85%E9%A1%BB%E7%9F%A5%E9%81%93%E7%9A%84nginx.conf/</loc>
+    
+    <lastmod>2019-01-26T09:36:42.966Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/01/26/SSL-Let's%20Encrypt%20%E5%85%8D%E8%B4%B9%E8%AF%81%E4%B9%A6%E5%88%B6%E4%BD%9C/</loc>
     
     <lastmod>2019-01-26T04:44:59.864Z</lastmod>

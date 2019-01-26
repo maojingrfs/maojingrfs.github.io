@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="SSH-Win10使用SSH免密拉取GitLab代码">
-<meta name="keywords" content="SSH,Win 10,rsa">
+  <meta name="description" content="这里将简要介绍Nginx，重点在于它的配置文件nginx.conf。">
+<meta name="keywords" content="Nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SSH-Win10使用SSH免密拉取GitLab代码">
-<meta property="og:url" content="http://yoursite.com/2019/01/17/SSH-Win10使用SSH免密拉取GitLab代码/index.html">
+<meta property="og:title" content="Nginx-必须知道的nginx.conf">
+<meta property="og:url" content="http://yoursite.com/2019/01/26/Nginx-必须知道的nginx.conf/index.html">
 <meta property="og:site_name" content="Mao Jing">
-<meta property="og:description" content="SSH-Win10使用SSH免密拉取GitLab代码">
+<meta property="og:description" content="这里将简要介绍Nginx，重点在于它的配置文件nginx.conf。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-17T05:52:58.804Z">
+<meta property="og:updated_time" content="2019-01-26T09:36:42.966Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SSH-Win10使用SSH免密拉取GitLab代码">
-<meta name="twitter:description" content="SSH-Win10使用SSH免密拉取GitLab代码">
+<meta name="twitter:title" content="Nginx-必须知道的nginx.conf">
+<meta name="twitter:description" content="这里将简要介绍Nginx，重点在于它的配置文件nginx.conf。">
 
 
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/17/SSH-Win10使用SSH免密拉取GitLab代码/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/26/Nginx-必须知道的nginx.conf/">
 
 
 
@@ -133,7 +133,7 @@
   };
 </script>
 
-  <title>SSH-Win10使用SSH免密拉取GitLab代码 | Mao Jing</title>
+  <title>Nginx-必须知道的nginx.conf | Mao Jing</title>
   
 
 
@@ -359,7 +359,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/17/SSH-Win10使用SSH免密拉取GitLab代码/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/26/Nginx-必须知道的nginx.conf/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mao Jing">
@@ -376,7 +376,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SSH-Win10使用SSH免密拉取GitLab代码
+          <h1 class="post-title" itemprop="name headline">Nginx-必须知道的nginx.conf
 
               
             
@@ -402,7 +402,7 @@
                 
               
 
-              <time title="创建时间：2019-01-17 13:42:07 / 修改时间：13:52:58" itemprop="dateCreated datePublished" datetime="2019-01-17T13:42:07+08:00">2019-01-17</time>
+              <time title="创建时间：2019-01-26 17:15:53 / 修改时间：17:36:42" itemprop="dateCreated datePublished" datetime="2019-01-26T17:15:53+08:00">2019-01-26</time>
             
 
             
@@ -424,7 +424,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/SSH/" itemprop="url" rel="index"><span itemprop="name">SSH</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
 
                 
                 
@@ -440,8 +440,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2019/01/17/SSH-Win10使用SSH免密拉取GitLab代码/#SOHUCS" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/01/17/SSH-Win10使用SSH免密拉取GitLab代码/" itemprop="commentsCount"></span>
+                <a href="/2019/01/26/Nginx-必须知道的nginx.conf/#SOHUCS" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/01/26/Nginx-必须知道的nginx.conf/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -449,7 +449,7 @@
 
           
           
-            <span id="/2019/01/17/SSH-Win10使用SSH免密拉取GitLab代码/" class="leancloud_visitors" data-flag-title="SSH-Win10使用SSH免密拉取GitLab代码">
+            <span id="/2019/01/26/Nginx-必须知道的nginx.conf/" class="leancloud_visitors" data-flag-title="Nginx-必须知道的nginx.conf">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -467,7 +467,7 @@
           
 
           
-            <div class="post-description">SSH-Win10使用SSH免密拉取GitLab代码</div>
+            <div class="post-description">这里将简要介绍Nginx，重点在于它的配置文件nginx.conf。</div>
           
 
         </span></div>
@@ -483,18 +483,21 @@
       
 
       
-        <h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p>1.打开电脑终端 cd 进入文件路径：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\Git\usr\bin</span><br></pre></td></tr></table></figure>
-<p>2.运行如下密令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;maojing&quot;</span><br><span class="line"></span><br><span class="line">注：后面的用户名根据实际情况填写，只要确保唯一性即可，填什么都可。</span><br></pre></td></tr></table></figure>
-<p>3.终端显示如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\Git\usr\bin&gt;ssh-keygen -trsa -C &quot;maojing&quot;</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/c/Users/Administrator/.ssh/id_rsa):</span><br><span class="line">Created directory &apos;/c/Users/Administrator/.ssh&apos;.</span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved in /c/Users/Administrator/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /c/Users/Administrator/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:NjSd5gVOH+iPNlfqV7eHtp9350ismT7oxEP2eEyEQJY maojing</span><br><span class="line">The key&apos;s randomart image is:</span><br><span class="line">+---[RSA 2048]----+</span><br><span class="line">|       .+.o..    |</span><br><span class="line">|       .E=.= .   |</span><br><span class="line">|        o.* +    |</span><br><span class="line">|       . +.o  .  |</span><br><span class="line">|        S +o.o   |</span><br><span class="line">|       . =+=+.  o|</span><br><span class="line">|         .==+ ooo|</span><br><span class="line">|         ..oo=+o*|</span><br><span class="line">|         ...=+o=B|</span><br><span class="line">+----[SHA256]-----+</span><br><span class="line"></span><br><span class="line">C:\Program Files\Git\usr\bin&gt;</span><br></pre></td></tr></table></figure>
-<p>4.获取公钥</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Your public key has been saved in /c/Users/Administrator/.ssh/id_rsa.pub.</span><br><span class="line"></span><br><span class="line">根据这句话即可找到公钥</span><br></pre></td></tr></table></figure>
-<p>5.gitlab后台添加公钥</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">点击用户-设置-SSH密钥，将上面复制的密钥粘贴进对应的位置，点击add key即可。</span><br></pre></td></tr></table></figure>
-<p>6.ssh免密拉取远端代码到本地代码仓库</p>
-<p>剩余操作详见《gitLab http 操作》一文</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Nginx是什么以及它有多厉害这里就不多赘述，大家可自行上网科普下。我们先了解下Nginx几个常用功能，当然这不是这篇博客的重点（如何使用后面再逐一介绍），在这里我们将重点记录下nginx.conf配置文件。</p>
+<h1 id="功能概要"><a href="#功能概要" class="headerlink" title="功能概要"></a>功能概要</h1><h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><h3 id="1-正向代理"><a href="#1-正向代理" class="headerlink" title="1.正向代理"></a>1.正向代理</h3>
+<h3 id="2-反向代理"><a href="#2-反向代理" class="headerlink" title="2.反向代理"></a>2.反向代理</h3>
+<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><h3 id="1-轮询策略"><a href="#1-轮询策略" class="headerlink" title="1.轮询策略"></a>1.轮询策略</h3>
+<h3 id="2-加权轮询"><a href="#2-加权轮询" class="headerlink" title="2.加权轮询"></a>2.加权轮询</h3>
+<h3 id="3-IP-Hash"><a href="#3-IP-Hash" class="headerlink" title="3.IP Hash"></a>3.IP Hash</h3>
+<h2 id="web缓存"><a href="#web缓存" class="headerlink" title="web缓存"></a>web缓存</h2><p>Nginx可以对不同的文件做不同的缓存处理，配置灵活，并且支持FastCGI_Cache，主要用于对FastCGI的动态程序进行缓存。配合着第三方的ngx_cache_purge，对制定的URL缓存内容可以的进行增删管理。</p>
+<h1 id="配置文件nginx-conf"><a href="#配置文件nginx-conf" class="headerlink" title="配置文件nginx.conf"></a>配置文件nginx.conf</h1><p>默认内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">#user  nobody;</span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">#error_log  logs/error.log;</span><br><span class="line">#error_log  logs/error.log  notice;</span><br><span class="line">#error_log  logs/error.log  info;</span><br><span class="line"></span><br><span class="line">#pid        logs/nginx.pid;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    #log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">    #                  &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">    #                  &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</span><br><span class="line"></span><br><span class="line">    #access_log  logs/access.log  main;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    #tcp_nopush     on;</span><br><span class="line"></span><br><span class="line">    #keepalive_timeout  0;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    #gzip  on;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #error_page  404              /404.html;</span><br><span class="line"></span><br><span class="line">        # redirect server error pages to the static page /50x.html</span><br><span class="line">        #</span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        # proxy the PHP scripts to Apache listening on 127.0.0.1:80</span><br><span class="line">        #</span><br><span class="line">        #location ~ \.php$ &#123;</span><br><span class="line">        #    proxy_pass   http://127.0.0.1;</span><br><span class="line">        #&#125;</span><br><span class="line"></span><br><span class="line">        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span><br><span class="line">        #</span><br><span class="line">        #location ~ \.php$ &#123;</span><br><span class="line">        #    root           html;</span><br><span class="line">        #    fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">        #    fastcgi_index  index.php;</span><br><span class="line">        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span><br><span class="line">        #    include        fastcgi_params;</span><br><span class="line">        #&#125;</span><br><span class="line"></span><br><span class="line">        # deny access to .htaccess files, if Apache&apos;s document root</span><br><span class="line">        # concurs with nginx&apos;s one</span><br><span class="line">        #</span><br><span class="line">        #location ~ /\.ht &#123;</span><br><span class="line">        #    deny  all;</span><br><span class="line">        #&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # another virtual host using mix of IP-, name-, and port-based configuration</span><br><span class="line">    #</span><br><span class="line">    #server &#123;</span><br><span class="line">    #    listen       8000;</span><br><span class="line">    #    listen       somename:8080;</span><br><span class="line">    #    server_name  somename  alias  another.alias;</span><br><span class="line"></span><br><span class="line">    #    location / &#123;</span><br><span class="line">    #        root   html;</span><br><span class="line">    #        index  index.html index.htm;</span><br><span class="line">    #    &#125;</span><br><span class="line">    #&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # HTTPS server</span><br><span class="line">    #</span><br><span class="line">    #server &#123;</span><br><span class="line">    #    listen       443 ssl;</span><br><span class="line">    #    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    #    ssl_certificate      cert.pem;</span><br><span class="line">    #    ssl_certificate_key  cert.key;</span><br><span class="line"></span><br><span class="line">    #    ssl_session_cache    shared:SSL:1m;</span><br><span class="line">    #    ssl_session_timeout  5m;</span><br><span class="line"></span><br><span class="line">    #    ssl_ciphers  HIGH:!aNULL:!MD5;</span><br><span class="line">    #    ssl_prefer_server_ciphers  on;</span><br><span class="line"></span><br><span class="line">    #    location / &#123;</span><br><span class="line">    #        root   html;</span><br><span class="line">    #        index  index.html index.htm;</span><br><span class="line">    #    &#125;</span><br><span class="line">    #&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>整理后其结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">...              #全局块</span><br><span class="line"></span><br><span class="line">events &#123;         #events块</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http      #http块</span><br><span class="line">&#123;</span><br><span class="line">    ...   #http全局块</span><br><span class="line">    server        #server块</span><br><span class="line">    &#123; </span><br><span class="line">        ...       #server全局块</span><br><span class="line">        location [PATTERN]   #location块</span><br><span class="line">        &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">        location [PATTERN] </span><br><span class="line">        &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    server</span><br><span class="line">    &#123;</span><br><span class="line">      ...</span><br><span class="line">    &#125;</span><br><span class="line">    ...     #http全局块</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>各个模块功能注释：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、全局块：配置影响nginx全局的指令。一般有运行nginx服务器的用户组，nginx进程pid存放路径，日志存放路径，配置文件引入，允许生成worker process数等。</span><br><span class="line"></span><br><span class="line">2、events块：配置影响nginx服务器或与用户的网络连接。有每个进程的最大连接数，选取哪种事件驱动模型处理连接请求，是否允许同时接受多个网路连接，开启多个网络连接序列化等。</span><br><span class="line"></span><br><span class="line">3、http块：可以嵌套多个server，配置代理，缓存，日志定义等绝大多数功能和第三方模块的配置。如文件引入，mime-type定义，日志自定义，是否使用sendfile传输文件，连接超时时间，单连接请求数等。</span><br><span class="line"></span><br><span class="line">4、server块：配置虚拟主机的相关参数，一个http中可以有多个server。</span><br><span class="line"></span><br><span class="line">5、location块：配置请求的路由，以及各种页面的处理情况。</span><br></pre></td></tr></table></figure>
+<h1 id="配置例子"><a href="#配置例子" class="headerlink" title="配置例子"></a>配置例子</h1><p>下面有个配置案例作为参考：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">########### 每个指令必须有分号结束。#################</span><br><span class="line">#user administrator administrators;  #配置用户或者组，默认为nobody nobody。</span><br><span class="line">#worker_processes 2;  #允许生成的进程数，默认为1</span><br><span class="line">#pid /nginx/pid/nginx.pid;   #指定nginx进程运行文件存放地址</span><br><span class="line">error_log log/error.log debug;  #制定日志路径，级别。这个设置可以放入全局块，http块，server块，级别以此为：debug|info|notice|warn|error|crit|alert|emerg</span><br><span class="line">events &#123;</span><br><span class="line">    accept_mutex on;   #设置网路连接序列化，防止惊群现象发生，默认为on</span><br><span class="line">    multi_accept on;  #设置一个进程是否同时接受多个网络连接，默认为off</span><br><span class="line">    #use epoll;      #事件驱动模型，select|poll|kqueue|epoll|resig|/dev/poll|eventport</span><br><span class="line">    worker_connections  1024;    #最大连接数，默认为512</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;   #文件扩展名与文件类型映射表</span><br><span class="line">    default_type  application/octet-stream; #默认文件类型，默认为text/plain</span><br><span class="line">    #access_log off; #取消服务日志    </span><br><span class="line">    log_format myFormat &apos;$remote_addr–$remote_user [$time_local] $request $status $body_bytes_sent $http_referer $http_user_agent $http_x_forwarded_for&apos;; #自定义格式</span><br><span class="line">    access_log log/access.log myFormat;  #combined为日志格式的默认值</span><br><span class="line">    sendfile on;   #允许sendfile方式传输文件，默认为off，可以在http块，server块，location块。</span><br><span class="line">    sendfile_max_chunk 100k;  #每个进程每次调用传输数量不能大于设定的值，默认为0，即不设上限。</span><br><span class="line">    keepalive_timeout 65;  #连接超时时间，默认为75s，可以在http，server，location块。</span><br><span class="line"></span><br><span class="line">    upstream mysvr &#123;   </span><br><span class="line">      server 127.0.0.1:7878;</span><br><span class="line">      server 192.168.10.121:3333 backup;  #热备</span><br><span class="line">    &#125;</span><br><span class="line">    error_page 404 https://www.baidu.com; #错误页</span><br><span class="line">    server &#123;</span><br><span class="line">        keepalive_requests 120; #单连接请求上限次数。</span><br><span class="line">        listen       4545;   #监听端口</span><br><span class="line">        server_name  127.0.0.1;   #监听地址       </span><br><span class="line">        location  ~*^.+$ &#123;       #请求的url过滤，正则匹配，~为区分大小写，~*为不区分大小写。</span><br><span class="line">           #root path;  #根目录</span><br><span class="line">           #index vv.txt;  #设置默认页</span><br><span class="line">           proxy_pass  http://mysvr;  #请求转向mysvr 定义的服务器列表</span><br><span class="line">           deny 127.0.0.1;  #拒绝的ip</span><br><span class="line">           allow 172.18.5.54; #允许的ip           </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -518,11 +521,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/SSH/" rel="tag"><i class="fa fa-tag"></i> SSH</a>
-          
-            <a href="/tags/Win-10/" rel="tag"><i class="fa fa-tag"></i> Win 10</a>
-          
-            <a href="/tags/rsa/" rel="tag"><i class="fa fa-tag"></i> rsa</a>
+            <a href="/tags/Nginx/" rel="tag"><i class="fa fa-tag"></i> Nginx</a>
           
         </div>
       
@@ -555,8 +554,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/17/SSH-访问远程主机/" rel="next" title="SSH-访问远程主机">
-                <i class="fa fa-chevron-left"></i> SSH-访问远程主机
+              <a href="/2019/01/26/SSL-Let's Encrypt 免费证书制作/" rel="next" title="SSL-Let's Encrypt 免费证书制作">
+                <i class="fa fa-chevron-left"></i> SSL-Let's Encrypt 免费证书制作
               </a>
             
           </div>
@@ -564,10 +563,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/19/Docker-镜像/" rel="prev" title="Docker-镜像">
-                Docker-镜像 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -887,7 +882,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#流程"><span class="nav-number">1.</span> <span class="nav-text">流程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#功能概要"><span class="nav-number">2.</span> <span class="nav-text">功能概要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代理"><span class="nav-number">2.1.</span> <span class="nav-text">代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-正向代理"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.正向代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-反向代理"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.反向代理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#负载均衡"><span class="nav-number">2.2.</span> <span class="nav-text">负载均衡</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-轮询策略"><span class="nav-number">2.2.1.</span> <span class="nav-text">1.轮询策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-加权轮询"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.加权轮询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-IP-Hash"><span class="nav-number">2.2.3.</span> <span class="nav-text">3.IP Hash</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web缓存"><span class="nav-number">2.3.</span> <span class="nav-text">web缓存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置文件nginx-conf"><span class="nav-number">3.</span> <span class="nav-text">配置文件nginx.conf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置例子"><span class="nav-number">4.</span> <span class="nav-text">配置例子</span></a></li></ol></div>
             
 
           </div>
