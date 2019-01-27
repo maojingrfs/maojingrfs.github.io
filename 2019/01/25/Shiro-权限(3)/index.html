@@ -103,17 +103,18 @@
 
 
 
-  <meta name="description" content="大家好，我是Mao Jing ，欢迎来到我的个人Blog！">
+  <meta name="description" content="这里将进行权限相关操作。">
+<meta name="keywords" content="Shiro">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shiro-权限(3)">
 <meta property="og:url" content="http://yoursite.com/2019/01/25/Shiro-权限(3)/index.html">
 <meta property="og:site_name" content="Mao Jing">
-<meta property="og:description" content="大家好，我是Mao Jing ，欢迎来到我的个人Blog！">
+<meta property="og:description" content="这里将进行权限相关操作。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-25T09:20:56.230Z">
+<meta property="og:updated_time" content="2019-01-27T04:51:57.810Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shiro-权限(3)">
-<meta name="twitter:description" content="大家好，我是Mao Jing ，欢迎来到我的个人Blog！">
+<meta name="twitter:description" content="这里将进行权限相关操作。">
 
 
 
@@ -401,16 +402,46 @@
                 
               
 
-              <time title="创建时间：2019-01-25 17:14:53 / 修改时间：17:20:56" itemprop="dateCreated datePublished" datetime="2019-01-25T17:14:53+08:00">2019-01-25</time>
+              <time title="创建时间：2019-01-25 17:14:53" itemprop="dateCreated datePublished" datetime="2019-01-25T17:14:53+08:00">2019-01-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-27 12:51:57" itemprop="dateModified" datetime="2019-01-27T12:51:57+08:00">2019-01-27</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Shiro/" itemprop="url" rel="index"><span itemprop="name">Shiro</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -448,6 +479,8 @@
           
 
           
+            <div class="post-description">这里将进行权限相关操作。</div>
+          
 
         </span></div>
       </header>
@@ -462,7 +495,19 @@
       
 
       
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在第二篇《Shiro-验证(2)》，项目运行后，当登陆验证通过后，几个页面都是可以正常访问的，但我们的<code>System.out.println(&quot;开始权限配置&quot;);</code>这句不会打印，也就是说，任何用户只要通过验证登陆后，程序并未对用户进行角色授权，现实开发中这是坚决不允许出现的情况。为此我们需要进一步做如下操作。</p>
+<h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><h2 id="1-UserInfoController"><a href="#1-UserInfoController" class="headerlink" title="1. UserInfoController"></a>1. UserInfoController</h2><p>新建UserInfoController：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.shiro.authz.annotation.RequiresPermissions;</span><br><span class="line">import org.springframework.stereotype.Controller;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"></span><br><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;/userInfo&quot;)</span><br><span class="line">public class UserInfoController &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 用户查询.</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/userList&quot;)</span><br><span class="line">    public String userInfo()&#123;</span><br><span class="line">        return &quot;userInfo&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 用户添加;</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/userAdd&quot;)</span><br><span class="line">    public String userInfoAdd()&#123;</span><br><span class="line">        return &quot;userAdd&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 用户删除</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/userDel&quot;)</span><br><span class="line">    public String userInfoDel() &#123;</span><br><span class="line">        return &quot;userDel&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-开启Shiro-AOP注解支持"><a href="#2-开启Shiro-AOP注解支持" class="headerlink" title="2.开启Shiro AOP注解支持"></a>2.开启Shiro AOP注解支持</h2><p>在ShiroConfiguration中添加如下代码（实质上，在《Shiro-验证(2)》中已经配置好了）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> *  开启shiro aop注解支持.</span><br><span class="line"> *  使用代理方式;所以需要开启代码支持;</span><br><span class="line"> * @param securityManager</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">@Bean</span><br><span class="line">public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager)&#123;</span><br><span class="line">    AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();</span><br><span class="line">    authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);</span><br><span class="line">    return authorizationAttributeSourceAdvisor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-再来到UserInfoController"><a href="#3-再来到UserInfoController" class="headerlink" title="3.再来到UserInfoController"></a>3.再来到UserInfoController</h2><p>添加权限注解如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import org.apache.shiro.authz.annotation.RequiresPermissions;</span><br><span class="line">import org.springframework.stereotype.Controller;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"></span><br><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;/userInfo&quot;)</span><br><span class="line">public class UserInfoController &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 用户查询.</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/userList&quot;)</span><br><span class="line">    @RequiresPermissions(&quot;userInfo:view&quot;)</span><br><span class="line">    public String userInfo()&#123;</span><br><span class="line">        return &quot;userInfo&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 用户添加;</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/userAdd&quot;)</span><br><span class="line">    @RequiresPermissions(&quot;userInfo:add&quot;)</span><br><span class="line">    public String userInfoAdd()&#123;</span><br><span class="line">        return &quot;userAdd&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 用户删除</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @RequestMapping(&quot;/userDel&quot;)</span><br><span class="line">    @RequiresPermissions(&quot;userInfo:del&quot;)</span><br><span class="line">    public String userInfoDel() &#123;</span><br><span class="line">        return &quot;userDel&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-测试"><a href="#4-测试" class="headerlink" title="4.测试"></a>4.测试</h2><p>这时我们登陆后在访问<code>http://localhost:8080/userInfo/userDel</code>将会抛出异常，同时控制台将打印<code>开始权限配置</code>这句话，说明权限验证生效了。</p>
+<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><h2 id="1-MyExceptionResolver"><a href="#1-MyExceptionResolver" class="headerlink" title="1.MyExceptionResolver"></a>1.MyExceptionResolver</h2><p>在exception包下创建MyExceptionResolver：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.shiro.authz.UnauthorizedException;</span><br><span class="line">import org.springframework.web.servlet.HandlerExceptionResolver;</span><br><span class="line">import org.springframework.web.servlet.ModelAndView;</span><br><span class="line"></span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line">public class MyExceptionResolver implements HandlerExceptionResolver &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) &#123;</span><br><span class="line">        if (e instanceof UnauthorizedException) &#123;</span><br><span class="line">            ModelAndView mv = new ModelAndView(&quot;/403&quot;);</span><br><span class="line">            return mv;</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-启动类中注册bean"><a href="#2-启动类中注册bean" class="headerlink" title="2.启动类中注册bean"></a>2.启动类中注册bean</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 注册统一异常处理bean</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">@Bean</span><br><span class="line">public MyExceptionResolver myExceptionResolver() &#123;</span><br><span class="line">    return new MyExceptionResolver();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>到此用户在通过Shiro身份认证后，是否有权限访问其它页面进行操作的权限验证也实现。当然这里是比较简单的例子，但通过例子理解原理后，在一步步拓展更复杂的功能，便好处理多了。</p>
+
       
     </div>
 
@@ -482,6 +527,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Shiro/" rel="tag"><i class="fa fa-tag"></i> Shiro</a>
+          
+        </div>
       
 
       
@@ -574,8 +625,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -824,6 +884,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流程"><span class="nav-number">2.</span> <span class="nav-text">流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-UserInfoController"><span class="nav-number">2.1.</span> <span class="nav-text">1. UserInfoController</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-开启Shiro-AOP注解支持"><span class="nav-number">2.2.</span> <span class="nav-text">2.开启Shiro AOP注解支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-再来到UserInfoController"><span class="nav-number">2.3.</span> <span class="nav-text">3.再来到UserInfoController</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-测试"><span class="nav-number">2.4.</span> <span class="nav-text">4.测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异常处理"><span class="nav-number">3.</span> <span class="nav-text">异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-MyExceptionResolver"><span class="nav-number">3.1.</span> <span class="nav-text">1.MyExceptionResolver</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-启动类中注册bean"><span class="nav-number">3.2.</span> <span class="nav-text">2.启动类中注册bean</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

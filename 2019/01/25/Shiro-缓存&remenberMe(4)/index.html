@@ -103,17 +103,18 @@
 
 
 
-  <meta name="description" content="大家好，我是Mao Jing ，欢迎来到我的个人Blog！">
+  <meta name="description" content="这里将添加记住我功能。">
+<meta name="keywords" content="Shiro">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shiro-缓存&amp;remenberMe(4)">
 <meta property="og:url" content="http://yoursite.com/2019/01/25/Shiro-缓存&remenberMe(4)/index.html">
 <meta property="og:site_name" content="Mao Jing">
-<meta property="og:description" content="大家好，我是Mao Jing ，欢迎来到我的个人Blog！">
+<meta property="og:description" content="这里将添加记住我功能。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-25T09:21:11.821Z">
+<meta property="og:updated_time" content="2019-01-27T05:34:17.045Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shiro-缓存&amp;remenberMe(4)">
-<meta name="twitter:description" content="大家好，我是Mao Jing ，欢迎来到我的个人Blog！">
+<meta name="twitter:description" content="这里将添加记住我功能。">
 
 
 
@@ -401,16 +402,46 @@
                 
               
 
-              <time title="创建时间：2019-01-25 17:15:32 / 修改时间：17:21:11" itemprop="dateCreated datePublished" datetime="2019-01-25T17:15:32+08:00">2019-01-25</time>
+              <time title="创建时间：2019-01-25 17:15:32" itemprop="dateCreated datePublished" datetime="2019-01-25T17:15:32+08:00">2019-01-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-27 13:34:17" itemprop="dateModified" datetime="2019-01-27T13:34:17+08:00">2019-01-27</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Shiro/" itemprop="url" rel="index"><span itemprop="name">Shiro</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -448,6 +479,8 @@
           
 
           
+            <div class="post-description">这里将添加记住我功能。</div>
+          
 
         </span></div>
       </header>
@@ -462,7 +495,25 @@
       
 
       
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前面我们实现了shiro身份认证和权限验证，但我们会发现一个问题：当Admin用户登录后，他每次访问<code>http://localhost:8080/userInfo/userDel</code>时，就会进行一次权限验证，我们会在控制台看见多次<code>开始权限配置</code>的打印。这显然是不合理的。如何处理呢？</p>
+<h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><h2 id="1-pom-xml"><a href="#1-pom-xml" class="headerlink" title="1.pom.xml"></a>1.pom.xml</h2><p>添加如下依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;shiro-ehcache&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.2.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-context-support&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="2-注入缓存"><a href="#2-注入缓存" class="headerlink" title="2.注入缓存"></a>2.注入缓存</h2><p>来到<code>ShiroConfiguration</code>添加如下方法（前面已经添加过的）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 注入缓存</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">@Bean</span><br><span class="line">public EhCacheManager ehCacheManager() &#123;</span><br><span class="line">    System.out.println(&quot;ShiroConfiguration.getEhCacheManager()&quot;);</span><br><span class="line">    EhCacheManager ehCacheManager = new EhCacheManager();</span><br><span class="line">    ehCacheManager.setCacheManagerConfigFile(&quot;classpath:config/ehcache-shiro.xml&quot;);</span><br><span class="line">    return ehCacheManager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注入到<code>SecurityManager</code>中（前面已经添加过的）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> *1.SecurityManager 是 Shiro 架构的核心，通过它来链接Realm和用户(文档中称之为Subject.)</span><br><span class="line"> * 2.注入缓存对象</span><br><span class="line"> * 3.注入rememberMeManager;</span><br><span class="line"> */</span><br><span class="line">@Bean</span><br><span class="line">public SecurityManager securityManager() &#123;</span><br><span class="line">    DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();</span><br><span class="line">    securityManager.setRealm(myShiroRealm());</span><br><span class="line">    securityManager.setCacheManager(ehCacheManager());</span><br><span class="line">    securityManager.setRememberMeManager(cookieRememberMeManager());</span><br><span class="line">    return securityManager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-ehcache-shiro-xml"><a href="#3-ehcache-shiro-xml" class="headerlink" title="3.ehcache-shiro.xml"></a>3.ehcache-shiro.xml</h2><p>来到<code>resources/config</code>添加ehcache-shiro.xml：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;ehcache name=&quot;es&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;diskStore path=&quot;java.io.tmpdir&quot;/&gt;</span><br><span class="line">    &lt;defaultCache</span><br><span class="line">            maxElementsInMemory=&quot;10000&quot;</span><br><span class="line">            eternal=&quot;false&quot;</span><br><span class="line">            timeToIdleSeconds=&quot;120&quot;</span><br><span class="line">            timeToLiveSeconds=&quot;120&quot;</span><br><span class="line">            overflowToDisk=&quot;false&quot;</span><br><span class="line">            diskPersistent=&quot;false&quot;</span><br><span class="line">            diskExpiryThreadIntervalSeconds=&quot;120&quot;</span><br><span class="line">    /&gt;</span><br><span class="line">    &lt;!-- 登录记录缓存锁定10分钟 --&gt;</span><br><span class="line">    &lt;cache name=&quot;passwordRetryCache&quot;</span><br><span class="line">           maxEntriesLocalHeap=&quot;2000&quot;</span><br><span class="line">           eternal=&quot;false&quot;</span><br><span class="line">           timeToIdleSeconds=&quot;3600&quot;</span><br><span class="line">           timeToLiveSeconds=&quot;0&quot;</span><br><span class="line">           overflowToDisk=&quot;false&quot;</span><br><span class="line">           statistics=&quot;true&quot;&gt;</span><br><span class="line">    &lt;/cache&gt;</span><br><span class="line"></span><br><span class="line">&lt;/ehcache&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="4-测试缓存"><a href="#4-测试缓存" class="headerlink" title="4.测试缓存"></a>4.测试缓存</h2><p>启动项目后，登陆，再多次访问<code>http://localhost:8080/userInfo/userDel</code>，可见控制台只打印了一次<code>开始权限配置</code>，配置成功；</p>
+<h2 id="5-来到ShiroConfiguration"><a href="#5-来到ShiroConfiguration" class="headerlink" title="5.来到ShiroConfiguration"></a>5.来到ShiroConfiguration</h2><p>来到<code>ShiroConfiguration</code>添加（前面已经添加过的）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * cookie对象</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">@Bean</span><br><span class="line">public SimpleCookie rememberMeCookie() &#123;</span><br><span class="line">    System.out.println(&quot;ShiroConfiguration.rememberMeCookie()&quot;);</span><br><span class="line">    //这个参数是cookie的名称，对应前端的checkbox的name = rememberMe</span><br><span class="line">    SimpleCookie simpleCookie = new SimpleCookie(&quot;rememberMe&quot;);</span><br><span class="line">    //&lt;!-- 记住我cookie生效时间30天 ,单位秒;--&gt;</span><br><span class="line">    simpleCookie.setMaxAge(259200);</span><br><span class="line">    return simpleCookie;</span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line"> * cookie管理对象</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">@Bean</span><br><span class="line">public CookieRememberMeManager cookieRememberMeManager() &#123;</span><br><span class="line">    System.out.println(&quot;ShiroConfiguration.rememberMeManager()&quot;);</span><br><span class="line">    CookieRememberMeManager manager = new CookieRememberMeManager();</span><br><span class="line">    manager.setCookie(rememberMeCookie());</span><br><span class="line">    return manager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注入到<code>SecurityManager</code>中（前面已经添加过的）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> *1.SecurityManager 是 Shiro 架构的核心，通过它来链接Realm和用户(文档中称之为Subject.)</span><br><span class="line"> * 2.注入缓存对象</span><br><span class="line"> * 3.注入rememberMeManager;</span><br><span class="line"> */</span><br><span class="line">@Bean</span><br><span class="line">public SecurityManager securityManager() &#123;</span><br><span class="line">    DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();</span><br><span class="line">    securityManager.setRealm(myShiroRealm());</span><br><span class="line">    securityManager.setCacheManager(ehCacheManager());</span><br><span class="line">    securityManager.setRememberMeManager(cookieRememberMeManager());</span><br><span class="line">    return securityManager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-ShiroFilterFactoryBean"><a href="#6-ShiroFilterFactoryBean" class="headerlink" title="6.ShiroFilterFactoryBean"></a>6.ShiroFilterFactoryBean</h2><p>添加记住我过滤user,添加user过滤器的资源，在用户登陆时选择记住我，验证通过后，用户便可访问。（我这里把所有的配置都放在这里了）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边（重点，重点，重点）</span><br><span class="line"> * @param securityManager</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">@Bean</span><br><span class="line">public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) &#123;</span><br><span class="line">    ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();</span><br><span class="line">    shiroFilterFactoryBean.setSecurityManager(securityManager);</span><br><span class="line">    //验证码过滤器</span><br><span class="line">    Map&lt;String, Filter&gt; filterMap = shiroFilterFactoryBean.getFilters();</span><br><span class="line">    KaptchaFilter kaptchaFilter = new KaptchaFilter();</span><br><span class="line">    filterMap.put(&quot;kaptchaFilter&quot;, kaptchaFilter);</span><br><span class="line">    //拦截器</span><br><span class="line">    Map&lt;String, String&gt; filterChainDefinitionMap = new LinkedHashMap&lt;&gt;();</span><br><span class="line">    //图片验证码(kaptcha框架)</span><br><span class="line">    filterChainDefinitionMap.put(&quot;/login&quot;, &quot;kaptchaFilter&quot;);</span><br><span class="line">    filterChainDefinitionMap.put(&quot;/kaptcha.jpg&quot;, &quot;anon&quot;);</span><br><span class="line">    //配置记住我,认证通过可以访问的地址</span><br><span class="line">    filterChainDefinitionMap.put(&quot;/index&quot;, &quot;user&quot;);</span><br><span class="line">    filterChainDefinitionMap.put(&quot;/&quot;, &quot;user&quot;);</span><br><span class="line">    //配置退出过滤器,其中的具体代码Shiro已经替我们实现了</span><br><span class="line">    filterChainDefinitionMap.put(&quot;/logout&quot;, &quot;logout&quot;);</span><br><span class="line">    //anon:有一些比如anon表示不需要验证身份就能访问等</span><br><span class="line">    filterChainDefinitionMap.put(&quot;/favicon.ico&quot;, &quot;anon&quot;);</span><br><span class="line">    //authc:所有url都必须认证通过才可以访问</span><br><span class="line">    filterChainDefinitionMap.put(&quot;/**&quot;, &quot;authc&quot;);</span><br><span class="line">    </span><br><span class="line">    shiroFilterFactoryBean.setFilters(filterMap);</span><br><span class="line">    shiroFilterFactoryBean.setLoginUrl(&quot;/login&quot;);</span><br><span class="line">    shiroFilterFactoryBean.setSuccessUrl(&quot;/index&quot;);</span><br><span class="line">    //这里设置403并不会起作用，参考http://www.jianshu.com/p/e03f5b54838c</span><br><span class="line">    shiroFilterFactoryBean.setUnauthorizedUrl(&quot;/403&quot;);</span><br><span class="line">    shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);</span><br><span class="line">    return shiroFilterFactoryBean;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="7-记住我验证"><a href="#7-记住我验证" class="headerlink" title="7.记住我验证"></a>7.记住我验证</h2><p>启动项目，勾选记住我，正常登陆后，再关闭浏览器，便可直接访问<code>http://localhost:8080/index</code>。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>在配置filterChainDefinitionMap时，因为过滤链定义是从上向下顺序执行，所以<code>filterChainDefinitionMap.put(&quot;/**&quot;, &quot;authc&quot;);</code>配置放在最下面，否则记住我是不起作用的哦！</p>
+
       
     </div>
 
@@ -482,6 +533,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Shiro/" rel="tag"><i class="fa fa-tag"></i> Shiro</a>
+          
+        </div>
       
 
       
@@ -574,8 +631,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -824,6 +890,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流程"><span class="nav-number">2.</span> <span class="nav-text">流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-pom-xml"><span class="nav-number">2.1.</span> <span class="nav-text">1.pom.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-注入缓存"><span class="nav-number">2.2.</span> <span class="nav-text">2.注入缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-ehcache-shiro-xml"><span class="nav-number">2.3.</span> <span class="nav-text">3.ehcache-shiro.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-测试缓存"><span class="nav-number">2.4.</span> <span class="nav-text">4.测试缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-来到ShiroConfiguration"><span class="nav-number">2.5.</span> <span class="nav-text">5.来到ShiroConfiguration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-ShiroFilterFactoryBean"><span class="nav-number">2.6.</span> <span class="nav-text">6.ShiroFilterFactoryBean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-记住我验证"><span class="nav-number">2.7.</span> <span class="nav-text">7.记住我验证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
