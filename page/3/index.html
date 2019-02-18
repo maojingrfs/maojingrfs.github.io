@@ -450,18 +450,6 @@
 
           
           
-            <span id="/2019/01/22/Docker Compose-实战Tomcat/" class="leancloud_visitors" data-flag-title="Docker Compose-实战Tomcat">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				
-            </span>
-          
 
           
 
@@ -651,18 +639,6 @@
 
           
           
-            <span id="/2019/01/21/Docker Compose-基础/" class="leancloud_visitors" data-flag-title="Docker Compose-基础">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				
-            </span>
-          
 
           
 
@@ -839,18 +815,6 @@
           
 
           
-          
-            <span id="/2019/01/20/Docker-常用命令/" class="leancloud_visitors" data-flag-title="Docker-常用命令">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				
-            </span>
           
 
           
@@ -1041,18 +1005,6 @@
 
           
           
-            <span id="/2019/01/20/Docker-MySql/" class="leancloud_visitors" data-flag-title="Docker-MySql">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				
-            </span>
-          
 
           
 
@@ -1241,18 +1193,6 @@
           
 
           
-          
-            <span id="/2019/01/19/Positive-Discipline-初衷/" class="leancloud_visitors" data-flag-title="Positive Discipline-初衷">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				
-            </span>
           
 
           
@@ -1443,18 +1383,6 @@
 
           
           
-            <span id="/2019/01/19/Docker-Tomcat/" class="leancloud_visitors" data-flag-title="Docker-Tomcat">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				
-            </span>
-          
 
           
 
@@ -1631,18 +1559,6 @@
           
 
           
-          
-            <span id="/2019/01/19/Docker-仓库/" class="leancloud_visitors" data-flag-title="Docker-仓库">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				
-            </span>
           
 
           
@@ -1821,18 +1737,6 @@
 
           
           
-            <span id="/2019/01/19/Docker-容器/" class="leancloud_visitors" data-flag-title="Docker-容器">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				
-            </span>
-          
 
           
 
@@ -2010,18 +1914,6 @@
 
           
           
-            <span id="/2019/01/19/Docker-镜像/" class="leancloud_visitors" data-flag-title="Docker-镜像">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				
-            </span>
-          
 
           
 
@@ -2198,18 +2090,6 @@
           
 
           
-          
-            <span id="/2019/01/17/SSH-Win10使用SSH免密拉取GitLab代码/" class="leancloud_visitors" data-flag-title="SSH-Win10使用SSH免密拉取GitLab代码">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-				
-            </span>
           
 
           
@@ -2731,74 +2611,6 @@
 
 
   
-  
-  <script>
-    
-    function showTime(Counter) {
-      var entries = [];
-      var $visitors = $('.leancloud_visitors');
-
-      $visitors.each(function() {
-        entries.push( $(this).attr('id').trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
-        .done(function({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for (var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if (countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log(`LeanCloud Counter Error: ${responseJSON.code} ${responseJSON.error}`);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'jeVUx0t2cQSn3dNpv0dwuUTT-gzGzoHsz')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': 'jeVUx0t2cQSn3dNpv0dwuUTT-gzGzoHsz',
-                'X-LC-Key': 'fJvte2SMCSqSU3jXhC0qFvaS',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            if ($('.post-title-link').length >= 1) {
-              showTime(Counter);
-            }
-          
-        });
-    });
-  </script>
-
-
 
   
 
