@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+<script> function GetRandomNum(Min,Max) { var Range = Max - Min; var Rand = Math.random(); return(Min + Math.round(Rand * Range)); } function setSidebarMarginTop (headerOffset) { return $('#sidebar').css({ 'margin-top': headerOffset }); } function getHeaderOffset () { return $('.header-inner').height() + CONFIG.sidebar.offset; } window.onload=function(){ var subtitle = "改变，源自於自我的一种用心进取，而不是等待什天赐良机。"; var mytitle = subtitle.split("W"); var max = mytitle.length-1; var index = GetRandomNum(0,max); var text = mytitle[index]; $("#helloTitle").html(text); var headOffset = getHeaderOffset(); setSidebarMarginTop(headOffset); // alert(getHeaderOffset()); } </script>
+
+
+
+  
+
+
+
+
+  <meta name="description" content="这里的demo实现client与server通信。">
+<meta name="keywords" content="Netty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Netty-简单客户端&#x2F;服务端通信（1）">
+<meta property="og:url" content="http://yoursite.com/2019/02/18/Netty-简单客户端-服务端通信（1）/index.html">
+<meta property="og:site_name" content="Mao Jing">
+<meta property="og:description" content="这里的demo实现client与server通信。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/02/18/Netty-简单客户端-服务端通信（1）/image1.jpg">
+<meta property="og:updated_time" content="2019-02-18T14:57:10.715Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Netty-简单客户端&#x2F;服务端通信（1）">
+<meta name="twitter:description" content="这里的demo实现client与server通信。">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/18/Netty-简单客户端-服务端通信（1）/image1.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mao Jing" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/18/Netty-简单客户端-服务端通信（1）/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Netty-简单客户端/服务端通信（1） | Mao Jing</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mao Jing</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">改变，源自於自我的一种用心进取，而不是等待什天赐良机。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>主页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-归档">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+<script> function GetRandomNum(Min,Max) { var Range = Max - Min; var Rand = Math.random(); return(Min + Math.round(Rand * Range)); } function setSidebarMarginTop (headerOffset) { return $('#sidebar').css({ 'margin-top': headerOffset }); } function getHeaderOffset () { return $('.header-inner').height() + CONFIG.sidebar.offset; } window.onload=function(){ var subtitle = "改变，源自於自我的一种用心进取，而不是等待什天赐良机。"; var mytitle = subtitle.split("W"); var max = mytitle.length-1; var index = GetRandomNum(0,max); var text = mytitle[index]; $("#helloTitle").html(text); var headOffset = getHeaderOffset(); setSidebarMarginTop(headOffset); // alert(getHeaderOffset()); } </script> 
+
+
+
+
+<script> function GetRandomNum(Min,Max) { var Range = Max - Min; var Rand = Math.random(); return(Min + Math.round(Rand * Range)); } function setSidebarMarginTop (headerOffset) { return $('#sidebar').css({ 'margin-top': headerOffset }); } function getHeaderOffset () { return $('.header-inner').height() + CONFIG.sidebar.offset; } window.onload=function(){ var subtitle = "改变，源自於自我的一种用心进取，而不是等待什天赐良机。"; var mytitle = subtitle.split("W"); var max = mytitle.length-1; var index = GetRandomNum(0,max); var text = mytitle[index]; $("#helloTitle").html(text); var headOffset = getHeaderOffset(); setSidebarMarginTop(headOffset); // alert(getHeaderOffset()); } </script>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/18/Netty-简单客户端-服务端通信（1）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mao Jing">
+      <meta itemprop="description" content="大家好，我是Mao Jing ，欢迎来到我的个人Blog！">
+      <meta itemprop="image" content="/images/avatar1.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mao Jing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Netty-简单客户端/服务端通信（1）
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">毛荆发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-18 22:48:26 / 修改时间：22:57:10" itemprop="dateCreated datePublished" datetime="2019-02-18T22:48:26+08:00">2019-02-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Netty/" itemprop="url" rel="index"><span itemprop="name">Netty</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/02/18/Netty-简单客户端-服务端通信（1）/#SOHUCS" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/02/18/Netty-简单客户端-服务端通信（1）/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+            <span id="/2019/02/18/Netty-简单客户端-服务端通信（1）/" class="leancloud_visitors" data-flag-title="Netty-简单客户端/服务端通信（1）">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+				
+            </span>
+          
+
+          
+
+          
+
+          
+            <div class="post-description">这里的demo实现client与server通信。</div>
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>demo使用IntelliJ IDEA，基于Spring Boot。结构如下图：</p>
+<img src="/2019/02/18/Netty-简单客户端-服务端通信（1）/image1.jpg">
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><h2 id="1-Client"><a href="#1-Client" class="headerlink" title="1.Client"></a>1.Client</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">package com.mj.hello.netty.client;</span><br><span class="line"></span><br><span class="line">import java.net.InetSocketAddress;</span><br><span class="line">import java.nio.charset.Charset;</span><br><span class="line"></span><br><span class="line">import io.netty.bootstrap.Bootstrap;</span><br><span class="line">import io.netty.channel.ChannelFuture;</span><br><span class="line">import io.netty.channel.ChannelInitializer;</span><br><span class="line">import io.netty.channel.EventLoopGroup;</span><br><span class="line">import io.netty.channel.nio.NioEventLoopGroup;</span><br><span class="line">import io.netty.channel.socket.SocketChannel;</span><br><span class="line">import io.netty.channel.socket.nio.NioSocketChannel;</span><br><span class="line">import io.netty.handler.codec.bytes.ByteArrayEncoder;</span><br><span class="line">import io.netty.handler.codec.string.StringEncoder;</span><br><span class="line">import io.netty.handler.stream.ChunkedWriteHandler;</span><br><span class="line"></span><br><span class="line">public class Client &#123;</span><br><span class="line">    private final String host;</span><br><span class="line">    private final int port;</span><br><span class="line"></span><br><span class="line">    public Client() &#123;</span><br><span class="line">        this(0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Client(int port) &#123;</span><br><span class="line">        this(&quot;localhost&quot;, port);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Client(String host, int port) &#123;</span><br><span class="line">        this.host = host;</span><br><span class="line">        this.port = port;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void start() throws Exception &#123;</span><br><span class="line">        EventLoopGroup group = new NioEventLoopGroup();</span><br><span class="line">        try &#123;</span><br><span class="line">            Bootstrap b = new Bootstrap();</span><br><span class="line">            b.group(group) // 注册线程池</span><br><span class="line">                    .channel(NioSocketChannel.class) // 使用NioSocketChannel来作为连接用的channel类</span><br><span class="line">                    .remoteAddress(new InetSocketAddress(this.host, this.port)) // 绑定连接端口和host信息</span><br><span class="line">                    .handler(new ChannelInitializer&lt;SocketChannel&gt;() &#123; // 绑定连接初始化器</span><br><span class="line">                        @Override</span><br><span class="line">                        protected void initChannel(SocketChannel ch) throws Exception &#123;</span><br><span class="line">                            System.out.println(&quot;正在连接中...&quot;);</span><br><span class="line">                            ch.pipeline().addLast(new StringEncoder(Charset.forName(&quot;GBK&quot;)));</span><br><span class="line">                            ch.pipeline().addLast(new ClientHandler());</span><br><span class="line">                            ch.pipeline().addLast(new ByteArrayEncoder());</span><br><span class="line">                            ch.pipeline().addLast(new ChunkedWriteHandler());</span><br><span class="line"></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;);</span><br><span class="line">            // System.out.println(&quot;服务端连接成功..&quot;);</span><br><span class="line"></span><br><span class="line">            ChannelFuture cf = b.connect().sync(); // 异步连接服务器</span><br><span class="line">            System.out.println(&quot;服务端连接成功...&quot;); // 连接完成</span><br><span class="line"></span><br><span class="line">            cf.channel().closeFuture().sync(); // 异步等待关闭连接channel</span><br><span class="line">            System.out.println(&quot;连接已关闭..&quot;); // 关闭完成</span><br><span class="line"></span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            group.shutdownGracefully().sync(); // 释放线程池资源</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        new Client(&quot;127.0.0.1&quot;, 8888).start(); // 连接127.0.0.1/65535，并启动</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-ClientHandler"><a href="#2-ClientHandler" class="headerlink" title="2.ClientHandler"></a>2.ClientHandler</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">package com.mj.hello.netty.client;</span><br><span class="line"></span><br><span class="line">import java.nio.charset.Charset;</span><br><span class="line"></span><br><span class="line">import io.netty.buffer.ByteBuf;</span><br><span class="line">import io.netty.buffer.ByteBufUtil;</span><br><span class="line">import io.netty.buffer.Unpooled;</span><br><span class="line">import io.netty.channel.ChannelHandlerContext;</span><br><span class="line">import io.netty.channel.SimpleChannelInboundHandler;</span><br><span class="line">import io.netty.util.CharsetUtil;</span><br><span class="line"></span><br><span class="line">public class ClientHandler extends SimpleChannelInboundHandler&lt;ByteBuf&gt; &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 向服务端发送数据</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public void channelActive(ChannelHandlerContext ctx) throws Exception &#123;</span><br><span class="line">        System.out.println(&quot;客户端与服务端通道-开启：&quot; + ctx.channel().localAddress() + &quot;channelActive&quot;);</span><br><span class="line"></span><br><span class="line">        String sendInfo = &quot;Hello 这里是客户端  你好啊！&quot;;</span><br><span class="line">        System.out.println(&quot;客户端准备发送的数据包：&quot; + sendInfo);</span><br><span class="line">        ctx.writeAndFlush(Unpooled.copiedBuffer(sendInfo, CharsetUtil.UTF_8)); // 必须有flush</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * channelInactive</span><br><span class="line">     *</span><br><span class="line">     * channel 通道 Inactive 不活跃的</span><br><span class="line">     *</span><br><span class="line">     * 当客户端主动断开服务端的链接后，这个通道就是不活跃的。也就是说客户端与服务端的关闭了通信通道并且不可以传输数据</span><br><span class="line">     *</span><br><span class="line">     */</span><br><span class="line">    public void channelInactive(ChannelHandlerContext ctx) throws Exception &#123;</span><br><span class="line">        System.out.println(&quot;客户端与服务端通道-关闭：&quot; + ctx.channel().localAddress() + &quot;channelInactive&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception &#123;</span><br><span class="line">        System.out.println(&quot;读取客户端通道信息..&quot;);</span><br><span class="line">        ByteBuf buf = msg.readBytes(msg.readableBytes());</span><br><span class="line">        System.out.println(</span><br><span class="line">                &quot;客户端接收到的服务端信息:&quot; + ByteBufUtil.hexDump(buf) + &quot;; 数据包为:&quot; + buf.toString(Charset.forName(&quot;utf-8&quot;)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception &#123;</span><br><span class="line">        ctx.close();</span><br><span class="line">        System.out.println(&quot;异常退出:&quot; + cause.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-Server"><a href="#3-Server" class="headerlink" title="3.Server"></a>3.Server</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">package com.mj.hello.netty.server;</span><br><span class="line"></span><br><span class="line">import java.nio.charset.Charset;</span><br><span class="line"></span><br><span class="line">import io.netty.bootstrap.ServerBootstrap;</span><br><span class="line">import io.netty.channel.ChannelFuture;</span><br><span class="line">import io.netty.channel.ChannelInitializer;</span><br><span class="line">import io.netty.channel.ChannelOption;</span><br><span class="line">import io.netty.channel.EventLoopGroup;</span><br><span class="line">import io.netty.channel.nio.NioEventLoopGroup;</span><br><span class="line">import io.netty.channel.socket.SocketChannel;</span><br><span class="line">import io.netty.channel.socket.nio.NioServerSocketChannel;</span><br><span class="line">import io.netty.handler.codec.bytes.ByteArrayEncoder;</span><br><span class="line">import io.netty.handler.codec.string.StringEncoder;</span><br><span class="line"></span><br><span class="line">public class Server &#123;</span><br><span class="line">    private final int port;</span><br><span class="line"></span><br><span class="line">    public Server(int port) &#123;</span><br><span class="line">        this.port = port;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void start() throws Exception &#123;</span><br><span class="line">        EventLoopGroup bossGroup = new NioEventLoopGroup();</span><br><span class="line"></span><br><span class="line">        EventLoopGroup group = new NioEventLoopGroup();</span><br><span class="line">        try &#123;</span><br><span class="line">            ServerBootstrap sb = new ServerBootstrap();</span><br><span class="line">            sb.option(ChannelOption.SO_BACKLOG, 1024);</span><br><span class="line">            sb.group(group, bossGroup) // 绑定线程池</span><br><span class="line">                    .channel(NioServerSocketChannel.class) // 指定使用的channel</span><br><span class="line">                    .localAddress(this.port)// 绑定监听端口</span><br><span class="line">                    .childHandler(new ChannelInitializer&lt;SocketChannel&gt;() &#123; // 绑定客户端连接时候触发操作</span><br><span class="line"></span><br><span class="line">                        @Override</span><br><span class="line">                        protected void initChannel(SocketChannel ch) throws Exception &#123;</span><br><span class="line">                            System.out.println(&quot;报告&quot;);</span><br><span class="line">                            System.out.println(&quot;信息：有一客户端链接到本服务端&quot;);</span><br><span class="line">                            System.out.println(&quot;IP:&quot; + ch.localAddress().getHostName());</span><br><span class="line">                            System.out.println(&quot;Port:&quot; + ch.localAddress().getPort());</span><br><span class="line">                            System.out.println(&quot;报告完毕&quot;);</span><br><span class="line"></span><br><span class="line">                            ch.pipeline().addLast(new StringEncoder(Charset.forName(&quot;GBK&quot;)));</span><br><span class="line">                            ch.pipeline().addLast(new ServerHandler()); // 客户端触发操作</span><br><span class="line">                            ch.pipeline().addLast(new ByteArrayEncoder());</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;);</span><br><span class="line">            ChannelFuture cf = sb.bind().sync(); // 服务器异步创建绑定</span><br><span class="line">            System.out.println(Server.class + &quot; 启动正在监听： &quot; + cf.channel().localAddress());</span><br><span class="line">            cf.channel().closeFuture().sync(); // 关闭服务器通道</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            group.shutdownGracefully().sync(); // 释放线程池资源</span><br><span class="line">            bossGroup.shutdownGracefully().sync();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        new Server(8888).start(); // 启动</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-ServerHandler"><a href="#4-ServerHandler" class="headerlink" title="4.ServerHandler"></a>4.ServerHandler</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">package com.mj.hello.netty.server;</span><br><span class="line"></span><br><span class="line">import java.io.BufferedOutputStream;</span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileNotFoundException;</span><br><span class="line">import java.io.FileOutputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.UnsupportedEncodingException;</span><br><span class="line">import java.text.SimpleDateFormat;</span><br><span class="line">import java.util.Date;</span><br><span class="line"></span><br><span class="line">import io.netty.buffer.ByteBuf;</span><br><span class="line">import io.netty.buffer.Unpooled;</span><br><span class="line">import io.netty.channel.ChannelFutureListener;</span><br><span class="line">import io.netty.channel.ChannelHandlerContext;</span><br><span class="line">import io.netty.channel.ChannelInboundHandlerAdapter;</span><br><span class="line"></span><br><span class="line">public class ServerHandler extends ChannelInboundHandlerAdapter &#123;</span><br><span class="line"></span><br><span class="line">    /*</span><br><span class="line">     * channelAction</span><br><span class="line">     *</span><br><span class="line">     * channel 通道 action 活跃的</span><br><span class="line">     *</span><br><span class="line">     * 当客户端主动链接服务端的链接后，这个通道就是活跃的了。也就是客户端与服务端建立了通信通道并且可以传输数据</span><br><span class="line">     *</span><br><span class="line">     */</span><br><span class="line">    public void channelActive(ChannelHandlerContext ctx) throws Exception &#123;</span><br><span class="line">        System.out.println(ctx.channel().localAddress().toString() + &quot; 通道已激活！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /*</span><br><span class="line">     * channelInactive</span><br><span class="line">     *</span><br><span class="line">     * channel 通道 Inactive 不活跃的</span><br><span class="line">     *</span><br><span class="line">     * 当客户端主动断开服务端的链接后，这个通道就是不活跃的。也就是说客户端与服务端的关闭了通信通道并且不可以传输数据</span><br><span class="line">     *</span><br><span class="line">     */</span><br><span class="line">    public void channelInactive(ChannelHandlerContext ctx) throws Exception &#123;</span><br><span class="line">        System.out.println(ctx.channel().localAddress().toString() + &quot; 通道不活跃！&quot;);</span><br><span class="line">        // 关闭流</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     *</span><br><span class="line">     * @author Taowd</span><br><span class="line">     * TODO  此处用来处理收到的数据中含有中文的时  出现乱码的问题</span><br><span class="line">     * 2017年8月31日 下午7:57:28</span><br><span class="line">     * @param buf</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    private String getMessage(ByteBuf buf) &#123;</span><br><span class="line">        byte[] con = new byte[buf.readableBytes()];</span><br><span class="line">        buf.readBytes(con);</span><br><span class="line">        try &#123;</span><br><span class="line">            return new String(con, &quot;UTF-8&quot;);</span><br><span class="line">        &#125; catch (UnsupportedEncodingException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 功能：读取服务器发送过来的信息</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception &#123;</span><br><span class="line">        // 第一种：接收字符串时的处理</span><br><span class="line">        ByteBuf buf = (ByteBuf) msg;</span><br><span class="line">        String rev = getMessage(buf);</span><br><span class="line">        System.out.println(&quot;客户端收到服务器数据:&quot; + rev);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 功能：读取完毕客户端发送过来的数据之后的操作</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception &#123;</span><br><span class="line">        System.out.println(&quot;服务端接收数据完毕..&quot;);</span><br><span class="line">        // 第一种方法：写一个空的buf，并刷新写出区域。完成后关闭sock channel连接。</span><br><span class="line">        ctx.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);</span><br><span class="line">        // ctx.flush();</span><br><span class="line">        // ctx.flush(); //</span><br><span class="line">        // 第二种方法：在client端关闭channel连接，这样的话，会触发两次channelReadComplete方法。</span><br><span class="line">        // ctx.flush().close().sync(); // 第三种：改成这种写法也可以，但是这中写法，没有第一种方法的好。</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 功能：服务端发生异常的操作</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception &#123;</span><br><span class="line">        ctx.close();</span><br><span class="line">        System.out.println(&quot;异常信息：\r\n&quot; + cause.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>先运行Server,再运行Client.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Netty/" rel="tag"><i class="fa fa-tag"></i> Netty</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/18/Netty-初识（一）/" rel="next" title="Netty-初识（一）">
+                <i class="fa fa-chevron-left"></i> Netty-初识（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar1.JPG" alt="Mao Jing">
+            
+              <p class="site-author-name" itemprop="name">Mao Jing</p>
+              <p class="site-description motion-element" itemprop="description">大家好，我是Mao Jing ，欢迎来到我的个人Blog！</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/maojingrfs" title="GitHub &rarr; https://github.com/maojingrfs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:my_haloj@163.com" title="E-Mail &rarr; mailto:my_haloj@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/p/1005056928837982/home" title="Weibo &rarr; https://weibo.com/p/1005056928837982/home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+		  <!-- 音乐播放器 -->
+		  <div>
+		  
+		  	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=427017519&auto=1&height=66"></iframe>
+		  
+		  </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="https://www.github.com" rel="noopener" target="_blank">GitHub</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.csdn.net/" title="https://www.csdn.net/" rel="noopener" target="_blank">CSDN</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#步骤"><span class="nav-number">2.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Client"><span class="nav-number">2.1.</span> <span class="nav-text">1.Client</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ClientHandler"><span class="nav-number">2.2.</span> <span class="nav-text">2.ClientHandler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Server"><span class="nav-number">2.3.</span> <span class="nav-text">3.Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-ServerHandler"><span class="nav-number">2.4.</span> <span class="nav-text">4.ServerHandler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行"><span class="nav-number">2.5.</span> <span class="nav-text">运行</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mao Jing</span>
+
+  
+
+  
+</div>
+
+<div class="BbeiAn-info">
+   	粤ICP备 -
+    <a target="_blank" href="http://www.miitbeian.gov.cn/" style="color:#f0d784" rel="nofollow">19010389</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->| 
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=19010389" style="color:#f0d784;text-decoration:none;padding-left:30px;background:url(https://s1.ax1x.com/2018/09/29/ilmwIH.png) no-repeat left center" rel="nofollow">粤ICP备19010389号</a>	  <!--这里将图标作为了背景，以使得能和后面的文字在同一行-->
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+  
+    
+  <script>
+  (function() {
+    var appid = 'cyu3o96qx';
+    var conf = '4ba56c61b5814866204a37f4c15c18a2';
+    var width = window.innerWidth || document.documentElement.clientWidth;
+    if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+    }
+    else {
+      var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+      window.changyan.api.config({appid:appid,conf:conf})});
+    }
+  })();
+  </script>
+  <script src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log(`Failed to save Visitor num, with error message: ${responseJSON.error}`);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log(`LeanCloud Counter Error: ${responseJSON.code} ${responseJSON.error}`);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'jeVUx0t2cQSn3dNpv0dwuUTT-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'jeVUx0t2cQSn3dNpv0dwuUTT-gzGzoHsz',
+                'X-LC-Key': 'fJvte2SMCSqSU3jXhC0qFvaS',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
