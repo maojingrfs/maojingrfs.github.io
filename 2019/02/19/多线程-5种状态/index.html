@@ -103,20 +103,18 @@
 
 
 
-  <meta name="description" content="前言Linux 更多的是应用于服务器上，而桌面操作系统更多使用的是 Windows。">
-<meta name="keywords" content="基础设施即服务(IaaS)">
+  <meta name="description" content="在Java当中，线程通常都有五种状态，创建、就绪、运行、阻塞和死亡。">
+<meta name="keywords" content="Thread">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux-简介">
-<meta property="og:url" content="http://yoursite.com/2019/01/09/Linux-简介/index.html">
+<meta property="og:title" content="多线程-5种状态">
+<meta property="og:url" content="http://yoursite.com/2019/02/19/多线程-5种状态/index.html">
 <meta property="og:site_name" content="Mao Jing">
-<meta property="og:description" content="前言Linux 更多的是应用于服务器上，而桌面操作系统更多使用的是 Windows。">
+<meta property="og:description" content="在Java当中，线程通常都有五种状态，创建、就绪、运行、阻塞和死亡。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/01/09/Linux-简介/image1.png">
-<meta property="og:updated_time" content="2019-01-09T07:42:32.591Z">
+<meta property="og:updated_time" content="2019-02-19T06:50:34.479Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux-简介">
-<meta name="twitter:description" content="前言Linux 更多的是应用于服务器上，而桌面操作系统更多使用的是 Windows。">
-<meta name="twitter:image" content="http://yoursite.com/2019/01/09/Linux-简介/image1.png">
+<meta name="twitter:title" content="多线程-5种状态">
+<meta name="twitter:description" content="在Java当中，线程通常都有五种状态，创建、就绪、运行、阻塞和死亡。">
 
 
 
@@ -125,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/09/Linux-简介/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/19/多线程-5种状态/">
 
 
 
@@ -135,7 +133,7 @@
   };
 </script>
 
-  <title>Linux-简介 | Mao Jing</title>
+  <title>多线程-5种状态 | Mao Jing</title>
   
 
 
@@ -361,7 +359,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/09/Linux-简介/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/19/多线程-5种状态/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mao Jing">
@@ -378,7 +376,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux-简介
+          <h1 class="post-title" itemprop="name headline">多线程-5种状态
 
               
             
@@ -404,7 +402,7 @@
                 
               
 
-              <time title="创建时间：2019-01-09 15:22:57 / 修改时间：15:42:32" itemprop="dateCreated datePublished" datetime="2019-01-09T15:22:57+08:00">2019-01-09</time>
+              <time title="创建时间：2019-02-19 14:42:33 / 修改时间：14:50:34" itemprop="dateCreated datePublished" datetime="2019-02-19T14:42:33+08:00">2019-02-19</time>
             
 
             
@@ -426,7 +424,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Thread/" itemprop="url" rel="index"><span itemprop="name">Thread</span></a></span>
 
                 
                 
@@ -442,8 +440,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2019/01/09/Linux-简介/#SOHUCS" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/01/09/Linux-简介/" itemprop="commentsCount"></span>
+                <a href="/2019/02/19/多线程-5种状态/#SOHUCS" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/02/19/多线程-5种状态/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -456,6 +454,8 @@
 
           
 
+          
+            <div class="post-description">在Java当中，线程通常都有五种状态，创建、就绪、运行、阻塞和死亡。</div>
           
 
         </span></div>
@@ -471,14 +471,15 @@
       
 
       
-        <img src="/2019/01/09/Linux-简介/image1.png">
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Linux 更多的是应用于服务器上，而桌面操作系统更多使用的是 Windows。</p>
-<a id="more"></a>
-<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>Linux是一套免费使用和自由传播的<a href="https://baike.baidu.com/item/%E7%B1%BBUnix" target="_blank" rel="noopener">类Unix</a><a href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/192" target="_blank" rel="noopener">操作系统</a>，是一个基于<a href="https://baike.baidu.com/item/POSIX" target="_blank" rel="noopener">POSIX</a>和<a href="https://baike.baidu.com/item/UNIX" target="_blank" rel="noopener">UNIX</a>的多用户、<a href="https://baike.baidu.com/item/%E5%A4%9A%E4%BB%BB%E5%8A%A1/1011764" target="_blank" rel="noopener">多任务</a>、支持<a href="https://baike.baidu.com/item/%E5%A4%9A%E7%BA%BF%E7%A8%8B/1190404" target="_blank" rel="noopener">多线程</a>和多<a href="https://baike.baidu.com/item/CPU" target="_blank" rel="noopener">CPU</a>的操作系统。它能运行主要的UNIX工具软件、应用程序和网络协议。它支持<a href="https://baike.baidu.com/item/32%E4%BD%8D/5812218" target="_blank" rel="noopener">32位</a>和<a href="https://baike.baidu.com/item/64%E4%BD%8D" target="_blank" rel="noopener">64位</a>硬件。Linux继承了<a href="https://baike.baidu.com/item/Unix" target="_blank" rel="noopener">Unix</a>以<a href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C/143243" target="_blank" rel="noopener">网络</a>为核心的设计思想，是一个性能稳定的多用户网络操作系统。</p>
-<p>Linux操作系统诞生于1991 年10 月5 日（这是第一次正式向外公布时间）。Linux存在着许多不同的Linux版本，但它们都使用了<a href="https://baike.baidu.com/item/Linux%E5%86%85%E6%A0%B8" target="_blank" rel="noopener">Linux内核</a>。Linux可安装在各种计算机硬件设备中，比如<a href="https://baike.baidu.com/item/%E6%89%8B%E6%9C%BA/6342" target="_blank" rel="noopener">手机</a>、<a href="https://baike.baidu.com/item/%E5%B9%B3%E6%9D%BF%E7%94%B5%E8%84%91/1348389" target="_blank" rel="noopener">平板电脑</a>、<a href="https://baike.baidu.com/item/%E8%B7%AF%E7%94%B1%E5%99%A8/108294" target="_blank" rel="noopener">路由器</a>、视频游戏控制台、台式计算机、大型机和超级计算机。</p>
-<p>严格来讲，Linux这个词本身只表示Linux内核，但实际上人们已经习惯了用Linux来形容整个基于Linux内核，并且使用<a href="https://baike.baidu.com/item/GNU" target="_blank" rel="noopener">GNU</a>工程各种工具和数据库的操作系统。</p>
-<p>目前市面上较知名的发行版有：<code>Ubuntu</code>、RedHat、<code>CentOS</code>、Debian、Fedora、SuSE、OpenSUSE、TurboLinux、BluePoint、RedFlag、Xterm、SlackWare等。</p>
-<h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><p>百度百科</p>
+        <h1 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h1><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><p>当new出线程对象，并没有调用该对象的start方法，这是线程处于创建状态。 </p>
+<p>　　## 就绪</p>
+<p>当调用了线程对象的start方法之后，该线程就进入了就绪状态，但是此时线程调度程序还没有把该线程设置为当前线程，只是告诉CPU我已经进入了等待被调用的状态了，此时处于就绪状态。在线程运行之后，从等待或者睡眠中回来之后，也会处于就绪状态。 </p>
+<p>　　## 运行</p>
+<p>线程调度程序将处于就绪状态的线程设置为当前线程，此时线程就进入了运行状态，开始运行run函数当中的代码。 </p>
+<p>　　## 阻塞</p>
+<p>线程正在运行的时候，被暂停，通常是为了等待某个事件的发生(比如说某项资源就绪)之后再继续运行。sleep，suspend，wait等方法都可以导致线程阻塞。 </p>
+<h2 id="死亡"><a href="#死亡" class="headerlink" title="死亡"></a>死亡</h2><p>如果一个线程的run方法执行结束或者调用stop方法后，该线程就会死亡。对于已经死亡的线程，无法再使用start方法令其进入就绪。</p>
+<h1 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h1><h2 id="1-Thread-类中的start-和-run-方法有什么区别？"><a href="#1-Thread-类中的start-和-run-方法有什么区别？" class="headerlink" title="1.Thread 类中的start() 和 run() 方法有什么区别？"></a>1.Thread 类中的start() 和 run() 方法有什么区别？</h2><p>当你调用run()方法的时候，只会是在原来的线程中调用，没有新的线程启动，start()方法才会启动新线程。</p>
 
       
     </div>
@@ -502,7 +503,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/基础设施即服务-IaaS/" rel="tag"><i class="fa fa-tag"></i> 基础设施即服务(IaaS)</a>
+            <a href="/tags/Thread/" rel="tag"><i class="fa fa-tag"></i> Thread</a>
           
         </div>
       
@@ -535,8 +536,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/08/Docker-初识/" rel="next" title="Docker-初识">
-                <i class="fa fa-chevron-left"></i> Docker-初识
+              <a href="/2019/02/19/Netty-长连接心跳（2）/" rel="next" title="Netty-实战2（长连接心跳）">
+                <i class="fa fa-chevron-left"></i> Netty-实战2（长连接心跳）
               </a>
             
           </div>
@@ -544,10 +545,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/09/Ubuntu-VMware上装/" rel="prev" title="Ubuntu-VMware上装">
-                Ubuntu-VMware上装 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -879,7 +876,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">2.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参考"><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线程状态"><span class="nav-number">1.</span> <span class="nav-text">线程状态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建"><span class="nav-number">1.1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#死亡"><span class="nav-number">1.2.</span> <span class="nav-text">死亡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#拓展"><span class="nav-number">2.</span> <span class="nav-text">拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Thread-类中的start-和-run-方法有什么区别？"><span class="nav-number">2.1.</span> <span class="nav-text">1.Thread 类中的start() 和 run() 方法有什么区别？</span></a></li></ol></li></ol></div>
             
 
           </div>
