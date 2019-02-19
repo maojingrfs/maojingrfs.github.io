@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="Mao Jing">
 <meta property="og:description" content="在Java当中，线程通常都有五种状态，创建、就绪、运行、阻塞和死亡。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-19T06:50:34.479Z">
+<meta property="og:updated_time" content="2019-02-19T06:51:58.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程-5种状态">
 <meta name="twitter:description" content="在Java当中，线程通常都有五种状态，创建、就绪、运行、阻塞和死亡。">
@@ -402,7 +402,7 @@
                 
               
 
-              <time title="创建时间：2019-02-19 14:42:33 / 修改时间：14:50:34" itemprop="dateCreated datePublished" datetime="2019-02-19T14:42:33+08:00">2019-02-19</time>
+              <time title="创建时间：2019-02-19 14:42:33 / 修改时间：14:51:58" itemprop="dateCreated datePublished" datetime="2019-02-19T14:42:33+08:00">2019-02-19</time>
             
 
             
@@ -472,12 +472,9 @@
 
       
         <h1 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h1><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><p>当new出线程对象，并没有调用该对象的start方法，这是线程处于创建状态。 </p>
-<p>　　## 就绪</p>
-<p>当调用了线程对象的start方法之后，该线程就进入了就绪状态，但是此时线程调度程序还没有把该线程设置为当前线程，只是告诉CPU我已经进入了等待被调用的状态了，此时处于就绪状态。在线程运行之后，从等待或者睡眠中回来之后，也会处于就绪状态。 </p>
-<p>　　## 运行</p>
-<p>线程调度程序将处于就绪状态的线程设置为当前线程，此时线程就进入了运行状态，开始运行run函数当中的代码。 </p>
-<p>　　## 阻塞</p>
-<p>线程正在运行的时候，被暂停，通常是为了等待某个事件的发生(比如说某项资源就绪)之后再继续运行。sleep，suspend，wait等方法都可以导致线程阻塞。 </p>
+<h2 id="就绪"><a href="#就绪" class="headerlink" title="就绪"></a>就绪</h2><p>当调用了线程对象的start方法之后，该线程就进入了就绪状态，但是此时线程调度程序还没有把该线程设置为当前线程，只是告诉CPU我已经进入了等待被调用的状态了，此时处于就绪状态。在线程运行之后，从等待或者睡眠中回来之后，也会处于就绪状态。 </p>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>线程调度程序将处于就绪状态的线程设置为当前线程，此时线程就进入了运行状态，开始运行run函数当中的代码。 </p>
+<h2 id="阻塞"><a href="#阻塞" class="headerlink" title="阻塞"></a>阻塞</h2><p>线程正在运行的时候，被暂停，通常是为了等待某个事件的发生(比如说某项资源就绪)之后再继续运行。sleep，suspend，wait等方法都可以导致线程阻塞。 </p>
 <h2 id="死亡"><a href="#死亡" class="headerlink" title="死亡"></a>死亡</h2><p>如果一个线程的run方法执行结束或者调用stop方法后，该线程就会死亡。对于已经死亡的线程，无法再使用start方法令其进入就绪。</p>
 <h1 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h1><h2 id="1-Thread-类中的start-和-run-方法有什么区别？"><a href="#1-Thread-类中的start-和-run-方法有什么区别？" class="headerlink" title="1.Thread 类中的start() 和 run() 方法有什么区别？"></a>1.Thread 类中的start() 和 run() 方法有什么区别？</h2><p>当你调用run()方法的时候，只会是在原来的线程中调用，没有新的线程启动，start()方法才会启动新线程。</p>
 
@@ -876,7 +873,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线程状态"><span class="nav-number">1.</span> <span class="nav-text">线程状态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建"><span class="nav-number">1.1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#死亡"><span class="nav-number">1.2.</span> <span class="nav-text">死亡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#拓展"><span class="nav-number">2.</span> <span class="nav-text">拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Thread-类中的start-和-run-方法有什么区别？"><span class="nav-number">2.1.</span> <span class="nav-text">1.Thread 类中的start() 和 run() 方法有什么区别？</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线程状态"><span class="nav-number">1.</span> <span class="nav-text">线程状态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建"><span class="nav-number">1.1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#就绪"><span class="nav-number">1.2.</span> <span class="nav-text">就绪</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行"><span class="nav-number">1.3.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阻塞"><span class="nav-number">1.4.</span> <span class="nav-text">阻塞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#死亡"><span class="nav-number">1.5.</span> <span class="nav-text">死亡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#拓展"><span class="nav-number">2.</span> <span class="nav-text">拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Thread-类中的start-和-run-方法有什么区别？"><span class="nav-number">2.1.</span> <span class="nav-text">1.Thread 类中的start() 和 run() 方法有什么区别？</span></a></li></ol></li></ol></div>
             
 
           </div>
