@@ -8,9 +8,21 @@
       <link href="/2019/02/20/%E7%9B%B4%E6%92%AD-%E6%8B%99%E8%A7%81/"/>
       <url>/2019/02/20/%E7%9B%B4%E6%92%AD-%E6%8B%99%E8%A7%81/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>前面基于OBS studio+腾讯云制作简单的直播功能，由此可以推测主流直播类网站架构大致。</p><h1 id="出门装（开发者测试装）"><a href="#出门装（开发者测试装）" class="headerlink" title="出门装（开发者测试装）"></a>出门装（开发者测试装）</h1><h2 id="第一"><a href="#第一" class="headerlink" title="第一"></a>第一</h2><p>OBS studio + 第三方云服务器（如阿里云、腾讯云等），关于此种方案的配置在&lt;直播（OBS+腾讯云）&gt;一文中详细介绍得了实现过程，当然还是要结合腾讯官方开发文档进行。</p><h2 id="基于出门装直播实现的再思考？"><a href="#基于出门装直播实现的再思考？" class="headerlink" title="基于出门装直播实现的再思考？"></a>基于出门装直播实现的再思考？</h2><h2 id="第一：直播类网站实现思路？"><a href="#第一：直播类网站实现思路？" class="headerlink" title="第一：直播类网站实现思路？"></a>第一：直播类网站实现思路？</h2><p>这里拿上面实现的方案用例：</p><h4 id="数据采集"><a href="#数据采集" class="headerlink" title="数据采集"></a>数据采集</h4><p>使用OBS studio进行数据采集，如屏幕，摄像头，录音设备等。</p><p>OBS设置中可以设置比特率，也叫码率。</p><p>涉及技术点：</p><pre><code>1.码率：比特率是指每秒传送的比特(bit)数。单位为 bps(Bit Per Second)，比特率越高，传送数据速度越快。声音中的比特率是指将模拟声音信号转换成数字声音信号后，单位时间内的二进制数据量，是间接衡量音频质量的一个指标。 视频中的比特率（码率）原理与声音中的相同，都是指由模拟信号转换为数字信号后，单位时间内的二进制数据量。2.码率基本计算公式：【码率】（kbps)=【文件大小】（字节）X8/【时间】（秒）/10003.码率的基本原则：    1）、码率和质量成正比，但是文件体积也和码率成正比。    2）、码率超过一定数值，对图像的质量没有多大影响。    总结的来说：码率直接影响了视频和音频的质量，视频的清晰度    一般来说，码率达到1600就是超清视频，达到4000就是1080p（估算，不能准确表示原则）4.编码格式的目的：几乎所有的编码格式重视的都是如何用最低的码率达到最少的失真。</code></pre><p>​    </p><h4 id="如何达到在自己平台注册的主播通过服务器获得推流Url和播放地址？"><a href="#如何达到在自己平台注册的主播通过服务器获得推流Url和播放地址？" class="headerlink" title="如何达到在自己平台注册的主播通过服务器获得推流Url和播放地址？"></a>如何达到在自己平台注册的主播通过服务器获得推流Url和播放地址？</h4><p>详见腾讯开发文档：<br><a href="https://cloud.tencent.com/document/product/267/13457#.E6.8E.A8.E6.B5.81-url" target="_blank" rel="noopener">https://cloud.tencent.com/document/product/267/13457#.E6.8E.A8.E6.B5.81-url</a></p><p>​<br>​    </p>]]></content>
       
       
+      <categories>
+          
+          <category> 直播 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 直播 </tag>
+            
+        </tags>
       
     </entry>
     
