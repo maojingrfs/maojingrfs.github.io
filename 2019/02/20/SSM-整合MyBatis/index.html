@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+<script> function GetRandomNum(Min,Max) { var Range = Max - Min; var Rand = Math.random(); return(Min + Math.round(Rand * Range)); } function setSidebarMarginTop (headerOffset) { return $('#sidebar').css({ 'margin-top': headerOffset }); } function getHeaderOffset () { return $('.header-inner').height() + CONFIG.sidebar.offset; } window.onload=function(){ var subtitle = "改变，源自於自我的一种用心进取，而不是等待什天赐良机。"; var mytitle = subtitle.split("W"); var max = mytitle.length-1; var index = GetRandomNum(0,max); var text = mytitle[index]; $("#helloTitle").html(text); var headOffset = getHeaderOffset(); setSidebarMarginTop(headOffset); // alert(getHeaderOffset()); } </script>
+
+
+
+  
+
+
+
+
+  <meta name="description" content="这里将记录SSM整合过程，配置多，看官别眨眼！">
+<meta name="keywords" content="SSM,Spring,Spring mvc,MyBatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSM-整合MyBatis">
+<meta property="og:url" content="http://yoursite.com/2019/02/20/SSM-整合MyBatis/index.html">
+<meta property="og:site_name" content="Mao Jing">
+<meta property="og:description" content="这里将记录SSM整合过程，配置多，看官别眨眼！">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-20T10:58:53.523Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSM-整合MyBatis">
+<meta name="twitter:description" content="这里将记录SSM整合过程，配置多，看官别眨眼！">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mao Jing" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/20/SSM-整合MyBatis/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>SSM-整合MyBatis | Mao Jing</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mao Jing</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">改变，源自於自我的一种用心进取，而不是等待什天赐良机。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>主页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-归档">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+<script> function GetRandomNum(Min,Max) { var Range = Max - Min; var Rand = Math.random(); return(Min + Math.round(Rand * Range)); } function setSidebarMarginTop (headerOffset) { return $('#sidebar').css({ 'margin-top': headerOffset }); } function getHeaderOffset () { return $('.header-inner').height() + CONFIG.sidebar.offset; } window.onload=function(){ var subtitle = "改变，源自於自我的一种用心进取，而不是等待什天赐良机。"; var mytitle = subtitle.split("W"); var max = mytitle.length-1; var index = GetRandomNum(0,max); var text = mytitle[index]; $("#helloTitle").html(text); var headOffset = getHeaderOffset(); setSidebarMarginTop(headOffset); // alert(getHeaderOffset()); } </script> 
+
+
+
+
+<script> function GetRandomNum(Min,Max) { var Range = Max - Min; var Rand = Math.random(); return(Min + Math.round(Rand * Range)); } function setSidebarMarginTop (headerOffset) { return $('#sidebar').css({ 'margin-top': headerOffset }); } function getHeaderOffset () { return $('.header-inner').height() + CONFIG.sidebar.offset; } window.onload=function(){ var subtitle = "改变，源自於自我的一种用心进取，而不是等待什天赐良机。"; var mytitle = subtitle.split("W"); var max = mytitle.length-1; var index = GetRandomNum(0,max); var text = mytitle[index]; $("#helloTitle").html(text); var headOffset = getHeaderOffset(); setSidebarMarginTop(headOffset); // alert(getHeaderOffset()); } </script>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/SSM-整合MyBatis/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mao Jing">
+      <meta itemprop="description" content="大家好，我是Mao Jing ，欢迎来到我的个人Blog！">
+      <meta itemprop="image" content="/images/avatar1.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mao Jing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SSM-整合MyBatis
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">毛荆发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-20 18:51:57 / 修改时间：18:58:53" itemprop="dateCreated datePublished" datetime="2019-02-20T18:51:57+08:00">2019-02-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/SSM/" itemprop="url" rel="index"><span itemprop="name">SSM</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/02/20/SSM-整合MyBatis/#SOHUCS" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/02/20/SSM-整合MyBatis/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            <div class="post-description">这里将记录SSM整合过程，配置多，看官别眨眼！</div>
+          
+
+        </span></div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="整合Druid"><a href="#整合Druid" class="headerlink" title="整合Druid"></a>整合Druid</h2><p>(做技术选型时首选Druid，效率最高，其它如c3p0等不考虑！)</p>
+<h2 id="pom"><a href="#pom" class="headerlink" title="pom"></a>pom</h2><p>使用maven导入Druid jar包</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+    &lt;artifactId&gt;druid&lt;/artifactId&gt;
+    &lt;version&gt;1.1.6&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;version&gt;5.1.46&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h2 id="链接数据库配置jdbc-properties文件"><a href="#链接数据库配置jdbc-properties文件" class="headerlink" title="链接数据库配置jdbc.properties文件"></a>链接数据库配置jdbc.properties文件</h2><p>配置是数据库相关信息</p>
+<pre><code># JDBC
+jdbc.driverClass=com.mysql.jdbc.Driver
+jdbc.connectionURL=jdbc:mysql://192.168.75.134:3306/myshop?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
+jdbc.username=root
+jdbc.password=123456
+
+# JDBC Pool
+jdbc.pool.init=1
+jdbc.pool.minIdle=3
+jdbc.pool.maxActive=20
+
+# JDBC Test
+jdbc.testSql=SELECT &apos;x&apos; FROM DUAL
+</code></pre><h2 id="创建Spring整合Druid配置文件spring-context-druid-xml"><a href="#创建Spring整合Druid配置文件spring-context-druid-xml" class="headerlink" title="创建Spring整合Druid配置文件spring-context-druid.xml"></a>创建Spring整合Druid配置文件spring-context-druid.xml</h2><p>数据库的连接事宜通过这个配置文件全权交由spring管理，如下面bean id=”dataSource”,其对应的class也就是之前我们手动创建链接时的dataSource,这里是用com.alibaba.druid.pool.DruidDataSource封装了一道，bean下面包含的property则是为链接数据库提供必须的数据等信息，如数据库ip，用户名密码等，这些数据在上面jdbc.properties文件中已经配置了。</p>
+<p>spring容器通过解析这个配置文件便能方便管Druid连接数据库。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+
+    &lt;!-- 加载配置属性文件 --&gt;
+    &lt;context:property-placeholder ignore-unresolvable=&quot;true&quot; location=&quot;classpath:jdbc.properties&quot;/&gt;
+
+    &lt;!-- 数据源配置, 使用 Druid 数据库连接池 --&gt;
+    &lt;bean id=&quot;dataSource&quot; class=&quot;com.alibaba.druid.pool.DruidDataSource&quot; init-method=&quot;init&quot; destroy-method=&quot;close&quot;&gt;
+        &lt;!-- 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass --&gt;
+        &lt;property name=&quot;driverClassName&quot; value=&quot;${jdbc.driverClass}&quot;/&gt;
+
+        &lt;!-- 基本属性 url、user、password --&gt;
+        &lt;property name=&quot;url&quot; value=&quot;${jdbc.connectionURL}&quot;/&gt;
+        &lt;property name=&quot;username&quot; value=&quot;${jdbc.username}&quot;/&gt;
+        &lt;property name=&quot;password&quot; value=&quot;${jdbc.password}&quot;/&gt;
+
+        &lt;!-- 配置初始化大小、最小、最大 --&gt;
+        &lt;property name=&quot;initialSize&quot; value=&quot;${jdbc.pool.init}&quot;/&gt;
+        &lt;property name=&quot;minIdle&quot; value=&quot;${jdbc.pool.minIdle}&quot;/&gt;
+        &lt;property name=&quot;maxActive&quot; value=&quot;${jdbc.pool.maxActive}&quot;/&gt;
+
+        &lt;!-- 配置获取连接等待超时的时间 --&gt;
+        &lt;property name=&quot;maxWait&quot; value=&quot;60000&quot;/&gt;
+
+        &lt;!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 --&gt;
+        &lt;property name=&quot;timeBetweenEvictionRunsMillis&quot; value=&quot;60000&quot;/&gt;
+
+        &lt;!-- 配置一个连接在池中最小生存的时间，单位是毫秒 --&gt;
+        &lt;property name=&quot;minEvictableIdleTimeMillis&quot; value=&quot;300000&quot;/&gt;
+
+        &lt;property name=&quot;validationQuery&quot; value=&quot;${jdbc.testSql}&quot;/&gt;
+        &lt;property name=&quot;testWhileIdle&quot; value=&quot;true&quot;/&gt;
+        &lt;property name=&quot;testOnBorrow&quot; value=&quot;false&quot;/&gt;
+        &lt;property name=&quot;testOnReturn&quot; value=&quot;false&quot;/&gt;
+
+        &lt;!-- 配置监控统计拦截的filters --&gt;
+        &lt;property name=&quot;filters&quot; value=&quot;stat&quot;/&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre><p>截至上面我们使用spring整合了一款高效的连接池，接下来便要整合Mybatis.</p>
+<h2 id="添加Spring整合MyBatis依赖包"><a href="#添加Spring整合MyBatis依赖包" class="headerlink" title="添加Spring整合MyBatis依赖包"></a>添加Spring整合MyBatis依赖包</h2><p>这三个包的关系：</p>
+<p>首先Spring作为java开发集大成者的框架，其作为容器，扮演者管理bean的角色,那么换个角度，如像Mybatis这样的框架，如果想主动与spring做整合，实现spring容器管理数据持久化的相关操作，那么便需要实现spring的某些规范，达到让spring可以管理自己的目的，于是便有了mybatis-spring的中间件jar包。</p>
+<p>另一方面spring也需要遵顼jdbc的规范（spring-jdbc）,这样便达到spring，mybatis,数据库的整合。</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+    &lt;version&gt;3.2.8&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;
+    &lt;version&gt;1.3.1&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+    &lt;version&gt;4.3.17.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h2 id="接下来先配置mybatis-config-xml文件"><a href="#接下来先配置mybatis-config-xml文件" class="headerlink" title="接下来先配置mybatis-config.xml文件"></a>接下来先配置mybatis-config.xml文件</h2><p>上面有Druid高效的管理着数据库连接对象，这里便通过Mybatis高效的实现数据库的增删该查工作（缓存机制）。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+&lt;configuration&gt;
+    &lt;!-- 全局参数 --&gt;
+    &lt;settings&gt;
+        &lt;!-- 打印 SQL 语句 --&gt;
+        &lt;setting name=&quot;logImpl&quot; value=&quot;STDOUT_LOGGING&quot; /&gt;
+
+        &lt;!-- 使全局的映射器启用或禁用缓存。 --&gt;
+        &lt;setting name=&quot;cacheEnabled&quot; value=&quot;false&quot;/&gt;
+
+        &lt;!-- 全局启用或禁用延迟加载。当禁用时，所有关联对象都会即时加载。 --&gt;
+        &lt;setting name=&quot;lazyLoadingEnabled&quot; value=&quot;true&quot;/&gt;
+
+        &lt;!-- 当启用时，有延迟加载属性的对象在被调用时将会完全加载任意属性。否则，每种属性将会按需要加载。 --&gt;
+        &lt;setting name=&quot;aggressiveLazyLoading&quot; value=&quot;true&quot;/&gt;
+
+        &lt;!-- 是否允许单条 SQL 返回多个数据集 (取决于驱动的兼容性) default:true --&gt;
+        &lt;setting name=&quot;multipleResultSetsEnabled&quot; value=&quot;true&quot;/&gt;
+
+        &lt;!-- 是否可以使用列的别名 (取决于驱动的兼容性) default:true --&gt;
+        &lt;setting name=&quot;useColumnLabel&quot; value=&quot;true&quot;/&gt;
+
+        &lt;!-- 允许 JDBC 生成主键。需要驱动器支持。如果设为了 true，这个设置将强制使用被生成的主键，有一些驱动器不兼容不过仍然可以执行。 default:false  --&gt;
+        &lt;setting name=&quot;useGeneratedKeys&quot; value=&quot;false&quot;/&gt;
+
+        &lt;!-- 指定 MyBatis 如何自动映射 数据基表的列 NONE：不映射 PARTIAL：部分 FULL:全部  --&gt;
+        &lt;setting name=&quot;autoMappingBehavior&quot; value=&quot;PARTIAL&quot;/&gt;
+
+        &lt;!-- 这是默认的执行类型 （SIMPLE: 简单； REUSE: 执行器可能重复使用prepared statements语句；BATCH: 执行器可以重复执行语句和批量更新） --&gt;
+        &lt;setting name=&quot;defaultExecutorType&quot; value=&quot;SIMPLE&quot;/&gt;
+
+        &lt;!-- 使用驼峰命名法转换字段。 --&gt;
+        &lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;true&quot;/&gt;
+
+        &lt;!-- 设置本地缓存范围 session:就会有数据的共享 statement:语句范围 (这样就不会有数据的共享 ) defalut:session --&gt;
+        &lt;setting name=&quot;localCacheScope&quot; value=&quot;SESSION&quot;/&gt;
+
+        &lt;!-- 设置 JDBC 类型为空时,某些驱动程序 要指定值, default:OTHER，插入空值时不需要指定类型 --&gt;
+        &lt;setting name=&quot;jdbcTypeForNull&quot; value=&quot;NULL&quot;/&gt;
+    &lt;/settings&gt;
+&lt;/configuration&gt;
+</code></pre><h2 id="mybatis配置好了，通过配置“spring-context-mybatis-xml”交给spring去管理吧！"><a href="#mybatis配置好了，通过配置“spring-context-mybatis-xml”交给spring去管理吧！" class="headerlink" title="mybatis配置好了，通过配置“spring-context-mybatis.xml”交给spring去管理吧！"></a>mybatis配置好了，通过配置“spring-context-mybatis.xml”交给spring去管理吧！</h2><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd&quot;&gt;
+
+    &lt;!-- 配置 SqlSession --&gt;
+    &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+        &lt;!-- 用于配置对应实体类所在的包，多个 package 之间可以用 &apos;,&apos; 号分割 --&gt;
+        &lt;property name=&quot;typeAliasesPackage&quot; value=&quot;com.funtl.my.shop.domain&quot;/&gt;
+        &lt;!-- 用于配置对象关系映射配置文件所在目录 --&gt;
+        &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath:/mapper/**/*.xml&quot;/&gt;
+        &lt;property name=&quot;configLocation&quot; value=&quot;classpath:/mybatis-config.xml&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 扫描 Mapper --&gt;
+    &lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
+        &lt;property name=&quot;basePackage&quot; value=&quot;com.funtl.my.shop.web.admin.dao&quot; /&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre><p>​    </p>
+<h2 id="配置事务"><a href="#配置事务" class="headerlink" title="配置事务"></a>配置事务</h2><p>先要添加spring-aspects依赖</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-aspects&lt;/artifactId&gt;
+    &lt;version&gt;4.3.17.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><p>其次在spring-context.xml中配置如下：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot; xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd&quot;&gt;
+    &lt;context:annotation-config/&gt;
+    &lt;context:component-scan base-package=&quot;com.maojing.myshop.admin&quot;&gt;
+        &lt;context:exclude-filter type=&quot;annotation&quot; expression=&quot;org.springframework.stereotype.Controller&quot; /&gt;
+    &lt;/context:component-scan&gt;
+
+    &lt;!-- 配置事务管理器 --&gt;
+    &lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 配置事务通知 --&gt;
+    &lt;!-- 定义哪些方法需要事物支持 --&gt;
+    &lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;transactionManager&quot;&gt;
+        &lt;tx:attributes&gt;
+            &lt;!-- 传播行为 --&gt;
+            &lt;tx:method name=&quot;save*&quot; propagation=&quot;REQUIRED&quot; /&gt;
+            &lt;tx:method name=&quot;insert*&quot; propagation=&quot;REQUIRED&quot; /&gt;
+            &lt;tx:method name=&quot;add*&quot; propagation=&quot;REQUIRED&quot; /&gt;
+            &lt;tx:method name=&quot;create*&quot; propagation=&quot;REQUIRED&quot; /&gt;
+            &lt;tx:method name=&quot;delete*&quot; propagation=&quot;REQUIRED&quot; /&gt;
+            &lt;tx:method name=&quot;update*&quot; propagation=&quot;REQUIRED&quot; /&gt;
+            &lt;tx:method name=&quot;find*&quot; propagation=&quot;SUPPORTS&quot; read-only=&quot;true&quot; /&gt;
+            &lt;tx:method name=&quot;select*&quot; propagation=&quot;SUPPORTS&quot; read-only=&quot;true&quot; /&gt;
+            &lt;tx:method name=&quot;get*&quot; propagation=&quot;SUPPORTS&quot; read-only=&quot;true&quot; /&gt;
+        &lt;/tx:attributes&gt;
+    &lt;/tx:advice&gt;
+
+    &lt;!-- 配置顾问和切入点 --&gt;
+    &lt;aop:config&gt;
+        &lt;aop:pointcut id=&quot;myPointcut&quot; expression=&quot;execution(* com.maojing.myshop.admin.service.*.*(..))&quot; /&gt;
+        &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;myPointcut&quot; /&gt;
+    &lt;/aop:config&gt;
+</code></pre><p>​        </p>
+<h2 id="最后便是配置sql语句了。"><a href="#最后便是配置sql语句了。" class="headerlink" title="最后便是配置sql语句了。"></a>最后便是配置sql语句了。</h2><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;mapper namespace=&quot;com.maojing.myshop.admin.dao.TbUserDao&quot;&gt;
+    &lt;select id=&quot;selectAll&quot; resultType=&quot;TbUser&quot;&gt;
+        SELECT
+          a.id,
+          a.username,
+          a.password,
+          a.phone,
+          a.email,
+          a.created,
+          a.updated
+        FROM
+          tb_user AS a
+    &lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>SSM可以这样理解</p>
+<p>1.需要高效连接池技术，这里涉及连接池技术选型问题，和显然Druid是第一选择；</p>
+<p>2.选择Druid便涉及jdbc.properties文件和spring-context-durid.xml两个文件的配置；</p>
+<p>3.将高效连接池与spring整合后，咱们还需要一个更优秀的CRUD持久层框架，在技术选型中，Mybatis胜出；</p>
+<p>4。选择Mybatis便需要涉及mybatis-config.xml和spring-context-mybatis.xml两个文件的配置。</p>
+<p>配置前面两个文件将链接池交由spring容器管理，spring有了链接池，便可间接管理连接对象。</p>
+<p>而后面两个文件将mybatis交由spring管理，那么此时spring具备了链接对象，具备了CURD能力，那么剩下的便是解析mapper文件，高效的进行数据库操作。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SSM/" rel="tag"><i class="fa fa-tag"></i> SSM</a>
+          
+            <a href="/tags/Spring/" rel="tag"><i class="fa fa-tag"></i> Spring</a>
+          
+            <a href="/tags/Spring-mvc/" rel="tag"><i class="fa fa-tag"></i> Spring mvc</a>
+          
+            <a href="/tags/MyBatis/" rel="tag"><i class="fa fa-tag"></i> MyBatis</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/20/直播-拙见/" rel="next" title="直播-拙见">
+                <i class="fa fa-chevron-left"></i> 直播-拙见
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar1.JPG" alt="Mao Jing">
+            
+              <p class="site-author-name" itemprop="name">Mao Jing</p>
+              <p class="site-description motion-element" itemprop="description">大家好，我是Mao Jing ，欢迎来到我的个人Blog！</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">66</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/maojingrfs" title="GitHub &rarr; https://github.com/maojingrfs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:my_haloj@163.com" title="E-Mail &rarr; mailto:my_haloj@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/p/1005056928837982/home" title="Weibo &rarr; https://weibo.com/p/1005056928837982/home" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+		  <!-- 音乐播放器 -->
+		  <div>
+		  
+		  	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=427017519&auto=1&height=66"></iframe>
+		  
+		  </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="https://www.github.com" rel="noopener" target="_blank">GitHub</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.csdn.net/" title="https://www.csdn.net/" rel="noopener" target="_blank">CSDN</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#整合Druid"><span class="nav-number">1.</span> <span class="nav-text">整合Druid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pom"><span class="nav-number">2.</span> <span class="nav-text">pom</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接数据库配置jdbc-properties文件"><span class="nav-number">3.</span> <span class="nav-text">链接数据库配置jdbc.properties文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Spring整合Druid配置文件spring-context-druid-xml"><span class="nav-number">4.</span> <span class="nav-text">创建Spring整合Druid配置文件spring-context-druid.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加Spring整合MyBatis依赖包"><span class="nav-number">5.</span> <span class="nav-text">添加Spring整合MyBatis依赖包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接下来先配置mybatis-config-xml文件"><span class="nav-number">6.</span> <span class="nav-text">接下来先配置mybatis-config.xml文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis配置好了，通过配置“spring-context-mybatis-xml”交给spring去管理吧！"><span class="nav-number">7.</span> <span class="nav-text">mybatis配置好了，通过配置“spring-context-mybatis.xml”交给spring去管理吧！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置事务"><span class="nav-number">8.</span> <span class="nav-text">配置事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后便是配置sql语句了。"><span class="nav-number">9.</span> <span class="nav-text">最后便是配置sql语句了。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">10.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mao Jing</span>
+
+  
+
+  
+</div>
+
+<div class="BbeiAn-info">
+   	粤ICP备 -
+    <a target="_blank" href="http://www.miitbeian.gov.cn/" style="color:#f0d784" rel="nofollow">19010389</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->| 
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=19010389" style="color:#f0d784;text-decoration:none;padding-left:30px;background:url(https://s1.ax1x.com/2018/09/29/ilmwIH.png) no-repeat left center" rel="nofollow">粤ICP备19010389号</a>	  <!--这里将图标作为了背景，以使得能和后面的文字在同一行-->
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+  
+    
+  <script>
+  (function() {
+    var appid = 'cyu3o96qx';
+    var conf = '4ba56c61b5814866204a37f4c15c18a2';
+    var width = window.innerWidth || document.documentElement.clientWidth;
+    if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+    }
+    else {
+      var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+      window.changyan.api.config({appid:appid,conf:conf})});
+    }
+  })();
+  </script>
+  <script src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
