@@ -4,6 +4,48 @@
   
     
     <entry>
+      <title>直播-拙见</title>
+      <link href="/2019/02/20/%E7%9B%B4%E6%92%AD-%E6%8B%99%E8%A7%81/"/>
+      <url>/2019/02/20/%E7%9B%B4%E6%92%AD-%E6%8B%99%E8%A7%81/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>直播-（OBS+腾讯云）</title>
+      <link href="/2019/02/20/%E7%9B%B4%E6%92%AD-%EF%BC%88OBS-%E8%85%BE%E8%AE%AF%E4%BA%91%EF%BC%89/"/>
+      <url>/2019/02/20/%E7%9B%B4%E6%92%AD-%EF%BC%88OBS-%E8%85%BE%E8%AE%AF%E4%BA%91%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h2><p>注册腾讯云账号，并通过实名认证；</p><h2 id="登陆直播管理平台"><a href="#登陆直播管理平台" class="headerlink" title="登陆直播管理平台"></a>登陆直播管理平台</h2><p><a href="https://console.qcloud.com/live/livecodemanage" target="_blank" rel="noopener">https://console.qcloud.com/live/livecodemanage</a></p><h2 id="OBS"><a href="#OBS" class="headerlink" title="OBS"></a>OBS</h2><p>根据<a href="https://cloud.tencent.com/document/product/267/7479?!preview=true&amp;lang=zh" target="_blank" rel="noopener">https://cloud.tencent.com/document/product/267/7479?!preview=true&amp;lang=zh</a><br>开发文档要求，下载免费的OBS软件，安装。</p><h2 id="直播码接入-和-频道托管"><a href="#直播码接入-和-频道托管" class="headerlink" title="直播码接入 和 频道托管"></a>直播码接入 和 频道托管</h2><p>推荐使用直播码接入</p><h2 id="生成推流拉流链接"><a href="#生成推流拉流链接" class="headerlink" title="生成推流拉流链接"></a>生成推流拉流链接</h2><p>在后台管理的接入管理-直播玛接入-点击推流生成器，生成相关的url</p><h2 id="OBS-设置推流相关"><a href="#OBS-设置推流相关" class="headerlink" title="OBS 设置推流相关"></a>OBS 设置推流相关</h2><p>运行OBS ，设置场景（窗口），来源（根据实际情况）；</p><p>在设置的流选项中的流类型，选择自定义流媒体服务器；</p><p>填写URL和流名称</p><p>如上面生成的推流Url为：</p><p>rtmp://32537.livepush.myqcloud.com/live/32537_86667ce66f?bizid=32537&amp;txSecret=e2594c540a6c7a1c5e881222ce9c77fd&amp;txTime=5BAE4FFF</p><p>则URL为：rtmp://32537.livepush.myqcloud.com/live</p><p>流名称为：32537_86667ce66f?bizid=32537&amp;txSecret=e2594c540a6c7a1c5e881222ce9c77fd&amp;txTime=5BAE4FFF</p><p>保存即可</p><h2 id="OBS-推流"><a href="#OBS-推流" class="headerlink" title="OBS 推流"></a>OBS 推流</h2><p>经过上面设置后，在obs点击开始推流，</p><h2 id="web收看直播"><a href="#web收看直播" class="headerlink" title="web收看直播"></a>web收看直播</h2><p>在后台管理的接入管理的房间列表刷新下，即可看见一个房间正在直播，在后面则有测和分享链接两种方式，收看直播</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 直播 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 直播 </tag>
+            
+            <tag> OBS </tag>
+            
+            <tag> 腾讯云 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>多线程-线程池原理（1）</title>
       <link href="/2019/02/20/%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8E%9F%E7%90%86%EF%BC%881%EF%BC%89/"/>
       <url>/2019/02/20/%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8E%9F%E7%90%86%EF%BC%881%EF%BC%89/</url>
