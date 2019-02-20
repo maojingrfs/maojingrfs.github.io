@@ -4,6 +4,87 @@
   
     
     <entry>
+      <title>多线程-CycliBarrier</title>
+      <link href="/2019/02/20/%E5%A4%9A%E7%BA%BF%E7%A8%8B-CycliBarrier/"/>
+      <url>/2019/02/20/%E5%A4%9A%E7%BA%BF%E7%A8%8B-CycliBarrier/</url>
+      
+        <content type="html"><![CDATA[<h2 id="类说明："><a href="#类说明：" class="headerlink" title="类说明："></a>类说明：</h2><p>一个同步辅助类，它允许一组线程互相等待，直到到达某个公共屏障点 (common barrier point)。在涉及一组固定大小的线程的程序中，这些线程必须不时地互相等待，此时 CyclicBarrier 很有用。因为该 barrier 在释放等待线程后可以重用，所以称它为循环 的 barrier。</p><h2 id="使用场景："><a href="#使用场景：" class="headerlink" title="使用场景："></a>使用场景：</h2><p>需要所有的子任务都完成时，才执行主任务，这个时候就可以选择使用CyclicBarrier。</p><h2 id="代码演示："><a href="#代码演示：" class="headerlink" title="代码演示："></a>代码演示：</h2><pre><code>public class CyclicBarrierTest {    public static void main(String[] args) throws IOException, InterruptedException {        //如果将参数改为4，但是下面只加入了3个选手，这永远等待下去        //Waits until all parties have invoked await on this barrier.         CyclicBarrier barrier = new CyclicBarrier(3);        ExecutorService executor = Executors.newFixedThreadPool(3);        executor.submit(new Thread(new Runner(barrier, &quot;1号选手&quot;)));        executor.submit(new Thread(new Runner(barrier, &quot;2号选手&quot;)));        executor.submit(new Thread(new Runner(barrier, &quot;3号选手&quot;)));        executor.shutdown();    }}class Runner implements Runnable {    // 一个同步辅助类，它允许一组线程互相等待，直到到达某个公共屏障点 (common barrier point)    private CyclicBarrier barrier;    private String name;    public Runner(CyclicBarrier barrier, String name) {        super();        this.barrier = barrier;        this.name = name;    }    @Override    public void run() {        try {            Thread.sleep(1000 * (new Random()).nextInt(8));            System.out.println(name + &quot; 准备好了...&quot;);            // barrier的await方法，在所有参与者都已经在此 barrier 上调用 await 方法之前，将一直等待。            barrier.await();        } catch (InterruptedException e) {            e.printStackTrace();        } catch (BrokenBarrierException e) {            e.printStackTrace();        }        System.out.println(name + &quot; 起跑！&quot;);    }}</code></pre><p>输出结果：<br>​<br>    3号选手 准备好了…<br>    2号选手 准备好了…<br>    1号选手 准备好了…<br>    1号选手 起跑！<br>    2号选手 起跑！<br>    3号选手 起跑！</p><h2 id="场景２"><a href="#场景２" class="headerlink" title="场景２"></a>场景２</h2><p>有四个游戏玩家玩游戏，游戏有三个关卡，每个关卡必须要所有玩家都到达后才能允许通过。其实这个场景里的玩家中如果有玩家A先到了关卡1，他必须等到其他所有玩家都到达关卡1时才能通过，也就是说线程之间需要相互等待。</p><h2 id="与countdownlatch区别"><a href="#与countdownlatch区别" class="headerlink" title="与countdownlatch区别"></a>与countdownlatch区别</h2><p>这和CountDownLatch的应用场景有区别，CountDownLatch里的线程是到了运行的目标后继续干自己的其他事情，而这里的线程需要等待其他线程后才能继续完成下面的工作。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Thread </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Thread </tag>
+            
+            <tag> CyclicBarrier </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>多线程-Semaphore</title>
+      <link href="/2019/02/20/%E5%A4%9A%E7%BA%BF%E7%A8%8B-Semaphore/"/>
+      <url>/2019/02/20/%E5%A4%9A%E7%BA%BF%E7%A8%8B-Semaphore/</url>
+      
+        <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>   Semaphore（信号量）是用来控制同时访问特定资源的线程数量，它通过协调各个线程，保证合理的使用公共资源。</p><p>   线程可以通过acquire()方法来获取信号量的许可，当信号量中没有可用的许可的时候，线程阻塞，直到有可用的许可为止。线程可以通过release()方法释放它持有</p><p>   的信号量的许可。</p><h3 id="场景1"><a href="#场景1" class="headerlink" title="场景1"></a>场景1</h3><p> Semaphore经常用于限制获取某种资源的线程数量。下面举个例子，比如说操场上有5个跑道，一个跑道一次只能有一个学生在上面跑步，一旦所有跑道在使用，那么后面的学生就需要等待，直到有一个学生不跑了</p><h3 id="场景2"><a href="#场景2" class="headerlink" title="场景2"></a>场景2</h3><pre><code>public class SemaphoreTest {   private static final int THREAD_COUNT = 10;   private static ExecutorService executorService = Executors.newFixedThreadPool(THREAD_COUNT);   // 创建5个许可，允许5个并发执行   private static Semaphore s = new Semaphore(5);   public static void main(String[] args) {           //创建10个线程执行任务           for (int i = 0; i &lt; THREAD_COUNT; i++) {               executorService.execute(new Runnable() {                   @Override                   public void run() {                       try {                           //同时只能有5个线程并发执行保存数据的任务                           s.acquire();                           System.out.println(&quot;线程&quot; + Thread.currentThread().getName() + &quot; 保存数据&quot;);                           Thread.sleep(2000);                           //5个线程保存完数据，释放1个许可，其他的线程才能获取许可，继续执行保存数据的任务                           s.release();                           System.out.println(&quot;线程&quot; + Thread.currentThread().getName() + &quot; 释放许可&quot;);                       } catch (InterruptedException e) {                           e.printStackTrace();                       }                   }               });           }           executorService.shutdown();       }   }</code></pre><p>结果：10个线程保存数据，但是只允许5个线程并发的执行，当5个线程都保存完数据以后，释放许可，其他线程才能拿到许可继续保存数据，直到10个线程都保存完数据释放许可为止。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Thread </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Thread </tag>
+            
+            <tag> Semaphpore </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>多线程-CountDownLatch</title>
+      <link href="/2019/02/20/%E5%A4%9A%E7%BA%BF%E7%A8%8B-CountDownLatch/"/>
+      <url>/2019/02/20/%E5%A4%9A%E7%BA%BF%E7%A8%8B-CountDownLatch/</url>
+      
+        <content type="html"><![CDATA[<h2 id="场景1"><a href="#场景1" class="headerlink" title="场景1"></a>场景1</h2><p>在一些应用场合中，需要等待某个条件达到要求后才能做后面的事情；同时当线程都完成后也会触发事件，以便进行后面的操作。这个时候就可以使用CountDownLatch。CountDownLatch最重要的方法是countDown()和await()，前者主要是倒数一次，后者是等待倒数到0，如果没有到达0，就只有阻塞等待了。</p><h2 id="场景2"><a href="#场景2" class="headerlink" title="场景2"></a>场景2</h2><p>应用程序的主线程希望在负责启动框架服务的线程已经完成之后再执行。在例子中，模拟了一个应用的启动类，具体实现如下。</p><p>Service.java：所有服务的基类，具体实现在execute方法实现。</p><pre><code>class Service implements Runnable {private CountDownLatch latch;public Service(CountDownLatch latch) {    this.latch = latch;}@Overridepublic void run() {    try {        execute();    } finally {        if (latch != null)            latch.countDown();    }}public void execute() {}}</code></pre><p>HealthCheckService.java：服务具体实现类，类似的还有DatabaseCheckerService，这里我们使用TimeUnit.SECONDS.sleep模拟长时间的操作。</p><pre><code>class HealthCheckService extends Service {public HealthCheckService(CountDownLatch latch) {    super(latch);}@Overridepublic void execute() {    try {        TimeUnit.SECONDS.sleep(2);    } catch (InterruptedException e) {        e.printStackTrace();    }}</code></pre><p>}<br>Application.java：应用启动类，使用线程池执行每个服务的任务。负责初始化闭锁，然后等待，直到所有服务都被检测完。</p><pre><code>class Application {    private CountDownLatch latch;    public void startUp() throws Exception {        latch = new CountDownLatch(2);        List&lt;Service&gt; services = new ArrayList&lt;&gt;();        services.add(new DatabaseCheckerService(latch));        services.add(new HealthCheckService(latch));        Executor executor = Executors.newFixedThreadPool(services.size());        for (Service service : services) {            executor.execute(service);        }        latch.await();        System.out.println(&quot;all service is start up&quot;);    }}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Thread </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Thread </tag>
+            
+            <tag> CountDownLatch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>多线程-5种状态</title>
       <link href="/2019/02/19/%E5%A4%9A%E7%BA%BF%E7%A8%8B-5%E7%A7%8D%E7%8A%B6%E6%80%81/"/>
       <url>/2019/02/19/%E5%A4%9A%E7%BA%BF%E7%A8%8B-5%E7%A7%8D%E7%8A%B6%E6%80%81/</url>
