@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="这里将列举比较常用的Docker命令。">
-<meta name="keywords" content="Docker,常用命令">
+  <meta name="description" content="Exchanger是自jdk1.5起开始提供的工具套件，一般用于两个工作线程之间交换数据。">
+<meta name="keywords" content="Thread,Exchanger">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker-常用命令">
-<meta property="og:url" content="http://yoursite.com/2019/01/20/Docker-常用命令/index.html">
+<meta property="og:title" content="多线程-Exchanger">
+<meta property="og:url" content="http://yoursite.com/2019/02/20/多线程-Exchanger/index.html">
 <meta property="og:site_name" content="Mao Jing">
-<meta property="og:description" content="这里将列举比较常用的Docker命令。">
+<meta property="og:description" content="Exchanger是自jdk1.5起开始提供的工具套件，一般用于两个工作线程之间交换数据。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-20T07:54:28.741Z">
+<meta property="og:updated_time" content="2019-02-20T06:43:09.243Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker-常用命令">
-<meta name="twitter:description" content="这里将列举比较常用的Docker命令。">
+<meta name="twitter:title" content="多线程-Exchanger">
+<meta name="twitter:description" content="Exchanger是自jdk1.5起开始提供的工具套件，一般用于两个工作线程之间交换数据。">
 
 
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/20/Docker-常用命令/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/20/多线程-Exchanger/">
 
 
 
@@ -133,7 +133,7 @@
   };
 </script>
 
-  <title>Docker-常用命令 | Mao Jing</title>
+  <title>多线程-Exchanger | Mao Jing</title>
   
 
 
@@ -359,7 +359,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/20/Docker-常用命令/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/多线程-Exchanger/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mao Jing">
@@ -376,7 +376,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Docker-常用命令
+          <h1 class="post-title" itemprop="name headline">多线程-Exchanger
 
               
             
@@ -402,7 +402,7 @@
                 
               
 
-              <time title="创建时间：2019-01-20 15:45:43 / 修改时间：15:54:28" itemprop="dateCreated datePublished" datetime="2019-01-20T15:45:43+08:00">2019-01-20</time>
+              <time title="创建时间：2019-02-20 14:37:22 / 修改时间：14:43:09" itemprop="dateCreated datePublished" datetime="2019-02-20T14:37:22+08:00">2019-02-20</time>
             
 
             
@@ -424,7 +424,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Thread/" itemprop="url" rel="index"><span itemprop="name">Thread</span></a></span>
 
                 
                 
@@ -440,8 +440,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2019/01/20/Docker-常用命令/#SOHUCS" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/01/20/Docker-常用命令/" itemprop="commentsCount"></span>
+                <a href="/2019/02/20/多线程-Exchanger/#SOHUCS" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/02/20/多线程-Exchanger/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -455,7 +455,7 @@
           
 
           
-            <div class="post-description">这里将列举比较常用的Docker命令。</div>
+            <div class="post-description">Exchanger是自jdk1.5起开始提供的工具套件，一般用于两个工作线程之间交换数据。</div>
           
 
         </span></div>
@@ -471,7 +471,28 @@
       
 
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">1.查看 Docker 版本：docker version</span><br><span class="line"></span><br><span class="line">2.从 Docker 文件构建 Docker 映像：docker build -t image-name docker-file-location</span><br><span class="line"></span><br><span class="line">3.运行 Docker 映像：docker run -d image-name</span><br><span class="line"></span><br><span class="line">4.查看可用的 Docker 映像：docker images</span><br><span class="line"></span><br><span class="line">5.查看最近的运行容器：docker ps -l</span><br><span class="line"></span><br><span class="line">6.查看所有正在运行的容器：docker ps -a</span><br><span class="line"></span><br><span class="line">7.停止运行容器：docker stop container_id</span><br><span class="line"></span><br><span class="line">8.删除一个镜像：docker rmi image-name</span><br><span class="line"></span><br><span class="line">9.删除所有镜像：docker rmi $(docker images -q)</span><br><span class="line"></span><br><span class="line">10.强制删除所有镜像：docker rmi -r $(docker images -q)</span><br><span class="line"></span><br><span class="line">11.删除所有虚悬镜像：docker rmi $(docker images -q -f dangling=true)</span><br><span class="line"></span><br><span class="line">12.删除所有容器：docker rm $(docker ps -a -q)</span><br><span class="line"></span><br><span class="line">13.进入 Docker 容器：docker exec -it container-id /bin/bash</span><br><span class="line"></span><br><span class="line">14.查看所有数据卷：docker volume ls</span><br><span class="line"></span><br><span class="line">15.删除指定数据卷：docker volume rm [volume_name]</span><br><span class="line"></span><br><span class="line">16.删除所有未关联的数据卷：docker volume rm $(docker volume ls -qf dangling=true)</span><br><span class="line"></span><br><span class="line">17.从主机复制文件到容器：sudo docker cp host_path containerID:container_path</span><br><span class="line"></span><br><span class="line">18.从容器复制文件到主机：sudo docker cp containerID:container_path host_path</span><br></pre></td></tr></table></figure>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>A synchronization point at which threads can pair and swap elements within pairs. Each thread presents some object on entry to the exchange method, matches with a partner thread, and receives its partner’s object on return. An Exchanger may be viewed as a bidirectional form of a SynchronousQueue. Exchangers may be useful in applications such as genetic algorithms and pipeline designs.</p>
+<p>​    在以上的描述中，有几个要点：</p>
+<ul>
+<li>此类提供对外的操作是同步的；</li>
+<li>用于成对出现的线程之间交换数据；</li>
+<li>可以视作双向的同步队列；</li>
+<li><p>可应用于基因算法、流水线设计等场景。</p>
+<p> 接着看api文档，这个类提供对外的接口非常简洁，一个无参构造函数，两个重载的范型exchange方法：<br>public V exchange(V x) throws InterruptedException<br>public V exchange(V x, long timeout, TimeUnit unit) throws InterruptedException, TimeoutException<br> 从官方的javadoc可以知道，当一个线程到达exchange调用点时，如果它的伙伴线程此前已经调用了此方法，那么它的伙伴会被调度唤醒并与之进行对象交换，然后各自返回。如果它的伙伴还没到达交换点，那么当前线程将会被挂起，直至伙伴线程到达——完成交换正常返回；或者当前线程被中断——抛出中断异常；又或者是等候超时——抛出超时异常。</p>
+</li>
+</ul>
+<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">import java.util.concurrent.Exchanger;</span><br><span class="line">import java.util.concurrent.ExecutorService;</span><br><span class="line">import java.util.concurrent.Executors;</span><br><span class="line">import java.util.concurrent.TimeUnit;</span><br><span class="line">import org.apache.log4j.Logger;</span><br><span class="line"></span><br><span class="line">public class ExchangerTest &#123;</span><br><span class="line">    protected static final Logger log = Logger.getLogger(ExchangerTest.class);</span><br><span class="line">    private static volatile boolean isDone = false;</span><br><span class="line"></span><br><span class="line">    static class ExchangerProducer implements Runnable &#123;</span><br><span class="line">        private Exchanger&lt;Integer&gt; exchanger;</span><br><span class="line">        private static int data = 1;</span><br><span class="line">        ExchangerProducer(Exchanger&lt;Integer&gt; exchanger) &#123;</span><br><span class="line">            this.exchanger = exchanger;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            while (!Thread.interrupted() &amp;&amp; !isDone) &#123;</span><br><span class="line">                for (int i = 1; i &lt;= 3; i++) &#123;</span><br><span class="line">                    try &#123;</span><br><span class="line">                        TimeUnit.SECONDS.sleep(1);</span><br><span class="line">                        data = i;</span><br><span class="line">                        System.out.println(&quot;producer before: &quot; + data);</span><br><span class="line">                        data = exchanger.exchange(data);</span><br><span class="line">                        System.out.println(&quot;producer after: &quot; + data);</span><br><span class="line">                    &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                        log.error(e, e);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                isDone = true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static class ExchangerConsumer implements Runnable &#123;</span><br><span class="line">        private Exchanger&lt;Integer&gt; exchanger;</span><br><span class="line">        private static int data = 0;</span><br><span class="line">        ExchangerConsumer(Exchanger&lt;Integer&gt; exchanger) &#123;</span><br><span class="line">            this.exchanger = exchanger;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            while (!Thread.interrupted() &amp;&amp; !isDone) &#123;</span><br><span class="line">                data = 0;</span><br><span class="line">                System.out.println(&quot;consumer before : &quot; + data);</span><br><span class="line">                try &#123;</span><br><span class="line">                    TimeUnit.SECONDS.sleep(1);</span><br><span class="line">                    data = exchanger.exchange(data);</span><br><span class="line">                &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                    log.error(e, e);</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(&quot;consumer after : &quot; + data);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param args</span><br><span class="line">     */</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ExecutorService exec = Executors.newCachedThreadPool();</span><br><span class="line">        Exchanger&lt;Integer&gt; exchanger = new Exchanger&lt;Integer&gt;();</span><br><span class="line">        ExchangerProducer producer = new ExchangerProducer(exchanger);</span><br><span class="line">        ExchangerConsumer consumer = new ExchangerConsumer(exchanger);</span><br><span class="line">        exec.execute(producer);</span><br><span class="line">        exec.execute(consumer);</span><br><span class="line">        exec.shutdown();</span><br><span class="line">        try &#123;</span><br><span class="line">            exec.awaitTermination(30, TimeUnit.SECONDS);</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            log.error(e, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 这大致可以看作是一个简易的生产者消费者模型，有两个任务类，一个递增地产生整数，一个产生整数0，然后双方进行交易。每次交易前的生产者和每次交易后的消费者都会sleep 1秒来模拟数据处理的消耗，并在交易前后把整数值打印到控制台以便检测结果。在这个例子里交易循环只执行三次，采用一个volatile boolean来控制交易双方线程的退出。</p>
+<p>程序输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">consumer before : 0</span><br><span class="line">producer before: 1</span><br><span class="line">consumer after : 1</span><br><span class="line">producer after: 0</span><br><span class="line">consumer before : 0</span><br><span class="line">producer before: 2</span><br><span class="line">producer after: 0</span><br><span class="line">consumer after : 2</span><br><span class="line">consumer before : 0</span><br><span class="line">producer before: 3</span><br><span class="line">producer after: 0</span><br><span class="line">consumer after : 3</span><br></pre></td></tr></table></figure>
+<p>输出结果验证了以下两件事情：</p>
+<ul>
+<li>exchange方法真的帮一对线程交换了数据；</li>
+<li><p>exchange方法真的会阻塞调用方线程直至另一方线程参与交易。</p>
+<p> 那么在中断和超时两种情况下程序的运行表现会是怎样呢？作为一个小练习，有兴趣的观众可以设想并编写测试用例覆盖验证之。</p>
+</li>
+</ul>
 
       
     </div>
@@ -495,9 +516,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
+            <a href="/tags/Thread/" rel="tag"><i class="fa fa-tag"></i> Thread</a>
           
-            <a href="/tags/常用命令/" rel="tag"><i class="fa fa-tag"></i> 常用命令</a>
+            <a href="/tags/Exchanger/" rel="tag"><i class="fa fa-tag"></i> Exchanger</a>
           
         </div>
       
@@ -530,8 +551,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/20/Docker-MySql/" rel="next" title="Docker-MySql">
-                <i class="fa fa-chevron-left"></i> Docker-MySql
+              <a href="/2019/02/20/多线程-CycliBarrier/" rel="next" title="多线程-CycliBarrier">
+                <i class="fa fa-chevron-left"></i> 多线程-CycliBarrier
               </a>
             
           </div>
@@ -539,10 +560,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/21/Docker Compose-基础/" rel="prev" title="Docker Compose-基础">
-                Docker Compose-基础 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -592,8 +609,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -862,6 +888,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例子"><span class="nav-number">2.</span> <span class="nav-text">例子</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
